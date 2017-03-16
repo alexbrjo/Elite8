@@ -59,12 +59,18 @@ function Memory (size, mem_type) {
     };
     
     /**
-     * Writes a value at a memory location
+     * Writes a value at a memory location. If no value is given, assumes 
+     * address is value and writes to next memory location
      * @param {Number} address the address of the memory
      * @param {Number} value the byte value to store
      * @returns {undefined}
      */
     this.write = function (address, value) {
+        if (typeof address === "number" && typeof value === "undefined") {
+            cursor++;
+            this.write(cursor, address);
+        }
+        
         // Checks if can write to Memory
         if (!access) {
             throw new Error("Cannot write to ROM");

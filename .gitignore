@@ -1,6 +1,6 @@
 /build
 /dist
-/test/Sweet16.*
+/test/Elite8.*
 
 /nbproject
 /node_modules
