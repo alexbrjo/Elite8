@@ -50,10 +50,10 @@ function Intel8008Registers () {
             if (v >= 0 && v <= 0xFF && v % 1 === 0) this.l = v;
             else throw new Error("Register L cannot store value: " + v);
         },
-        get HL() {
+        get M() {
             return parseInt(parseInt(this.h, 2) + "" + parseInt(this.l, 2), 10);
         },
-        set HL(v) {
+        set M(v) {
             var b = parseInt(v, 2) + "";
             this.H = b.substring(0, b.length/2 - 1);      // set H to first 8 bits
             this.L = b.substring(b.length/2, b.length - 1); // set L to last 8 bits
@@ -61,17 +61,44 @@ function Intel8008Registers () {
         
         /* The flag register, split into bits */
         sign:   0, 
+        get SIGN() { return this.sign; },
+        set SIGN(v) {
+            if (v !== 0 && v !== 1) throw new Error("Sign Flag cannot store value: " + v);
+            else this.sign = v;
+        },
         zero:   0, 
+        get ZERO() { return this.zero; },
+        set ZERO(v) {
+            if (v !== 0 && v !== 1) throw new Error("Zero Flag cannot store value: " + v);
+            else this.zero = v;
+        },
         parity: 0, 
+        get PARITY() { return this.parity; },
+        set PARITY(v) {
+            if (v !== 0 && v !== 1) throw new Error("Parity Flag cannot store value: " + v);
+            else this.parity = v;
+        }, 
         carry:  0,
+        get CARRY() { return this.carry; },
+        set CARRY(v) {
+            if (v !== 0 && v !== 1) throw new Error("Carry Flag cannot store value: " + v);
+            else this.carry = v;
+        },
         
         /* 14-bit Program register (16-bit but with 2 most sign. bits ignored) */
         pc: 0,
         get PC() { return this.pc; },
         set PC(v) {
+            if (v < 0 && v > 0x4000) throw new Error("PC cannot store value: " + v);
             this.pc = v;
         },
+        
         /* Seven 14-bit stack register */
-        stack: [0, 0, 0, 0, 0, 0, 0]
+        stack: [0, 0, 0, 0, 0, 0, 0],
+        get POP() { return this.pc; },
+        set PUSH(v) {
+            if (v < 0 && v > 0x4000) throw new Error("PC cannot store value: " + v);
+            this.pc = v;
+        }
     };
 }

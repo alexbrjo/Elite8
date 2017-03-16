@@ -12,9 +12,10 @@ module.exports = function (grunt) {
                 src: [
                     'build/global.js',          // add global vars first
                     'build/Intel8008/**/*.js',  // enumlator files
-                    'build/asm/**/*.js'         // assembler files
+                    'build/SugarAsm/**/*.js',   // assembler files
+                    'build/HoneyBasic/**/*.js'  // Compiler files
                 ],
-                dest: 'dist/Sweet16.js'
+                dest: 'dist/Elite8.js'
             }
         },
         copy:{
@@ -26,7 +27,7 @@ module.exports = function (grunt) {
             },
             test:{
                 cwd:'dist',
-                src:"Sweet16.*",
+                src:"Elite8.*",
                 dest:'test',
                 expand:true
             }
@@ -36,18 +37,18 @@ module.exports = function (grunt) {
                 src:'build'
             },
             test:{
-                src:'Sweet16.*'
+                src:'Elite8.*'
             }
         },
         uglify: {
             build: {
                 files: {
-                    'dist/Sweet16.min.js': [ 'dist/Sweet16.js' ]
+                    'dist/Sweet16.min.js': [ 'dist/Elite8.js' ]
                 }
             }
         },
         jasmine : {
-            src : 'dist/Sweet16.js',
+            src : 'dist/Elite8.js',
                 options : {
                     specs : 'test/**/*.spec.js'
                 }

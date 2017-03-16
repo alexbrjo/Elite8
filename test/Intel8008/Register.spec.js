@@ -19,7 +19,7 @@ describe("testRegisters", function() {
         expect(reg.E).toEqual(0); 
         expect(reg.H).toEqual(0);
         expect(reg.L).toEqual(0);
-        expect(reg.HL).toEqual(0);   
+        expect(reg.M).toEqual(0);   
         
     });
     
@@ -69,27 +69,27 @@ describe("testRegisters", function() {
             expect(reg.E).toEqual(0); 
             expect(reg.H).toEqual(0);
             expect(reg.L).toEqual(0);
-            //expect(reg.HL).toEqual(0); 
+            expect(reg.M).toEqual(0); 
 
         });
     }
     
     /**
-     * Tests the 16-bit HL register.
+     * Tests the 16-bit M register.
      */
-    it("testRegisterHL", function() {
+    it("testRegisterM", function() {
         
         reg =  Intel8008Registers();
         
-        expect(reg.HL).toEqual(0); // default value of h is 0, and l is 0
-        expect(reg.HL).toEqual(0); // getting doesn't change value
+        expect(reg.M).toEqual(0); // default value of h is 0, and l is 0
+        expect(reg.M).toEqual(0); // getting doesn't change value
         
-        expect(reg.HL).toEqual(0); 
+        expect(reg.M).toEqual(0); 
         
         // 0 to 65536 shouldn't throw errors
         for (var i = 0; i < 0xFFFF; i += 0xF) {
-            reg.HL = parseInt(i, 10);
-            expect(reg.HL).toEqual(i); 
+            reg.M = i;
+            expect(reg.M).toEqual(i); 
         }
         
     });

@@ -32,7 +32,7 @@ operation[0x44] = function (reg, l, h) {
     if (reg.CARRY > 0) 
         reg.PC = l * 0xFF + h; // program counter jumps to 14-bit address
     else 
-        reg.PC += 3; // skip jump; nexy instruction
+        reg.PC += 3; // skip jump; next instruction
 };
 
 /** Instruction:     JP                      Opcode:         0x48         *
@@ -43,7 +43,7 @@ operation[0x48] = function (reg, l, h) {
     if (reg.SIGN === 0) 
         reg.PC = l * 0xFF + h; // program counter jumps to 14-bit address
     else 
-        reg.PC += 3; // skip jump; nexy instruction
+        reg.PC += 3; // skip jump; next instruction
 };
 
 /** Instruction:     JPO                     Opcode:         0x48         *
@@ -54,7 +54,7 @@ operation[0x58] = function (reg, l, h) {
     if (reg.PARITY % 2 === 1) 
         reg.PC = l * 0xFF + h; // program counter jumps to 14-bit address
     else 
-        reg.PC += 3; // skip jump; nexy instruction
+        reg.PC += 3; // skip jump; next instruction
 };
 
 /** Instruction:     JC                      Opcode:         0x60         *
@@ -65,7 +65,7 @@ operation[0x60] = function (reg, l, h) {
     if (reg.CARRY === 1) 
         reg.PC = l * 0xFF + h; // program counter jumps to 14-bit address
     else 
-        reg.PC += 3; // skip jump; nexy instruction
+        reg.PC += 3; // skip jump; next instruction
 };
 
 /** Instruction:     JZ                      Opcode:         0x68         *
@@ -76,7 +76,7 @@ operation[0x68] = function (reg, l, h) {
     if (reg.RESULT === 0) 
         reg.PC = l * 0xFF + h; // program counter jumps to 14-bit address
     else 
-        reg.PC += 3; // skip jump; nexy instruction
+        reg.PC += 3; // skip jump; next instruction
 };
 
 /** Instruction:     JM                      Opcode:         0x70         *
@@ -87,7 +87,7 @@ operation[0x70] = function (reg, l, h) {
     if (reg.SIGN === 0) 
         reg.PC = l * 0xFF + h; // program counter jumps to 14-bit address
     else 
-        reg.PC += 3; // skip jump; nexy instruction
+        reg.PC += 3; // skip jump; next instruction
 };
 
 /** Instruction:     JPE                     Opcode:         0x78         *
@@ -98,5 +98,5 @@ operation[0x78] = function (reg, l, h) {
     if (reg.PARITY % 2 === 0) 
         reg.PC = l * 0xFF + h; // program counter jumps to 14-bit address
     else 
-        reg.PC += 3; // skip jump; nexy instruction
+        reg.PC += 3; // skip jump; next instruction
 };
