@@ -9,7 +9,11 @@ module.exports = function (grunt) {
                 separator: ';'
             },
             dist: {
-                src: ['build/**/*.js'],
+                src: [
+                    'build/global.js',          // add global vars first
+                    'build/Intel8008/**/*.js',  // enumlator files
+                    'build/asm/**/*.js'         // assembler files
+                ],
                 dest: 'dist/Sweet16.js'
             }
         },
@@ -43,7 +47,7 @@ module.exports = function (grunt) {
             }
         },
         jasmine : {
-            src : 'src/**/*.js',
+            src : 'dist/Sweet16.js',
                 options : {
                     specs : 'test/**/*.spec.js'
                 }

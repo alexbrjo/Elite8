@@ -1,14 +1,12 @@
 function Intel8008Registers () {
     return {
-        /* Accumlator, four 8-bit GPRs and HL 8/16-bit register(s) */
-        
         /**
          * The 8-bit A (Accumulator) Register
          */
         a: 0, 
         get A(){ return this.a; },
         set A(v) {
-            if (v >= 0 && v < 256 && v % 1 === 0) this.a = v;
+            if (v >= 0 && v <= 0xFF && v % 1 === 0) this.a = v;
             else throw new Error("Register A cannot store value: " + v);
         },
         
@@ -19,22 +17,22 @@ function Intel8008Registers () {
         
         get B(){ return this.b; },
         set B(v) {
-            if (v >= 0 && v < 256 && v % 1 === 0) this.b = v;
+            if (v >= 0 && v <= 0xFF && v % 1 === 0) this.b = v;
             else throw new Error("Register B cannot store value: " + v);
         }, 
         get C(){ return this.c; },
         set C(v) {
-            if (v >= 0 && v < 256 && v % 1 === 0) this.c = v;
+            if (v >= 0 && v <= 0xFF && v % 1 === 0) this.c = v;
             else throw new Error("Register C cannot store value: " + v);
         },
         get D(){ return this.d; },
         set D(v) {
-            if (v >= 0 && v < 256 && v % 1 === 0) this.d = v;
+            if (v >= 0 && v <= 0xFF && v % 1 === 0) this.d = v;
             else throw new Error("Register D cannot store value: " + v);
         },
         get E(){ return this.e; },
         set E(v) {
-            if (v >= 0 && v < 256 && v % 1 === 0) this.e = v;
+            if (v >= 0 && v <= 0xFF && v % 1 === 0) this.e = v;
             else throw new Error("Register E cannot store value: " + v);
         },
         
@@ -44,13 +42,13 @@ function Intel8008Registers () {
         h: 0, l: 0,
         get H() { return this.h; },
         set H(v) {
-            if (v >= 0 && v < 256 && v % 1 === 0) this.h = v;
-            else throw new Error("Register B cannot store value: " + v);
+            if (v >= 0 && v <= 0xFF && v % 1 === 0) this.h = v;
+            else throw new Error("Register H cannot store value: " + v);
         }, 
-        get L() { return this.c; },
+        get L() { return this.l; },
         set L(v) {
-            if (v >= 0 && v < 256 && v % 1 === 0) this.c = v;
-            else throw new Error("Register C cannot store value: " + v);
+            if (v >= 0 && v <= 0xFF && v % 1 === 0) this.l = v;
+            else throw new Error("Register L cannot store value: " + v);
         },
         get HL() {
             return parseInt(parseInt(this.h, 2) + "" + parseInt(this.l, 2), 10);
@@ -68,7 +66,11 @@ function Intel8008Registers () {
         carry:  0,
         
         /* 14-bit Program register (16-bit but with 2 most sign. bits ignored) */
-        counter: 0, 
+        pc: 0,
+        get PC() { return this.pc; },
+        set PC(v) {
+            this.pc = v;
+        },
         /* Seven 14-bit stack register */
         stack: [0, 0, 0, 0, 0, 0, 0]
     };

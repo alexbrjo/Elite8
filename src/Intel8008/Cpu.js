@@ -6,23 +6,20 @@
 function Intel8008Cpu () {
     
     /* General, flag, program, stack registers */
-    this.reg = Intel8008Registers();
+    var reg = Intel8008Registers();
     /* The Memory of the cpu */
-    this.mem = new Memory(2048);
+    var mem = new Memory(2048);
     /* Operation for opcode array. This is a legnth 256 array of functions */
-    this.opc = operation;
+    var opc = operation;
     
     /**
      * 
      */
     this.cycle = function () {
-        
         // Get position in memory
-        
+        var current_instruction = mem.read(reg.PC);
         // Excute operation
-        
-        // Validate operation, general registers must be 
-        
+        opc[current_instruction](reg);
     };
 }
 

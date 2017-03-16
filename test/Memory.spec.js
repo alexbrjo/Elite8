@@ -1,7 +1,7 @@
 /**
  * Tests the Memory object.
  */
-describe("Memory test", function() {
+describe("testMemory", function() {
     
     var mem = null;
     
