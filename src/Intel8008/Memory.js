@@ -1,5 +1,7 @@
 /**
- * Constructing this function is buying a physical stick of RAM
+ * Constructing this function is buying a physical stick of RAM. The Intel 8008
+ * only has a 14-bit wide address bus so only 16384 (not 65536) bytes can be 
+ * accessed.
  * @param {Number} size the size of the memory
  * @param {String} mem_type the type of memory 
  *      "RAM" - Read and write are enabled(default) 
@@ -39,6 +41,21 @@ function Memory (size, mem_type) {
         // sets cursor to memory address and returns stored value
         cursor = address;
         return data[cursor];
+    };
+    
+    /**
+     * Peeks ahead of the last value access via read()
+     * @param {Number} d the change from the address
+     * @returns {Number} the value in the memory location
+     */
+    this.peek = function (d) {
+        var address = cursor + d;
+        // Checks that location is a valid memory address
+        if (address < 0 || address >= data.length) {
+            throw new Error("Illegal memory access: " + address);
+        }
+        
+        return data[address];
     };
     
     /**

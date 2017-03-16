@@ -13,13 +13,16 @@ function Intel8008Cpu () {
     var opc = operation;
     
     /**
-     * 
+     * Executes a single operation.
      */
     this.cycle = function () {
-        // Get position in memory
-        var current_instruction = mem.read(reg.PC);
-        // Excute operation
-        opc[current_instruction](reg);
+        // Get position in memory, get immediate values
+        var instr = mem.read(reg.PC);   // instruction location
+        var immed = mem.peek();         // immediate next value, or low-order address
+        var hiadr = mem.peek();         // high-order address, used for program and stack control
+        
+        // excute operation
+        opc[instr](reg, immed, hiadr);
     };
 }
 
