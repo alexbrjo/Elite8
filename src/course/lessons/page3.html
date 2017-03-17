@@ -1,0 +1,172 @@
+<div id="course-content">
+    <h1>Meet the Intel 8008</h1>
+    <h4><i>"eighty-oh-eight"</i></h4>
+    <div class="hr"></div>
+    <div class="column-pair">
+        <div class="big-column">
+            <p>
+                The Intel 8008 is an 8-bit microprocessor released in 1972 that powered early personal computers. One
+                of these was the Datapoint 2200, which was a mass-produced programmable personal computer. It has 2 
+                parts that you need to be familiar with: registers and flags and several others that are useful to
+                know.
+            </p>
+            <h3>Registers</h3>
+            <div class='hr'></div>
+            <p>
+                Now since you've just learned what registers are we can go over which are provided in the Intel 8008. 
+            </p>
+            <h5>Scratch pad Registers</h5>
+            <p>
+                Seven 8-bit scratch pad registers which are for temporary value storage. These are most important to 
+                the programmer because these are similar to local variables in a higher-level language.
+            </p>
+            <h5>Program Control Registers</h5>
+            <p>
+                A single 16-bit program counter register keeps track of the memory location of the current instruction. 
+                Seven 16-bit stack pointer registers point to the location of .
+            </p>
+            <h3>Flags</h3>
+            <div class='hr'></div>
+            <p>
+                Most microprocessors today have a flag register, but the Intel 8008 does not. Flags are 1-bit values that
+                are set as a result of an operation. They are similar to a returns value from a function. The Intel 8008 has 
+                4 flags: sign, zero, parity and carry. Arithmetic operations will update all 4 of these flags when they are
+                preformed. 
+            </p>
+            <table>
+                <tbody>
+                    <tr> <th>Flag</th> <th>Condition</th> </tr>
+                    <tr> <td>Sign</td>  <td>set if the result of an operation is negative</td> </tr>
+                    <tr> <td>Zero</td>  <td>set if the result of an operation is zero</td> </tr>
+                    <tr> <td>Parity</td><td>set if the result of an operation is even</td> </tr>
+                    <tr> <td>Carry</td> <td>only set if the result of an operation is greater than 255 or less than 0 </td> </tr>
+                </tbody>
+            </table> 
+            <p>
+                Later you will learn that certain opcodes use these flags as conditionals and are very useful.
+            </p>
+            <h3>The 14-bit Address Bus</h3>
+            <div class='hr'></div>
+            <p>
+                With 8 bits of data and an 8-bit address bus you can reach 256 (2<sup>8</sup>) memory locations. Thats a
+                very small amount of memory. Luckily the Intel 8008 has 14-bit address bus which can reach 16,384 (2<sup>14</sup>) 
+                memory locations. Unfortunately a byte is only 8 bits, so two bytes of data is needed to reach all the possible 
+                memory locations in the scope of the bus. This is organized by having a high-order byte and a low order byte (the
+                2 most significant bits of the high-order byte are ignored). This is why the stack registers are 16-bit, so they can
+                point to 14-bit memory locations.
+            </p>
+            <h3>Why learn about a chip from the 1970's?</h3>
+            <div class='hr'></div>
+            <p>
+                Chips today are larger and more complicated. Some of the visuals in this course would be a lot larger and extremely difficult 
+                to emulate in JavaScript. 
+            </p>
+            <p>
+                While you probably won't write assembly for the Intel 8008, you may write assembly for other other 8-bit microprocessors, 
+                which today still take up a large portion of the microprocessor market (40% in 2011). Additionally, the Intel 8008 was a key 
+                influencer of the x86 architecture.
+            </p>
+        </div>
+        <div class="lil-column">
+            <table>
+                <tbody>
+                    <tr>
+                        <th class="merge" colspan="3">7 Scratch pad Registers</th>
+                    </tr>
+                    <tr>
+                        <th>Register</th>
+                        <th>Size</th>
+                        <th>Purpose</th>
+                    </tr>
+                    <tr>
+                        <td>A</td>
+                        <td>8-bit</td>
+                        <td>Accumulator</td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td>8-bit</td>
+                        <td>General Purpose</td>
+                    </tr>
+                    <tr>
+                        <td>C</td>
+                        <td>8-bit</td>
+                        <td>General Purpose</td>
+                    </tr>
+                    <tr>
+                        <td>D</td>
+                        <td>8-bit</td>
+                        <td>General Purpose</td>
+                    </tr>
+                    <tr>
+                        <td>E</td>
+                        <td>8-bit</td>
+                        <td>General Purpose</td>
+                    </tr>
+                    <tr>
+                        <td>H</td>
+                        <td>8-bit</td>
+                        <td>Low-order address</td>
+                    </tr>
+                    <tr>
+                        <td>L</td>
+                        <td>8-bit</td>
+                        <td>High-order address</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <tbody>
+                    <tr>
+                        <th class="merge" colspan="3">8 Program Control Registers</th>
+                    </tr>
+                    <tr>
+                        <th>Register</th>
+                        <th>Size</th>
+                        <th>Purpose</th>
+                    </tr>
+                    <tr>
+                        <td>PC</td>
+                        <td>16-bit</td>
+                        <td>Program Counter</td>
+                    </tr>
+                    <tr>
+                        <td>Stack</td>
+                        <td>16-bit</td>
+                        <td>Stack level 1</td>
+                    </tr>
+                    <tr>
+                        <td>Stack</td>
+                        <td>16-bit</td>
+                        <td>Stack level 2</td>
+                    </tr>
+                    <tr>
+                        <td>Stack</td>
+                        <td>16-bit</td>
+                        <td>Stack level 3</td>
+                    </tr>
+                    <tr>
+                        <td>Stack</td>
+                        <td>16-bit</td>
+                        <td>Stack level 4</td>
+                    </tr>
+                    <tr>
+                        <td>Stack</td>
+                        <td>16-bit</td>
+                        <td>Stack level 5</td>
+                    </tr>
+                    <tr>
+                        <td>Stack</td>
+                        <td>16-bit</td>
+                        <td>Stack level 6</td>
+                    </tr>
+                    <tr>
+                        <td>Stack</td>
+                        <td>16-bit</td>
+                        <td>Stack level 7</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

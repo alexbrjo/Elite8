@@ -1,15 +1,39 @@
 Elite8
 ========
-Elite8 is not a true emulator, but a model emuator. All the operation codes and assembly instructions are exactly what the Intel8008 uses, but I/O and memory is done slightly differently. Elite8 assembler uses the Intel8080 updated assembly mnemonics.
+Elite8 is not a true emulator, but a simulator. All the operation codes and 
+assembly instructions are exactly what the Intel8008 uses, but I/O and memory is 
+done slightly differently. Elite8 assembler uses the Intel8080 updated assembly 
+mnemonics.
 
-An Intel 8008 Assembler, Emulator and Visualizer with HTML5 Canvas
-------------------------------------------------------------------
+Documentation
+-------------
+This project has a strong focus on tests and documentation. The end goal is to
+have a README in every sub-folder of the project explaining the rationale and 
+design pattern.
 
-Planned Visualizer steps
--------------------------
-256 byte RAM with 16 byte text out put, assembler 
-512 byte RAM with 256 byte video out put, assembler
+The Interactive Course
+----------------------
+The goal of the Course is to give developers with experience in high-level 
+programming (high-level of abstraction, not advanced programming) an
+understanding and basic knowledge of assembling and compiling through use
+of visual aids and interactive demos.
 
-Speical Thanks to these fantastic resources:
---------------------------------------------
+1. Hardware 101
+    * Meet the Intel 8008: chart of specs
+    * Storing Data: Memory demo with JS console
+    * What is a Register?: Register demo with JS console
+    * The Microprocessor: Machine code demo with buttons
+2. Machine Speak
+    * Machine Codes: Machine code demo with JS console
+    * Operation Codes: Opcode to machine code 
+3. Assembly
+    * Abstraction
+    * Assembling: Assembler to machine with visual processor, memory and output
+    * More on Assemblers
+4. BASIC
+    * The Language: 
+    * Compilation: Compiler to assembly to machine with visual processor, memory and output
+
+Special Thanks to these fantastic resources
+-------------------------------------------
 en.wikipedia.org/wiki/BASIC

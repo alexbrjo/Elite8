@@ -1,0 +1,96 @@
+/* The Course Content style */
+
+#course-content-wrapper {
+    display: table-cell;
+    background-color: #F8F8F8;
+    width: 100%;
+    font-family: Myriad, 'Myriad Pro', 'PT Sans', 'Gill Sans', sans-serif;
+}
+
+#course-content {
+    padding-top: 30px;
+    display: block;
+    width: 80%;
+    margin: auto;
+    height: 100%;
+    color: #666;
+}
+
+#course-content .hr {
+    height: 1px;
+    width: 100%;
+    background-color: #888;
+    margin: auto;
+}
+
+.column-pair {
+    display: block;
+    width: 100%;
+}
+
+.column-pair > div {
+    margin: 20px 0 20px 0;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.column-pair > .big-column {
+    width: 60%;
+}
+
+.column-pair > .lil-column {
+    width: 33%;
+}
+
+
+#course-content table {
+    border-collapse: collapse;
+    margin: auto;
+    margin-bottom: 20px;
+    font-size: 10pt;
+}
+
+#course-content th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #DDD;
+}
+
+#course-content tr:hover {
+    background-color: #DDD;
+}
+
+#course-content th {
+    color: #EEEEFF;
+    background-color: #6666FF;
+}
+
+#course-content .merge {
+    background-color: #FFA500;
+    text-align: center;
+    border: none;
+}
+
+sup {
+    top: -0.4em;
+    vertical-align: baseline;
+    position: relative;
+}
+
+sub { 
+    top: 0.4em; 
+    vertical-align: baseline;
+    position: relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: sans-serif;
+    margin: 0px 10px 10px 10px;
+    padding: 0;
+}
+
+h2, h4, h6 { 
+    padding-left: 25px;
+    color: #AAAAAA;
+}
+
