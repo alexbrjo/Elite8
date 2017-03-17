@@ -12,7 +12,4 @@ Planned Visualizer steps
 
 Speical Thanks to these fantastic resources:
 --------------------------------------------
-petsd.net/8008.php
-pastraiser.com/cpu/i8008/i8008_opcodes.html
-en.wikichip.org/wiki/intel/mcs-8/isa
 en.wikipedia.org/wiki/BASIC
