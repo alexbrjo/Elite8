@@ -23,6 +23,15 @@
     margin: auto;
 }
 
+#course-content p {
+    margin-bottom: 30px;
+}
+
+#course-content p a {
+    font-weight: bold; 
+    color: #6666FF;
+}
+
 .column-pair {
     display: block;
     width: 100%;

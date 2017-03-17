@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Intro to Microprocessors</title>
+        <title>Assembly is Not Scary</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style/table.css">
@@ -14,35 +14,37 @@
         <div id="table-of-contents-wrapper">
             <div id="fixed-helper"></div>
             <div id="table-of-contents">
-                <div class="title">Introduction</div>
-                <div class="subtitle" style="font-weight: bold;">- to -</div>
-                <div class="title">MicroProcessors</div>
-                <div class="subtitle">using the Intel 8008</div>
-                <div class="author">An interactive mini-Course written by Alex Johnson</div>
+                <div class="title">Assembly</div>
+                <div class="subtitle" style="font-weight: bold;">- is -</div>
+                <div class="title">Not Scary</div>
+                <div class="author">
+                    A short interactive book part of the 
+                    <a href="https://github.com/alexbrjo/Elite8">Elite8 Intel 8008 Simulator</a>
+                </div>
                 <div class="hr"></div>
-                <div class="section page0">Foreword</div>
-                <div class="section page1">Hardware 101</div>
+                <div class="section page00">Intro</div>
+                <div class="section page01">Hardware 101</div>
                 <div class="section-list">
-                    <div class="section page1 incomplete">Storing Data</div>
-                    <div class="section page2 incomplete">What is a Register?</div>
-                    <div class="section page3">Meet the Intel 8008</div>
-                    <div class="section page4 incomplete">The Microprocessor</div>
+                    <div class="section page01 incomplete">Storing Data</div>
+                    <div class="section page02 incomplete">What is a Register?</div>
+                    <div class="section page03">Meet the Intel 8008</div>
+                    <div class="section page04 incomplete">Microprocessor Demo</div>
                 </div>
-                <div class="section page0 incomplete">Machine Speak</div>
+                <div class="section page05 incomplete">Machine Speak</div>
                 <div class="section-list">
-                    <div class="section page0 incomplete">Machine Codes</div>
-                    <div class="section page0 incomplete">Operation Codes</div>
+                    <div class="section page05 incomplete">Talk Machine to Me</div>
+                    <div class="section page06 incomplete">Operation Codes</div>
                 </div>
-                <div class="section page0 incomplete">Assembly</div>
+                <div class="section page07 incomplete">Assembly</div>
                 <div class="section-list">
-                    <div class="section page0 incomplete">Abstraction</div>
-                    <div class="section page0 incomplete">Assembling</div>
-                    <div class="section page0 incomplete">More on Assemblers</div>
+                    <div class="section page07 incomplete">Abstraction</div>
+                    <div class="section page08 incomplete">Assembling</div>
+                    <div class="section page09 incomplete">More on Assemblers</div>
                 </div>
-                <div class="section page0 incomplete">BASIC</div>
+                <div class="section page10 incomplete">BASIC</div>
                 <div class="section-list">
-                    <div class="section page0 incomplete">The Language</div>
-                    <div class="section page0 incomplete">Compilation</div>
+                    <div class="section page10 incomplete">The Language</div>
+                    <div class="section page11 incomplete">Compilation</div>
                 </div>
                 <div class="hr"></div>
                 <div class="author">2017 &copy; Alex Johnson</div>
@@ -55,10 +57,10 @@
         <script type="text/javascript">
             $(".section").click(function(x) { 
                 $("#course-content-wrapper").load(
-                    "lessons/" + $(x.target).attr("class").split(" ")[1] + ".html"
+                    "en/" + $(x.target).attr("class").split(" ")[1] + ".html"
                 );
             });
-            $(".section").click();
+            $(".page00").click();
         </script>
     </body>
 </html>
