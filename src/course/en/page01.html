@@ -1,13 +1,60 @@
 <div id="course-content">
-    <h1>Unfinished page</h1>
-    <h4>subtitle</h4>
-    <p></p>
-    <h3>Topic</h3>
+    <h1>Storing Data</h1>
+    <h4>with electricity!</h4>
     <div class="hr"></div>
     <p>
-        Large body of text Large body of text Large body of text Large body of text Large body of text
-        Large body of text Large body of text Large body of text Large body of text Large body of text
-        Large body of text Large body of text Large body of text Large body of text Large body of text
-        Large body of text Large body of text Large body of text Large body of text Large body of text
+        The goal of computer memory is to store an amount of data that can be 
+        read from and written to. The issue with memory is that Software 
+        Engineers always want to be able to store more data and to be able
+        to access that data faster and faster. Computer Engineers are doing a great
+        job developing faster and larger computer memory, giving us hardware that
+        ranges from floppy disks to solid state memory.
+    </p>
+    <h3>A bit by itself isn't very useful</h3>
+    <div class="hr"></div>
+    <p>
+        Even if you aren't a programmer you probably know that computers store 
+        all their data in 0s and 1s, but you might not know just how computers
+        use those binary values to represent non-binary things such as text
+        and images.
+    </p>
+     <p>
+        The <b>word size</b> is the length of the shortest unit of data that a 
+        microprocessor will read. The word size for an 8-bit processor is 8 bits,
+        the word size for a 16-bit processor is 16 bits, etc. 
+    </p>
+    <h3>Lets read/write from memory!</h3>
+    <div class="hr"></div>
+    <p>
+        Below is a console that you can use a few JavaScript commands in. You can
+        try writing to and reading from the memory simulator from the Elite8
+        simulator.
+    </p>
+    <ul>
+        <li>memory.read( location ); // writes a value to a memory location</li>
+        <li>memory.write( location , value );  // read a value from a memory location</li>
+        <li>memory.peek( x ); // peeks ahead 1 or x number of memory locations</li>
+        <li>memory.clear(); // clears the memory</li>
+        <li>memory.size(); // returns the word-length of the memory </li>
+    </ul>
+    <textarea></textarea>
+    <div>
+    <h3>Why binary?</h3>
+    <div class="hr"></div>
+    <p>
+        But why is that? 
+    </p>
+    <h3>Word Size Example: the Magic OS number</h3>
+    <div class="hr"></div>
+    <p>    
+        When you're starting your computer, after the microprocessor completes it's
+        own routines, it begins reading from the BootLoader memory location. This 
+        starts the operating system. In x86 assembly for 16-bit computers this 
+        BootLooter block must end with a 'magic number' 0xAA55. In binary 
+        this is the pattern: 1010101001010101. This pattern tells the processor
+        that there is a valid operating system and it can move past BIOS. The 
+        alternating patterns of 0s and 1s was thought to protect against corrupt 
+        memory. The 0xAA55 'magic number' is a 16 bit value and an example of 
+        the word size for a 16-bit processor.
     </p>
 </div>
