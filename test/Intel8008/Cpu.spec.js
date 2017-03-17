@@ -17,6 +17,7 @@ describe("testCpu", function() {
         mem.write(2, 0x00); // high-order address
         
         cpu =  new Cpu(mem);
+        cpu.cycle();
         
     });
 });
