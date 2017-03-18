@@ -24,11 +24,11 @@ operation[0x40] = function (reg, l, h) {
     reg.PC = l * 0xFF + h; // program counter jumps to 14-bit address
 };
 
-/** Instruction:     JNZ                     Opcode:         0x44         *
+/** Instruction:     JNZ                     Opcode:         0x46         *
  *  Bytes:            3                      Alternatives:    -           *
  *  Affected flags:   -                                                   *
  *  Description: jump if result flag <> 0                                **/
-operation[0x44] = function (reg, l, h) {
+operation[0x46] = function (reg, l, h) {
     if (reg.CARRY > 0) 
         reg.PC = l * 0xFF + h; // program counter jumps to 14-bit address
     else 
@@ -39,7 +39,7 @@ operation[0x44] = function (reg, l, h) {
  *  Bytes:            3                      Alternatives:    -           *
  *  Affected flags:   -                                                   *
  *  Description: jump if sign flag = 0 (positive)                        **/
-operation[0x48] = function (reg, l, h) {
+operation[0x50] = function (reg, l, h) {
     if (reg.SIGN === 0) 
         reg.PC = l * 0xFF + h; // program counter jumps to 14-bit address
     else 
@@ -71,7 +71,7 @@ operation[0x60] = function (reg, l, h) {
 /** Instruction:     JZ                      Opcode:         0x68         *
  *  Bytes:            3                      Alternatives:    -           *
  *  Affected flags:   -                                                   *
- *  Description: jump if result = 0                                      **/
+ *  Description: jump if zero = 1                                      **/
 operation[0x68] = function (reg, l, h) {
     if (reg.RESULT === 0) 
         reg.PC = l * 0xFF + h; // program counter jumps to 14-bit address

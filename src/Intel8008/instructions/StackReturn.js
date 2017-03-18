@@ -116,7 +116,7 @@ operation[0x3E] = function (reg, l, h) {
     }
 };
 
-/** Instruction:     RST A                   Opcode:         0x78         *
+/** Instruction:     RST A                   Opcode:         0x05         *
  *  Bytes:            3                      Alternatives:    -           *
  *  Affected flags:   -                                                   *
  *  Description: Call the subroutine at memory (0-7b)000, up one stack   **/
@@ -125,7 +125,7 @@ operation[0x3E] = function (reg, l, h) {
 operation[0x05] = operation[0x03];
 operation[0x15] = operation[0x13];
 operation[0x25] = operation[0x23];
-operation[0x3D] = operation[0x33];
+operation[0x35] = operation[0x33];
 operation[0x0D] = operation[0x0E];
 operation[0x1D] = operation[0x1E];
 operation[0x2D] = operation[0x2E];

@@ -1,11 +1,3 @@
-/**
-* The Intel 8008 instruction set: Rotate group
-* 
-* Thank you:
-*      pastraiser.com/cpu/i8008/i8008_opcodes.html
-*      petsd.net/8008.php#jump
-*/
-
 /** Instruction:     RLC                     Opcode:         0x02         *
  *  Bytes:            1                      Alternatives:    -           *
  *  Affected flags:   C                                                   *
