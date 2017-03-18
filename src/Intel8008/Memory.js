@@ -63,27 +63,42 @@ function Memory (size, mem_type) {
      * address is value and writes to next memory location
      * @param {Number} address the address of the memory
      * @param {Number} value the byte value to store
-     * @returns {undefined}
      */
     this.write = function (address, value) {
         if (typeof address === "number" && typeof value === "undefined") {
             cursor++;
             this.write(cursor, address);
+        } else {
+            // Checks if can write to Memory
+            if (!access) {
+                throw new Error("Cannot write to ROM");
+            }
+            // Checks that location is a valid memory address
+            if (address < 0 || address >= data.length) {
+                throw new Error("Illegal memory access: " + address);
+            }
+
+            if (address >= 0 && value < 256) {
+                cursor = address;
+                data[cursor] = value;
+            }
         }
-        
-        // Checks if can write to Memory
-        if (!access) {
-            throw new Error("Cannot write to ROM");
-        }
-        // Checks that location is a valid memory address
-        if (location < 0 || address >= data.length) {
-            throw new Error("Illegal memory access: " + address);
-        }
-        
-        if (address >= 0 && value < 256) {
-            cursor = address;
-            data[cursor] = value;
-        }
+    };
+    
+    /**
+     * Determines if there is a byte to write after the cursor
+     * @returns {Boolean} if there is a next byte to write
+     */
+    this.hasNext = function () {
+        return cursor >= 0 && cursor < data.length;
+    };
+    
+    /**
+     * Returns position of the cursor in memory
+     * @returns {Number} position of cursor
+     */
+    this.pos = function () {
+        return cursor;
     };
     
     /**
