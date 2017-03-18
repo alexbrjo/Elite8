@@ -19,7 +19,7 @@ describe("testAsmJumpGroup", function() {
         expect(mach_code.read(2)).toEqual(0);             // memory address 0
         
         // test address 
-        var src = "HLT \n HLT \n HLT \n HLT \n" +
+        src =     "HLT \n HLT \n HLT \n HLT \n" +
                   "HLT \n HLT \n HLT \n HLT \n" +
                   "HLT \n HLT \n HLT \n HLT \n" +
                   "HLT \n HLT \n HLT \n HLT \n" +
@@ -34,8 +34,26 @@ describe("testAsmJumpGroup", function() {
         expect(mach_code.read(24)).toEqual(23);            // low order memory address 23
         expect(mach_code.read(25)).toEqual(0);             // high order memory address 0
     });
+    
+    /**
+     * Tests Assembly of JMP with high order address from Jump Group.
+     */
+    it("testAsmJMPhighOrder", function() {
+        
+        var src = "";
+        // fill up first 256 + 4 addresses 
+        for (var i = 0; i < 260; i++) {
+            src += " HLT \n";
+        }
+         
+        src += ".high_order \n JMP .high_order \n"; 
+          
+        var mach_code = sasm.assemble(src).data;
+        expect(mach_code.size()).toEqual(512);
+               /* ... 260 halts ... */
+        expect(mach_code.read(259)).toEqual(operation.HLT); // last halt
+        expect(mach_code.read(260)).toEqual(operation.JMP); // JMP opcode
+        expect(mach_code.read(261)).toEqual(4);             // low order memory address 4
+        expect(mach_code.read(262)).toEqual(1);             // high order memory address 1
+    });
 });
-
-
-
-

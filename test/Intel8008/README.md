@@ -1,5 +1,7 @@
 Intel 8008 Simulator Tests
 ==========================
+The simulator is the core of the project. So to be confident it will run well
+we have to put it through rigorous unit tests. 
 
 Testing the CPU
 ---------------
@@ -12,10 +14,10 @@ Testing the Memory
 - Ensured that bytes cannot be set to values greater than 255 or less than 0
 - All functions work: read, write, peek, clear, size and ensure they don't interfere
 
-Testing the Opcodes file
-------------------------
-- By testing the instructions the opcodes get check, since this file is get an
-object of constants it doesn't need specific testing
+Testing the Operations file
+---------------------------
+- By testing the instructions the operations get checked, since this file is get an
+object of constants it doesn't need devoted testing
 
 Testing the Registers
 ---------------------
