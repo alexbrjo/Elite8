@@ -1,4 +1,4 @@
-/** Instruction:     ADD #                   Opcode:         0x04         *
+/** Instruction:     ADD #                   Opcode:         0x80-0x80    *
  *  Bytes:            2                      Alternatives:    -           *
  *  Affected flags:  all                                                  *
  *  Description: adds the value of register 'R' to register A            **/
@@ -7,15 +7,15 @@ operation[0x04] = function (reg, a) {
     
     // if sum is greater than 255, carry 
     if (sum > 0xFF) {
-        sum = sum % 0xFF;
+        sum = sum % 256;
         reg.CARRY = 1;
     } else {
         reg.CARRY = 0;
     }
     
     reg.SIGN = 0;               // result of addition never negative
-    reg.ZERO = sum === 0;       // set zero flag
-    reg.PARITY = sum % 2 === 0; // set parity flag
+    reg.ZERO = sum === 0 ? 1 : 0;       // set zero flag
+    reg.PARITY = sum % 2 === 0 ? 1 : 0; // set parity flag
     reg.A = sum;                // set sum in Accumulator
     reg.PC += 2;                // next instruction, skip over immediate value
 };
@@ -31,15 +31,15 @@ operation[0x80] = function (reg) {
     
     // if sum is greater than 255, carry 
     if (sum > 0xFF) {
-        sum = sum % 0xFF;
+        sum = sum % 256;
         reg.CARRY = 1;
     } else {
         reg.CARRY = 0;
     }
     
     reg.SIGN = 0;               // result of addition never negative
-    reg.ZERO = sum === 0;       // set zero flag
-    reg.PARITY = sum % 2 === 0; // set parity flag
+    reg.ZERO = sum === 0 ? 1 : 0;       // set zero flag
+    reg.PARITY = sum % 2 === 0 ? 1 : 0; // set parity flag
     reg.A = sum;                // set sum in Accumulator
     reg.PC += 1;                // next instruction
 };
@@ -50,34 +50,34 @@ operation[0x81] = function (reg) {
     
     // if sum is greater than 255, carry 
     if (sum > 0xFF) {
-        sum = sum % 0xFF;
+        sum = sum % 256;
         reg.CARRY = 1;
     } else {
         reg.CARRY = 0;
     }
     
     reg.SIGN = 0;               // result of addition never negative
-    reg.ZERO = sum === 0;       // set zero flag
-    reg.PARITY = sum % 2 === 0; // set parity flag
+    reg.ZERO = sum === 0 ? 1 : 0;       // set zero flag
+    reg.PARITY = sum % 2 === 0 ? 1 : 0; // set parity flag
     reg.A = sum;                // set sum in Accumulator
     reg.PC += 1;                // next instruction
 };
 
 /* ADD 'R' for C */
 operation[0x82] = function (reg) {
-    var sum = reg.A + reg.B; // sum A and C
+    var sum = reg.A + reg.C; // sum A and C
     
     // if sum is greater than 255, carry 
     if (sum > 0xFF) {
-        sum = sum % 0xFF;
+        sum = sum % 256;
         reg.CARRY = 1;
     } else {
         reg.CARRY = 0;
     }
     
     reg.SIGN = 0;               // result of addition never negative
-    reg.ZERO = sum === 0;       // set zero flag
-    reg.PARITY = sum % 2 === 0; // set parity flag
+    reg.ZERO = sum === 0 ? 1 : 0;       // set zero flag
+    reg.PARITY = sum % 2 === 0 ? 1 : 0; // set parity flag
     reg.A = sum;                // set sum in Accumulator
     reg.PC += 1;                // next instruction
 };
@@ -88,15 +88,15 @@ operation[0x83] = function (reg) {
     
     // if sum is greater than 255, carry 
     if (sum > 0xFF) {
-        sum = sum % 0xFF;
+        sum = sum % 256;
         reg.CARRY = 1;
     } else {
         reg.CARRY = 0;
     }
     
     reg.SIGN = 0;               // result of addition never negative
-    reg.ZERO = sum === 0;       // set zero flag
-    reg.PARITY = sum % 2 === 0; // set parity flag
+    reg.ZERO = sum === 0 ? 1 : 0;       // set zero flag
+    reg.PARITY = sum % 2 === 0 ? 1 : 0; // set parity flag
     reg.A = sum;                // set sum in Accumulator
     reg.PC += 1;                // next instruction
 };
@@ -107,15 +107,15 @@ operation[0x84] = function (reg) {
     
     // if sum is greater than 255, carry 
     if (sum > 0xFF) {
-        sum = sum % 0xFF;
+        sum = sum % 256;
         reg.CARRY = 1;
     } else {
         reg.CARRY = 0;
     }
     
     reg.SIGN = 0;               // result of addition never negative
-    reg.ZERO = sum === 0;       // set zero flag
-    reg.PARITY = sum % 2 === 0; // set parity flag
+    reg.ZERO = sum === 0 ? 1 : 0;      // set zero flag
+    reg.PARITY = sum % 2 === 0 ? 1 : 0; // set parity flag
     reg.A = sum;                // set sum in Accumulator
     reg.PC += 1;                // next instruction
 };
@@ -126,15 +126,15 @@ operation[0x85] = function (reg) {
     
     // if sum is greater than 255, carry 
     if (sum > 0xFF) {
-        sum = sum % 0xFF;
+        sum = sum % 256;
         reg.CARRY = 1;
     } else {
         reg.CARRY = 0;
     }
     
     reg.SIGN = 0;               // result of addition never negative
-    reg.ZERO = sum === 0;       // set zero flag
-    reg.PARITY = sum % 2 === 0; // set parity flag
+    reg.ZERO = sum === 0 ? 1 : 0;       // set zero flag
+    reg.PARITY = sum % 2 === 0 ? 1 : 0; // set parity flag
     reg.A = sum;                // set sum in Accumulator
     reg.PC += 1;                // next instruction
 };
@@ -145,15 +145,15 @@ operation[0x86] = function (reg) {
     
     // if sum is greater than 255, carry 
     if (sum > 0xFF) {
-        sum = sum % 0xFF;
+        sum = sum % 256;
         reg.CARRY = 1;
     } else {
         reg.CARRY = 0;
     }
     
     reg.SIGN = 0;               // result of addition never negative
-    reg.ZERO = sum === 0;       // set zero flag
-    reg.PARITY = sum % 2 === 0; // set parity flag
+    reg.ZERO = sum === 0 ? 1 : 0;       // set zero flag
+    reg.PARITY = sum % 2 === 0 ? 1 : 0; // set parity flag
     reg.A = sum;                // set sum in Accumulator
     reg.PC += 1;                // next instruction
 };
@@ -164,7 +164,7 @@ operation[0x88] = function (reg) {
     
     // if sum is greater than 255, carry 
     if (sum > 0xFF) {
-        sum = sum % 0xFF;
+        sum = sum % 256;
         reg.CARRY = 1;
     } else {
         reg.CARRY = 0;

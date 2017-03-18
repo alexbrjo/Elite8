@@ -16,8 +16,8 @@ describe("testCpu", function() {
         mem.write(1, 0x0F); // low-order address
         mem.write(2, 0x00); // high-order address
         
-        cpu =  new Cpu(mem);
-        cpu.cycle();
+        cpu =  new Intel8008Cpu(mem);
+        expect(function() { cpu.cycle(); }).not.toThrow();
         
     });
 });

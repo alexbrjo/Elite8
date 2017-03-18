@@ -1,4 +1,11 @@
 var opcode = {
-    
+    ADD_A: 0x80,
+    ADD_B: 0x81,
+    ADD_C: 0x82,
+    ADD_D: 0x83,
+    ADD_E: 0x84,
+    ADD_H: 0x85,
+    ADD_L: 0x86,
+    ADD_M: 0x87,
 };
 

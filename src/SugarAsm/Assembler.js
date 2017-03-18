@@ -1,5 +1,5 @@
 /**
- * Assembles assembly mnuemonics to Intel 8008 machine code
+ * Assembles 1975 updated Intel 8008 assembly mnuemonics to machine code
  */
 function SugarAssembler() {
     this.assemble = function (src, size) {
