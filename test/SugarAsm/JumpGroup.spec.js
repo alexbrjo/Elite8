@@ -1,7 +1,7 @@
 /**
  * Tests the Assembly of Jump operations
  */
-describe("testAsmJumpGroup", function() {
+describe("JumpGroupAssembly", function() {
     
     var sasm = new SugarAssembler();
     

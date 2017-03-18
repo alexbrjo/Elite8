@@ -45,6 +45,7 @@ function SugarAssembler() {
                     machineCode.write(operation.HLT); // write 1 byte halt operation
                     state = "new_line";
                     break;
+                    
                 case "JMP":
                     machineCode.write(operation.JMP); // write operation code
                     state = "wait_address"; // wait for address
@@ -81,9 +82,19 @@ function SugarAssembler() {
                     machineCode.write(operation.JPE); // write operation code
                     state = "wait_address";
                     break;
+                    
+                case "db":
+                case "DB":
+                    var def = token[1];
+                    for (var i = 0; i < def.length; i++) {
+                        machineCode.write(def.charAt(i));
+                    }
+                    state = "new_line";
+                    break;
                 case "CONST":
-                    label[token[0]] = machineCode.pos() + 1; // create new constant
+                    label[token[1]] = token[2]; // create new constant
                     state = "wait_immed";
+                    break;
                 default:
                     label[token[0]] = machineCode.pos() + 1; // create new address label
                     state = "new_line";

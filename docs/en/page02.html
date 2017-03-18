@@ -1,15 +1,27 @@
 <div id="course-content">
-    <h1>Unfinished page</h1>
-    <h4>subtitle</h4>
+    <h1>What is a register?</h1>
+    <h4>physical variables in the microprocessor</h4>
     <p></p>
-    <h3>Topic</h3>
+    <h3>A Register</h3>
     <div class="hr"></div>
     <p>
-        Large body of text Large body of text Large body of text Large body of text Large body of text
-        Large body of text Large body of text Large body of text Large body of text Large body of text
-        Large body of text Large body of text Large body of text Large body of text Large body of text
-        Large body of text Large body of text Large body of text Large body of text Large body of text
+        A register is similar to what a higher-level programmer would call a 
+        local variable. Registers are basically local variables stored physically
+        in the microprocessor itself.
     </p>
+    <h3>Try it out</h3>
+    <div class="hr"></div>
+    <p>
+        Here you have access to the register set for the Elite8 Intel 8008 simulator.
+        You can go ahead and try setting and getting registers. H, L and M are
+        especially cool on the 8008 because H and L are both 8-bit registers that
+        optionally can be accessed as a full 16-bit register. Also in the Intel 8008
+        there is no flag register
+    </p>
+    <div class="console">
+        <div>var register = new Intel8008Register();</div>
+        <textarea></textarea>
+    </div>
     <p>
         A well-made processors will have 1 or zero soft error in their lifetime.
     </p>

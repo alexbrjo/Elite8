@@ -94,12 +94,59 @@ sub {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: sans-serif;
-    margin: 0px 10px 10px 10px;
+    margin: 10px;
     padding: 0;
 }
 
 h2, h4, h6 { 
     padding-left: 25px;
     color: #AAAAAA;
+}
+
+.console {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.console *:first-child {
+    background-color: #444444;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.console *:last-child  {
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.console div, .console textarea {
+    width: 90%;
+    max-width: 90%;
+    display: block;
+    font-family: monospace;
+    font-size: 12pt;
+    margin: auto;
+    border: none;
+    color: #EEEEEE;
+    background-color: #111111;
+    padding: 15px;
+}
+
+.console textarea {
+    max-height: 300px;
+}
+
+/* js comments */
+.console span {
+    color: #CC8888;
 }
 

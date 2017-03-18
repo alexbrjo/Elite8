@@ -30,14 +30,17 @@
         try writing to and reading from the memory simulator from the Elite8
         simulator.
     </p>
-    <ul>
-        <li>memory.read( location ); // writes a value to a memory location</li>
-        <li>memory.write( location , value );  // read a value from a memory location</li>
-        <li>memory.peek( x ); // peeks ahead 1 or x number of memory locations</li>
-        <li>memory.clear(); // clears the memory</li>
-        <li>memory.size(); // returns the word-length of the memory </li>
-    </ul>
-    <textarea></textarea>
+    <div class="console">
+        <div>
+            var memory = new Memory();<br/>
+            memory.read( location ); <span>// writes to an address </span><br/>
+            memory.write( location , value ); <span>// read from an address </span><br/>
+            memory.peek( x ); <span>// peeks ahead 1 or x number of memory locations </span><br/>
+            memory.clear(); <span>// clears the memory </span><br/>
+            memory.size(); <span>// returns the word-length of the memory </span><br/>
+        </div>
+        <textarea></textarea>
+    </div>
     <div>
     <h3>Why binary?</h3>
     <div class="hr"></div>
