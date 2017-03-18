@@ -1,7 +1,9 @@
 /**
  * All of the opcodes for the Intel 8008
  */
-var opcode = {
+var operation = {
+    
+    HLT: 0xFF, // halts the cpu
     
     /** Jump */
     JMP: 0x44, // unconditional jump
