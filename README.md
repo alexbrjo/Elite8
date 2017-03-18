@@ -5,9 +5,15 @@ assembly instructions are exactly what the Intel8008 uses, but I/O and memory is
 done slightly differently. Elite8 assembler uses the Intel8080 updated assembly 
 mnemonics.
 
-[Source Code](src/) 
-[Test Code](test/)
-[Interactive Book](docs/) 
+- [Source Code](src/) 
+  - [Intel 8008 Simulator](src/Intel8008) 
+    - [Operation codes](src/Intel8008/instructions)
+  - [Sugar Assembler](src/SugarAsm) 
+- [Test Code](test/)
+  - [for Intel 8008 Simulator](test/Intel8008) 
+    - [for operations](test/Intel8008/instructions)
+  - [for Sugar Assembler](test/SugarAsm) 
+- [Interactive Book](test/) 
 
 Documentation
 -------------

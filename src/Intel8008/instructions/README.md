@@ -48,7 +48,6 @@ Affected Flags
 |11 111 111|0xFF | HLT | HLT |   1   | none  | unconditionally stops system process               |
 |00 000 000|0x00 |     |     |   1   | none  | alternate for HLT                                  |
 |00 000 001|0x01 |     |     |   1   | none  | alternate for HLT                                  |
-
 |01 000 100|0x44 | JMP | JMP |   3   | none  | unconditionally jumps to immed 16-bit address      |
 |01 000 000|0x40 | JFC | JNC |   3   | none  | jumps if carry = 0                                 |
 |01 001 000|0x48 | JFZ | JNZ |   3   | none  | jumps if zero  = 0                                 |
@@ -58,7 +57,6 @@ Affected Flags
 |01 101 000|0x68 | JTZ | JZ  |   3   | none  | jumps if zero  = 1                                 |
 |01 110 000|0x70 | JTS | JM  |   3   | none  | jumps if sign  = 1                                 |
 |01 111 000|0x78 | JTP | JPE |   3   | none  | jumps if parity= 1                                 |
-
 |01 000 110|0x46 | CAL | CALL|   3   | none  | unconditionally pushes onto the stack and jumps    |
 |01 000 010|0x42 | CFC | CNC |   3   | none  | calls if carry = 0                                 |
 |01 001 010|0x4A | CFZ | CNZ |   3   | none  | calls if zero  = 0                                 |
@@ -68,7 +66,6 @@ Affected Flags
 |01 101 010|0x6A | CTZ | CZ  |   3   | none  | calls if zero  = 1                                 |
 |01 110 010|0x72 | CTS | CM  |   3   | none  | calls if sign  = 1                                 |
 |01 111 010|0x7A | CTP | CPE |   3   | none  | calls if parity= 1                                 |
-
 |00 000 011|0x07 | RET | RET |   3   | none  | unconditionally returns a stack level              |
 |00 000 011|0x03 | RFC | RNC |   3   | none  | returns if carry = 0                               |
 |00 001 011|0x0B | RFZ | RNZ |   3   | none  | returns if zero  = 0                               |
