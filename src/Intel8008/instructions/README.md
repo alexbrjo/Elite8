@@ -7,12 +7,12 @@ TODO: PROOFREAD
 
 What are Opcodes?
 -----------------
-Microprocessors cannot read if-else statements or for-loops. Microprocessors 
-only understand machine codes of 0s and 1s and the Intel 8008 is no exception.
-The Intel 8008's opcodes are 8-bit and thus there can only be 256 of them. 
-All opcodes have a binary translation, hexadecimal translation and a mnemonic 
-(HLT, JMP, RET). Depending on the operation the opcode could have more than one 
-byte of information and can affected flags.
+Microprocessors can't read if-else statements like you can. Microprocessors 
+only understand pre-defined machine codes of 0s and 1s. The Intel 8008's opcodes 
+are 8-bit and thus there can only be 256 of them. All opcodes have a binary 
+translation, hexadecimal translation and a mnemonic (HLT, JMP, RET). Depending 
+on the operation the opcode could have more than one byte of information and can 
+affected flags.
 
 Alternate Opcodes
 -----------------
@@ -86,9 +86,27 @@ parity to true.
 |00 101 011|0x1B | RTZ | RZ  |   3   | none  | returns if zero  = 1                               |
 |00 110 011|0x33 | RTS | RM  |   3   | none  | returns if sign  = 1                               |
 |00 111 011|0x1B | RTP | RPE |   3   | none  | returns if parity= 1                               |
+|01 000 000|0x00 | ADA |ADD A|   1   | all   | A = A + A                                          |
+|01 000 001|0x00 | ADB |ADD B|   1   | all   | A = A + B                                          |
+|01 000 010|0x00 | ADC |ADD C|   1   | all   | A = A + C                                          |
+|01 000 011|0x00 | ADD |ADD D|   1   | all   | A = A + D                                          |
+|01 000 100|0x00 | ADE |ADD E|   1   | all   | A = A + E                                          |
+|01 000 101|0x00 | ADH |ADD H|   1   | all   | A = A + H                                          |
+|01 000 110|0x00 | ADL |ADD L|   1   | all   | A = A + L                                          |
+|01 000 111|0x00 | ADM |ADD M|   1   | all   | A = A + value at address                           |
+|01 000 000|0x00 | ADI | ADI |   2   | all   | A = A + immediate value                            |
+|01 001 000|0x00 | ACA |ADC A|   1   | all   | A = Carry + A                                      |
+|01 001 001|0x00 | ACB |ADC B|   1   | all   | A = Carry + B                                      |
+|01 001 010|0x00 | ACC |ADC C|   1   | all   | A = Carry + C                                      |
+|01 001 011|0x00 | ACD |ADC D|   1   | all   | A = Carry + D                                      |
+|01 001 100|0x00 | ACE |ADC E|   1   | all   | A = Carry + E                                      |
+|01 001 101|0x00 | ACH |ADC H|   1   | all   | A = Carry + H                                      |
+|01 001 110|0x00 | ACL |ADC L|   1   | all   | A = Carry + L                                      |
+|01 001 111|0x00 | ACM |ADC M|   1   | all   | A = Carry + value at address                       |
+|01 001 000|0x00 | ACI | ACI |   1   | all   | A = Carry + immediate value                        |
 
 Sources / further reading
 -------------------------
-1. (An explanation of registers and opcode chart)[en.wikichip.org/wiki/intel/mcs-8/isa]
-2. (A 2D chart of opcodes in hex)[pastraiser.com/cpu/i8008/i8008_opcodes.html]
-3. (An attractive opcode list)[petsd.net/8008.php]
+1. [An explanation of registers and opcode chart](en.wikichip.org/wiki/intel/mcs-8/isa)
+2. [A 2D chart of opcodes in hex](pastraiser.com/cpu/i8008/i8008_opcodes.html)
+3. [An attractive opcode list](petsd.net/8008.php)

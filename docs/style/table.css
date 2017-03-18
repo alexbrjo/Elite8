@@ -87,3 +87,22 @@ a:hover, .section:hover {
 
 .section-list > .section { font: 10pt monospace; }
 .section-list > .section > .section { font: 10pt monospace; }
+
+#content-root {
+    display: table-cell;
+    background-color: #F8F8F8;
+    width: 100%;
+    font-family: Myriad, 'Myriad Pro', 'PT Sans', 'Gill Sans', sans-serif;
+}
+
+#course-content-wrapper {}
+
+.page-count {
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 400px;
+    height: 20px;
+    background-color: grey;
+}

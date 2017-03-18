@@ -1,12 +1,4 @@
 /* The Course Content style */
-
-#course-content-wrapper {
-    display: table-cell;
-    background-color: #F8F8F8;
-    width: 100%;
-    font-family: Myriad, 'Myriad Pro', 'PT Sans', 'Gill Sans', sans-serif;
-}
-
 #course-content {
     padding-top: 30px;
     display: block;

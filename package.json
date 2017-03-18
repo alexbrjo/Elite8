@@ -10,6 +10,7 @@
     "grunt-contrib-concat": "~0.4.x",
     "grunt-contrib-copy": "~0.4.x",
     "grunt-contrib-jasmine": "^1.0.3",
-    "grunt-contrib-uglify": "~0.5.x"
+    "grunt-contrib-uglify": "~0.5.x",
+    "karma": "^1.5.0"
   }
 }

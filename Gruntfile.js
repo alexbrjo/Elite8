@@ -1,6 +1,3 @@
-/* 
- * https://www.sitepoint.com/writing-awesome-build-script-grunt/
- */
 module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),

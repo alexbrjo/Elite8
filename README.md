@@ -1,4 +1,4 @@
-Elite8
+Elite8 [![Build Status](https://travis-ci.org/alexbrjo/Elite8.svg?branch=master)](https://travis-ci.org/alexbrjo/Elite8)
 ========
 Elite8 is not a true emulator, but a simulator. All the operation codes and 
 assembly instructions are exactly what the Intel8008 uses, but I/O and memory is 
@@ -14,12 +14,6 @@ mnemonics.
     - [for operations](test/Intel8008/instructions)
   - [for Sugar Assembler](test/SugarAsm) 
 - [Interactive Book](test/) 
-
-Documentation
--------------
-This project has a strong focus on tests and documentation. The end goal is to
-have a README in every sub-folder of the project explaining the rationale and 
-design pattern.
 
 The Interactive Course
 ----------------------
@@ -46,4 +40,4 @@ of visual aids and interactive demos.
 
 Special Thanks to these fantastic resources
 -------------------------------------------
-en.wikipedia.org/wiki/BASIC
+[wikipedia](en.wikipedia.org/wiki/BASIC)
