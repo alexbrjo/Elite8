@@ -36,12 +36,23 @@ the Intel 8080 was released the 8008 mnemonics were updated to more closely
 model the 8080's. The Sugar Assembler uses the new mnemonics because they are 
 more readable and closer to modern day assembly.
 
-Bytes
------
+1 Byte Instructions
+------------------------
+All data is stored as 8-bit binary integers and operations are no exception. 
+Depending on the operation the instruction may take up 1 to 3 bytes of data. The 
+first byte is always the operation code (listed below). Some operations do not 
+require any other values and only take up this single byte.
 
+The Second Operation Byte
+-------------------------
+The next byte is called the immediate value (immed). This is used in arithmetic
+operations were a number is added to the accumulator.
 
 Affected Flags
 --------------
+Flags are set as a result of arithmetic operations. For example when the math unit 
+preforms "2 + 2" it will set carry to false, zero to false, sign to false and 
+parity to true.
 
 |  Binary  | hex | old | new | bytes | flags | Description                                        |
 |----------|-----|-----|-----|-------|-------|----------------------------------------------------|
@@ -78,7 +89,6 @@ Affected Flags
 
 Sources / further reading
 -------------------------
-1. An explanation of registers and opcode chart: en.wikichip.org/wiki/intel/mcs-8/isa
-2. A 2D chart of opcodes in hex: pastraiser.com/cpu/i8008/i8008_opcodes.html
-3. An attractive opcode list: petsd.net/8008.php
-
+1. (An explanation of registers and opcode chart)[en.wikichip.org/wiki/intel/mcs-8/isa]
+2. (A 2D chart of opcodes in hex)[pastraiser.com/cpu/i8008/i8008_opcodes.html]
+3. (An attractive opcode list)[petsd.net/8008.php]

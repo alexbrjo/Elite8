@@ -51,12 +51,11 @@ function Intel8008Registers () {
             else throw new Error("Register L cannot store value: " + v);
         },
         get M() {
-            return parseInt(parseInt(this.h, 2) + "" + parseInt(this.l, 2), 10);
+            return this.H * 256 + this.L;
         },
         set M(v) {
-            var b = parseInt(v, 2) + "";
-            this.H = b.substring(0, b.length/2 - 1);      // set H to first 8 bits
-            this.L = b.substring(b.length/2, b.length - 1); // set L to last 8 bits
+            this.H = Math.floor(v / 256);      // set H to first 8 bits
+            this.L = v - this.H * 256; // set L to last 8 bits
         },
         
         /* The flag register, split into bits */
