@@ -69,6 +69,7 @@ var operation = {
     ADD_H: 0x85, // ADD H to A
     ADD_L: 0x86, // ADD L to A
     ADD_M: 0x87, // ADD M to A
+    ADD_I: 0x04, // ADD immed to A
     
     /** Addition with Carry */
     ADC_A: 0x80, // ADD A + Carry to A
@@ -79,6 +80,7 @@ var operation = {
     ADC_H: 0x85, // ADD H + Carry to A
     ADC_L: 0x86, // ADD L + Carry to A
     ADC_M: 0x87, // ADD M + Carry to A
+    ADC_I: 0x0C, // ADD immed + Carry to A
     
 };
 

@@ -1,8 +1,8 @@
 /** Instruction:     ADD #                   Opcode:         0x80-0x80    *
  *  Bytes:            2                      Alternatives:    -           *
  *  Affected flags:  all                                                  *
- *  Description: adds the value of register 'R' to register A            **/
-operation[0x04] = function (reg, a) {
+ *  Description: adds the immediate value to register A                  **/
+operation[operation.ADD_I] = function (reg, a) {
     var sum = reg.A + a; // sum A and immediate value
     
     // if sum is greater than 255, carry 

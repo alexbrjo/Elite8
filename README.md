@@ -1,7 +1,8 @@
 MolassOS [![Build Status](https://travis-ci.org/alexbrjo/MolassOS.svg?branch=master)](https://travis-ci.org/alexbrjo/MolassOS)
 =======================
 MolassOS is an operating system simulator modeled after the Datapoint 2200 
-personal computer and the Intel 8080 microprocessor.
+personal computer and the Intel 8080 microprocessor that can run in your web
+browser.
 
 All the operation codes and assembly instructions are exactly what the Intel 
 8008 uses, but I/O and memory is done differently. The Sugar Assembler uses the 
