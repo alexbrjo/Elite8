@@ -53,6 +53,7 @@ td.call {background-color: #80A4ED;}
 td.rtrn {background-color: #D4CB92;}
 td.load {background-color: #64A4C1;}
 td.ctrl {background-color: #BBAAAA;}
+td.itrp {background-color: #90B4A2;}
 
 td:hover {
     background-color: #CD8888; 

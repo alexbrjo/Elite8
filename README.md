@@ -1,5 +1,7 @@
-MolassOS [![Build Status](https://travis-ci.org/alexbrjo/MolassOS.svg?branch=master)](https://travis-ci.org/alexbrjo/MolassOS)
-=======================
+MolassOS [80's logo](logo.png)
+==============================
+[![Build Status](https://travis-ci.org/alexbrjo/MolassOS.svg?branch=master)](https://travis-ci.org/alexbrjo/MolassOS)
+
 MolassOS is an operating system simulator modeled after the Datapoint 2200 
 personal computer and the Intel 8080 microprocessor that can run in your web
 browser.
