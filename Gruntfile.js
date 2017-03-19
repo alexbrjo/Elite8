@@ -8,7 +8,7 @@ module.exports = function (grunt) {
             dist: {
                 src: [
                     'build/global.js',          // add global vars first
-                    'build/Intel8008/**/*.js',  // enumlator files
+                    'build/Agave8080/**/*.js',  // enumlator files
                     'build/SugarAsm/**/*.js',   // assembler files
                     'build/HoneyBasic/**/*.js'  // Compiler files
                 ],
