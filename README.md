@@ -1,5 +1,5 @@
-MolassOS [80's logo](logo.png)
-==============================
+MolassOS [!80's logo](logo.png)
+===============================
 [![Build Status](https://travis-ci.org/alexbrjo/MolassOS.svg?branch=master)](https://travis-ci.org/alexbrjo/MolassOS)
 
 MolassOS is an operating system simulator modeled after the Datapoint 2200 
