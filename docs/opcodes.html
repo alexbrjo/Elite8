@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
-        <title>Opcode chart</title>
+        <title>Agave 8080 Instruction Chart</title>
         <link rel="stylesheet" href="style/content.css">
         <link rel="stylesheet" href="style/codes.css">
     </head>
@@ -105,6 +105,166 @@
                 </tr>
                 <tr>
                     <th>4_</th>
+                    <td  class="ctrl">NOP</td>
+                    <td  class="load">MOV B,C</td>
+                    <td  class="load">MOV B,D</td>
+                    <td  class="load">MOV B,E</td>
+                    <td  class="load">MOV B,H</td>
+                    <td  class="load">MOV B,L</td>
+                    <td  class="load">MOV B,M</td>
+                    <td  class="load">MOV B,A</td>
+                    <td  class="load">MOV C,B</td>
+                    <td  class="ctrl">NOP</td>
+                    <td  class="load">MOV C,D</td>
+                    <td  class="load">MOV C,E</td>
+                    <td  class="load">MOV C,H</td>
+                    <td  class="load">MOV C,L</td>
+                    <td  class="load">MOV C,M</td>
+                    <td  class="load">MOV C,A</td>
+                    <th>4_</th>
+                </tr>
+                <tr>
+                    <th>5_</th>
+                    <td  class="load">MOV D,B</td>
+                    <td  class="load">MOV D,C</td>
+                    <td  class="ctrl">NOP</td>
+                    <td  class="load">MOV D,E</td>
+                    <td  class="load">MOV D,H</td>
+                    <td  class="load">MOV D,L</td>
+                    <td  class="load">MOV D,M</td>
+                    <td  class="load">MOV D,A</td>
+                    <td  class="load">MOV E,B</td>
+                    <td  class="load">MOV E,C</td>
+                    <td  class="load">MOV E,D</td>
+                    <td  class="ctrl">NOP</td>
+                    <td  class="load">MOV E,H</td>
+                    <td  class="load">MOV E,L</td>
+                    <td  class="load">MOV E,M</td>
+                    <td  class="load">MOV E,A</td>
+                    <th>5_</th>
+                </tr>
+                <tr>
+                    <th>6_</th>
+                    <td  class="load">MOV H,B</td>
+                    <td  class="load">MOV H,C</td>
+                    <td  class="load">MOV H,D</td>
+                    <td  class="load">MOV H,E</td>
+                    <td  class="ctrl">NOP</td>
+                    <td  class="load">MOV H,L</td>
+                    <td  class="load">MOV H,M</td>
+                    <td  class="load">MOV H,A</td>
+                    <td  class="load">MOV L,B</td>
+                    <td  class="load">MOV L,C</td>
+                    <td  class="load">MOV L,D</td>
+                    <td  class="load">MOV L,E</td>
+                    <td  class="load">MOV L,H</td>
+                    <td  class="ctrl">NOP</td>
+                    <td  class="load">MOV L,M</td>
+                    <td  class="load">MOV L,A</td>
+                    <th>6_</th>
+                </tr>
+                <tr>
+                    <th>7_</th>
+                    <td  class="load">MOV M,B</td>
+                    <td  class="load">MOV M,C</td>
+                    <td  class="load">MOV M,D</td>
+                    <td  class="load">MOV M,E</td>
+                    <td  class="load">MOV M,H</td>
+                    <td  class="load">MOV M,L</td>
+                    <td  class="ctrl">HALT</td>
+                    <td  class="load">MOV M,A</td>
+                    <td  class="load">MOV A,B</td>
+                    <td  class="load">MOV A,C</td>
+                    <td  class="load">MOV A,D</td>
+                    <td  class="load">MOV A,E</td>
+                    <td  class="load">MOV A,H</td>
+                    <td  class="load">MOV A,L</td>
+                    <td  class="load">MOV A,M</td>
+                    <td  class="ctrl">NOP</td>
+                    <th>7_</th>
+                </tr>
+                <tr>
+                    <th>8_</th>
+                    <td  class="math add">ADD B</td>
+                    <td  class="math add">ADD C</td>
+                    <td  class="math add">ADD D</td>
+                    <td  class="math add">ADD E</td>
+                    <td  class="math add">ADD H</td>
+                    <td  class="math add">ADD L</td>
+                    <td  class="math add">ADD A</td>
+                    <td  class="math add">ADD M</td>
+                    <td  class="math add">ADC B</td>
+                    <td  class="math add">ADC C</td>
+                    <td  class="math add">ADC D</td>
+                    <td  class="math add">ADC E</td>
+                    <td  class="math add">ADC H</td>
+                    <td  class="math add">ADC L</td>
+                    <td  class="math add">ADC M</td>
+                    <td  class="math add">ADC A</td>
+                    <th>8_</th>
+                </tr>
+                <tr>
+                    <th>9_</th>
+                    <td  class="math sub">SUB  B</td>
+                    <td  class="math sub">SUB  C</td>
+                    <td  class="math sub">SUB  D</td>
+                    <td  class="math sub">SUB  E</td>
+                    <td  class="math sub">SUB  H</td>
+                    <td  class="math sub">SUB  L</td>
+                    <td  class="math sub">SUB  M</td>
+                    <td  class="math sub">SUB  A</td>
+                    <td  class="math sub">SBB  B</td>
+                    <td  class="math sub">SBB  C</td>
+                    <td  class="math sub">SBB  D</td>
+                    <td  class="math sub">SBB  E</td>
+                    <td  class="math sub">SBB  H</td>
+                    <td  class="math sub">SBB  L</td>
+                    <td  class="math sub">SBB  M</td>
+                    <td  class="math sub">SBB  A</td>
+                    <th>9_</th>
+                </tr>
+                <tr>
+                    <th>A_</th>
+                    <td  class="math bool and_r">AND B</td>
+                    <td  class="math bool and_r">AND C</td>
+                    <td  class="math bool and_r">AND D</td>
+                    <td  class="math bool and_r">AND E</td>
+                    <td  class="math bool and_r">AND H</td>
+                    <td  class="math bool and_r">AND L</td>
+                    <td  class="math bool and_r">AND M</td>
+                    <td  class="math bool and_r">AND A</td>
+                    <td  class="math bool xor">XOR B</td>
+                    <td  class="math bool xor">XOR C</td>
+                    <td  class="math bool xor">XOR D</td>
+                    <td  class="math bool xor">XOR E</td>
+                    <td  class="math bool xor">XOR H</td>
+                    <td  class="math bool xor">XOR L</td>
+                    <td  class="math bool xor">XOR M</td>
+                    <td  class="math bool xor">XOR A</td>
+                    <th>A_</th>
+                </tr>
+                <tr>
+                    <th>B_</th>
+                    <td  class="math bool or_r">OR B</td>
+                    <td  class="math bool or_r">OR C</td>
+                    <td  class="math bool or_r">OR D</td>
+                    <td  class="math bool or_r">OR E</td>
+                    <td  class="math bool or_r">OR H</td>
+                    <td  class="math bool or_r">OR L</td>
+                    <td  class="math bool or_r">OR M</td>
+                    <td  class="math bool or_r">OR A</td>
+                    <td  class="math">CMP B</td>
+                    <td  class="math">CMP C</td>
+                    <td  class="math">CMP D</td>
+                    <td  class="math">CMP E</td>
+                    <td  class="math">CMP H</td>
+                    <td  class="math">CMP L</td>
+                    <td  class="math">CMP M</td>
+                    <td  class="math">CMP A</td>
+                    <th>B_</th>
+                </tr>
+                <tr>
+                    <th>C_</th>
                     <td  class="jump">JFC</td>
                     <td  class="inpt">INP 0</td>
                     <td  class="call">CFC</td>
@@ -121,10 +281,10 @@
                     <td  class="inpt">INP 6</td>
                     <td  class="call">CALL*</td>
                     <td  class="inpt">INP 7</td>
-                    <th>4_</th>
+                    <th>C_</th>
                 </tr>
                 <tr>
-                    <th>5_</th>
+                    <th>D_</th>
                     <td  class="jump">JFS</td>
                     <td  class="otpt">OUT 8</td>
                     <td  class="call">CFS</td>
@@ -141,10 +301,10 @@
                     <td  class="otpt">OUT 14</td>
                     <td  class="call">CALL*</td>
                     <td  class="otpt">OUT 15</td>
-                    <th>5_</th>
+                    <th>D_</th>
                 </tr>
                 <tr>
-                    <th>6_</th>
+                    <th>E_</th>
                     <td  class="jump">JTC</td>
                     <td  class="otpt">OUT 16</td>
                     <td  class="call">CTC</td>
@@ -161,10 +321,10 @@
                     <td  class="otpt">OUT 22</td>
                     <td  class="call">CALL*</td>
                     <td  class="otpt">OUT 23</td>
-                    <th>6_</th>
+                    <th>E_</th>
                 </tr>
                 <tr>
-                    <th>7_</th>
+                    <th>F_</th>
                     <td  class="jump">JTS</td>
                     <td  class="otpt">OUT 24</td>
                     <td  class="call">CTS</td>
@@ -181,166 +341,6 @@
                     <td  class="otpt">OUT 30</td>
                     <td  class="call">CALL*</td>
                     <td  class="otpt">OUT 31</td>
-                    <th>7_</th>
-                </tr>
-                <tr>
-                    <th>8_</th>
-                    <td  class="math add">ADD A</td>
-                    <td  class="math add">ADD B</td>
-                    <td  class="math add">ADD C</td>
-                    <td  class="math add">ADD D</td>
-                    <td  class="math add">ADD E</td>
-                    <td  class="math add">ADD H</td>
-                    <td  class="math add">ADD L</td>
-                    <td  class="math add">ADD M</td>
-                    <td  class="math add">ADC A</td>
-                    <td  class="math add">ADC B</td>
-                    <td  class="math add">ADC C</td>
-                    <td  class="math add">ADC D</td>
-                    <td  class="math add">ADC E</td>
-                    <td  class="math add">ADC H</td>
-                    <td  class="math add">ADC L</td>
-                    <td  class="math add">ADC M</td>
-                    <th>8_</th>
-                </tr>
-                <tr>
-                    <th>9_</th>
-                    <td  class="math sub">SUB  A</td>
-                    <td  class="math sub">SUB  B</td>
-                    <td  class="math sub">SUB  C</td>
-                    <td  class="math sub">SUB  D</td>
-                    <td  class="math sub">SUB  E</td>
-                    <td  class="math sub">SUB  H</td>
-                    <td  class="math sub">SUB  L</td>
-                    <td  class="math sub">SUB  M</td>
-                    <td  class="math sub">SBB  A</td>
-                    <td  class="math sub">SBB  B</td>
-                    <td  class="math sub">SBB  C</td>
-                    <td  class="math sub">SBB  D</td>
-                    <td  class="math sub">SBB  E</td>
-                    <td  class="math sub">SBB  H</td>
-                    <td  class="math sub">SBB  L</td>
-                    <td  class="math sub">SBB  M</td>
-                    <th>9_</th>
-                </tr>
-                <tr>
-                    <th>A_</th>
-                    <td  class="math bool and_r">AND A</td>
-                    <td  class="math bool and_r">AND B</td>
-                    <td  class="math bool and_r">AND C</td>
-                    <td  class="math bool and_r">AND D</td>
-                    <td  class="math bool and_r">AND E</td>
-                    <td  class="math bool and_r">AND H</td>
-                    <td  class="math bool and_r">AND L</td>
-                    <td  class="math bool and_r">AND M</td>
-                    <td  class="math bool xor">XOR A</td>
-                    <td  class="math bool xor">XOR B</td>
-                    <td  class="math bool xor">XOR C</td>
-                    <td  class="math bool xor">XOR D</td>
-                    <td  class="math bool xor">XOR E</td>
-                    <td  class="math bool xor">XOR H</td>
-                    <td  class="math bool xor">XOR L</td>
-                    <td  class="math bool xor">XOR M</td>
-                    <th>A_</th>
-                </tr>
-                <tr>
-                    <th>B_</th>
-                    <td  class="math bool or_r">OR A</td>
-                    <td  class="math bool or_r">OR B</td>
-                    <td  class="math bool or_r">OR C</td>
-                    <td  class="math bool or_r">OR D</td>
-                    <td  class="math bool or_r">OR E</td>
-                    <td  class="math bool or_r">OR H</td>
-                    <td  class="math bool or_r">OR L</td>
-                    <td  class="math bool or_r">OR M</td>
-                    <td  class="math">CMP A</td>
-                    <td  class="math">CMP B</td>
-                    <td  class="math">CMP C</td>
-                    <td  class="math">CMP D</td>
-                    <td  class="math">CMP E</td>
-                    <td  class="math">CMP H</td>
-                    <td  class="math">CMP L</td>
-                    <td  class="math">CMP M</td>
-                    <th>B_</th>
-                </tr>
-                <tr>
-                    <th>C_</th>
-                    <td  class="ctrl">NOP</td>
-                    <td  class="load">MOV A,B</td>
-                    <td  class="load">MOV A,C</td>
-                    <td  class="load">MOV A,D</td>
-                    <td  class="load">MOV A,E</td>
-                    <td  class="load">MOV A,H</td>
-                    <td  class="load">MOV A,L</td>
-                    <td  class="load">MOV A,M</td>
-                    <td  class="load">MOV B,A</td>
-                    <td  class="ctrl">NOP</td>
-                    <td  class="load">MOV B,C</td>
-                    <td  class="load">MOV B,D</td>
-                    <td  class="load">MOV B,E</td>
-                    <td  class="load">MOV B,H</td>
-                    <td  class="load">MOV B,L</td>
-                    <td  class="load">MOV B,M</td>
-                    <th>C_</th>
-                </tr>
-                <tr>
-                    <th>D_</th>
-                    <td  class="load">MOV C,A</td>
-                    <td  class="load">MOV C,B</td>
-                    <td  class="ctrl">NOP</td>
-                    <td  class="load">MOV C,D</td>
-                    <td  class="load">MOV C,E</td>
-                    <td  class="load">MOV C,H</td>
-                    <td  class="load">MOV C,L</td>
-                    <td  class="load">MOV C,M</td>
-                    <td  class="load">MOV D,A</td>
-                    <td  class="load">MOV D,B</td>
-                    <td  class="load">MOV D,C</td>
-                    <td  class="ctrl">NOP</td>
-                    <td  class="load">MOV D,E</td>
-                    <td  class="load">MOV D,H</td>
-                    <td  class="load">MOV D,L</td>
-                    <td  class="load">MOV D,M</td>
-                    <th>D_</th>
-                </tr>
-                <tr>
-                    <th>E_</th>
-                    <td  class="load">MOV E,A</td>
-                    <td  class="load">MOV E,B</td>
-                    <td  class="load">MOV E,C</td>
-                    <td  class="load">MOV E,D</td>
-                    <td  class="ctrl">NOP</td>
-                    <td  class="load">MOV E,H</td>
-                    <td  class="load">MOV E,L</td>
-                    <td  class="load">MOV E,M</td>
-                    <td  class="load">MOV H,A</td>
-                    <td  class="load">MOV H,B</td>
-                    <td  class="load">MOV H,C</td>
-                    <td  class="load">MOV H,D</td>
-                    <td  class="load">MOV H,E</td>
-                    <td  class="ctrl">NOP</td>
-                    <td  class="load">MOV H,L</td>
-                    <td  class="load">MOV H,M</td>
-                    <th>E_</th>
-                </tr>
-                <tr>
-                    <th>F_</th>
-                    <td  class="load">MOV L,A</td>
-                    <td  class="load">MOV L,B</td>
-                    <td  class="load">MOV L,C</td>
-                    <td  class="load">MOV L,D</td>
-                    <td  class="load">MOV L,E</td>
-                    <td  class="load">MOV L,H</td>
-                    <td  class="ctrl">NOP</td>
-                    <td  class="load">MOV L,M</td>
-                    <td  class="load">MOV M,A</td>
-                    <td  class="load">MOV M,B</td>
-                    <td  class="load">MOV M,C</td>
-                    <td  class="load">MOV M,D</td>
-                    <td  class="load">MOV M,E</td>
-                    <td  class="load">MOV M,H</td>
-                    <td  class="load">MOV M,L</td>
-                    <td  class="ctrl">HALT</td>
                     <th>F_</th>
                 </tr>
                 <tr>

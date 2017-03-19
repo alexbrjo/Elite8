@@ -200,5 +200,6 @@ updated mnemonics (new) that more closely resembles modern x86 assembly.
 Sources / further reading
 -------------------------
 1. [An explanation of registers and opcode chart](en.wikichip.org/wiki/intel/mcs-8/isa)
-2. [A 2D chart of opcodes in hex](pastraiser.com/cpu/i8008/i8008_opcodes.html)
-3. [An attractive opcode list](petsd.net/8008.php)
+2. [A 2D chart of 8008 opcodes in hex](pastraiser.com/cpu/i8008/i8008_opcodes.html)
+3. [A 2D chart of 8080 opcodes in hex](http://pastraiser.com/cpu/i8080/i8080_opcodes.html)
+4. [An attractive opcode list](petsd.net/8008.php)

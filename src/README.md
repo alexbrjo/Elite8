@@ -6,11 +6,11 @@ If you are a developers please feel welcome to work on the tasks below.
 Subfolders all have README's with general information on structure and design
 rationale. But the best way to become familiar with the code is to read it (duh).
 
-- [Intel 8008 Simulator](Intel8008) 
-  - [Operation codes](Intel8008/instructions)
+- [Processor Simulator](Agave8080) 
+  - [Operation codes](Agave8008/instructions)
 - [Sugar Assembler](SugarAsm)
 
-The Intel 8008 Simulator
+The Agave 8080 Simulator
 ------------------------
 Incomplete Tasks
 - Operations for all opcodes
@@ -30,4 +30,8 @@ Incomplete Tasks
 
 Honey BASIC Compiler
 --------------------
+Module not begun
+
+MolassOS  
+--------
 Module not begun

@@ -6,15 +6,15 @@ browser.
 
 All the operation codes and assembly instructions are exactly what the Intel 
 8008 uses, but I/O and memory is done differently. The Sugar Assembler uses the 
-Intel 8080 updated assembly mnemonics.
+Agave 8080 updated assembly mnemonics.
 
 - [Source Code](src/) 
-  - [Intel 8008 Simulator](src/Intel8008) 
-    - [Operation codes](src/Intel8008/instructions)
+  - [Microprocessor Simulator](src/Agave8080) 
+    - [Operation codes](src/Agave8080/instructions)
   - [Sugar Assembler](src/SugarAsm) 
 - [Test Code](test/)
-  - [for Intel 8008 Simulator](test/Intel8008) 
-    - [for operations](test/Intel8008/instructions)
+  - [for Agave 8080 Simulator](test/Agave8080) 
+    - [for operations](test/Agave8080/instructions)
   - [for Sugar Assembler](test/SugarAsm) 
 - [Interactive Book](test/) 
 
@@ -46,7 +46,7 @@ use of visual aids and interactive demos.
 Legacy Code
 -----------
 The microprocessor simulator that powers MolassOS is related to the Intel 8008 
-and more closely, the Intel 8080. 
+and the Intel 8080. 
 
 Special Thanks to these fantastic resources
 -------------------------------------------

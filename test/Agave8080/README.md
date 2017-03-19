@@ -1,4 +1,4 @@
-Intel 8008 Simulator Tests
+Agave 8080 Simulator Tests
 ==========================
 The simulator is the core of the project. So to be confident it will run well
 we have to put it through rigorous unit tests. 
