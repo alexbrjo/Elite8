@@ -1,9 +1,11 @@
 MolassOS [![Build Status](https://travis-ci.org/alexbrjo/MolassOS.svg?branch=master)](https://travis-ci.org/alexbrjo/MolassOS)
 =======================
-MolassOS is not a true emulator, but a simulator. All the operation codes and 
-assembly instructions are exactly what the Intel 8008 uses, but I/O and memory is 
-done slightly differently. Elite8 assembler uses the Intel 8080 updated assembly 
-mnemonics.
+MolassOS is an operating system simulator modeled after the Datapoint 2200 
+personal computer and the Intel 8080 microprocessor.
+
+All the operation codes and assembly instructions are exactly what the Intel 
+8008 uses, but I/O and memory is done differently. The Sugar Assembler uses the 
+Intel 8080 updated assembly mnemonics.
 
 - [Source Code](src/) 
   - [Intel 8008 Simulator](src/Intel8008) 
@@ -19,8 +21,8 @@ The Interactive Course
 ----------------------
 The goal of the Course is to give developers with experience in high-level 
 programming (high-level of abstraction, not advanced programming) an
-understanding and basic knowledge of assembling and compiling through use
-of visual aids and interactive demos.
+understanding and basic knowledge of assembling, compiling and booting through 
+use of visual aids and interactive demos.
 
 1. Hardware 101
     * Meet the Intel 8008: chart of specs
@@ -39,6 +41,11 @@ of visual aids and interactive demos.
     * Compilation: Compiler to assembly to machine with visual processor, memory and output
 5. Bootloaders and the OS
 6. MolassOS
+
+Legacy Code
+-----------
+The microprocessor simulator that powers MolassOS is related to the Intel 8008 
+and more closely, the Intel 8080. 
 
 Special Thanks to these fantastic resources
 -------------------------------------------

@@ -1,5 +1,6 @@
 /* The Course Content style */
 #course-content {
+    font-size: 10pt;
     padding-top: 30px;
     display: block;
     width: 80%;
@@ -40,15 +41,13 @@
 }
 
 .column-pair > .lil-column {
-    width: 33%;
+    width: 38%;
 }
-
 
 #course-content table {
     border-collapse: collapse;
     margin: auto;
     margin-bottom: 20px;
-    font-size: 10pt;
 }
 
 #course-content th, td {

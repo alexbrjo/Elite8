@@ -1,5 +1,5 @@
-Intel 8008 Operation code chart
-===============================
+Operation code Look-up chart
+============================
 TODO: PROOFREAD
 
 * Pre-reqs
@@ -93,7 +93,7 @@ parity to true.
 |01 000 100|0x00 | ADE |ADD E|   1   | all   | A = A + E                                          |
 |01 000 101|0x00 | ADH |ADD H|   1   | all   | A = A + H                                          |
 |01 000 110|0x00 | ADL |ADD L|   1   | all   | A = A + L                                          |
-|01 000 111|0x00 | ADM |ADD M|   1   | all   | A = A + value at address                           |
+|01 000 111|0x00 | ADM |ADD M|   1   | all   | A = A + value at address M                         |
 |01 000 000|0x00 | ADI | ADI |   2   | all   | A = A + immediate value                            |
 |01 001 000|0x00 | ACA |ADC A|   1   | all   | A = Carry + A                                      |
 |01 001 001|0x00 | ACB |ADC B|   1   | all   | A = Carry + B                                      |
@@ -102,8 +102,75 @@ parity to true.
 |01 001 100|0x00 | ACE |ADC E|   1   | all   | A = Carry + E                                      |
 |01 001 101|0x00 | ACH |ADC H|   1   | all   | A = Carry + H                                      |
 |01 001 110|0x00 | ACL |ADC L|   1   | all   | A = Carry + L                                      |
-|01 001 111|0x00 | ACM |ADC M|   1   | all   | A = Carry + value at address                       |
-|01 001 000|0x00 | ACI | ACI |   1   | all   | A = Carry + immediate value                        |
+|01 001 111|0x00 | ACM |ADC M|   1   | all   | A = Carry + value at address M                     |
+|01 001 000|0x00 | ACI | ACI |   2   | all   | A = Carry + immediate value                        |
+|01 010 000|0x00 | SUA |SUB A|   1   | all   | A = A - A                                          |
+|01 010 001|0x00 | SUB |SUB B|   1   | all   | A = A - B                                          |
+|01 010 010|0x00 | SUC |SUB C|   1   | all   | A = A - C                                          |
+|01 010 011|0x00 | SUD |SUB D|   1   | all   | A = A - D                                          |
+|01 010 100|0x00 | SUE |SUB E|   1   | all   | A = A - E                                          |
+|01 010 101|0x00 | SUH |SUB H|   1   | all   | A = A - H                                          |
+|01 010 110|0x00 | SUL |SUB L|   1   | all   | A = A - L                                          |
+|01 010 111|0x00 | SUM |SUB M|   1   | all   | A = A - value at address M                         |
+|00 010 100|0x00 | SUI | SUI |   2   | all   | A = A - immediate value                            |
+|10 011 000|0x00 | SBA |SBB A|   1   | all   | A = A - (Carry + A)                                |
+|10 011 001|0x00 | SBB |SBB B|   1   | all   | A = A - (Carry + B)                                |
+|10 011 010|0x00 | SBC |SBB C|   1   | all   | A = A - (Carry + C)                                |
+|10 011 011|0x00 | SBD |SBB D|   1   | all   | A = A - (Carry + D)                                |
+|10 011 100|0x00 | SBE |SBB E|   1   | all   | A = A - (Carry + E)                                |
+|10 011 101|0x00 | SBH |SBB H|   1   | all   | A = A - (Carry + H)                                |
+|10 011 110|0x00 | SBL |SBB L|   1   | all   | A = A - (Carry + L)                                |
+|10 011 111|0x00 | SBM |SBB M|   1   | all   | A = A - (Carry + value at address M)               |
+|00 011 100|0x00 | SBI | SBI |   2   | all   | A = A - (Carry + immediate value)                  |
+|10 100 000|0x00 | NDA |ANA A|   1   | all   | A = A and A                                        |
+|10 100 001|0x00 | NDB |ANA B|   1   | all   | A = A and B                                        |
+|10 100 010|0x00 | NDC |ANA C|   1   | all   | A = A and C                                        |
+|10 100 011|0x00 | NDD |ANA D|   1   | all   | A = A and D                                        |
+|10 100 100|0x00 | NDE |ANA E|   1   | all   | A = A and E                                        |
+|10 100 101|0x00 | NDH |ANA H|   1   | all   | A = A and H                                        |
+|10 100 110|0x00 | NDL |ANA L|   1   | all   | A = A and L                                        |
+|10 100 111|0x00 | NDM |ANA M|   1   | all   | A = A and value at address M                       |
+|00 100 100|0x00 | NDI | ANI |   2   | all   | A = A and immediate value                          |
+|10 101 000|0x00 | XRA |XRA A|   1   | all   | A = A xor A                                        |
+|10 101 001|0x00 | XRB |XRA B|   1   | all   | A = A xor B                                        |
+|10 101 010|0x00 | XRC |XRA C|   1   | all   | A = A xor C                                        |
+|10 101 011|0x00 | XRD |XRA D|   1   | all   | A = A xor D                                        |
+|10 101 100|0x00 | XRE |XRA E|   1   | all   | A = A xor E                                        |
+|10 101 101|0x00 | XRH |XRA H|   1   | all   | A = A xor H                                        |
+|10 101 110|0x00 | XRL |XRA L|   1   | all   | A = A xor L                                        |
+|10 101 111|0x00 | XRM |XRA M|   1   | all   | A = A xor value at address M                       |
+|00 101 100|0x00 | XRI | ANI |   2   | all   | A = A xor immediate value                          |
+|10 110 000|0x00 | ORA |ORA A|   1   | all   | A = A or A                                         |
+|10 110 001|0x00 | ORB |ORA B|   1   | all   | A = A or B                                         |
+|10 110 010|0x00 | ORC |ORA C|   1   | all   | A = A or C                                         |
+|10 110 011|0x00 | ORD |ORA D|   1   | all   | A = A or D                                         |
+|10 110 100|0x00 | ORE |ORA E|   1   | all   | A = A or E                                         |
+|10 110 101|0x00 | ORH |ORA H|   1   | all   | A = A or H                                         |
+|10 110 110|0x00 | ORL |ORA L|   1   | all   | A = A or L                                         |
+|10 110 111|0x00 | ORM |ORA M|   1   | all   | A = A or value at address M                        |
+|00 110 100|0x00 | ORI | ANI |   2   | all   | A = A or immediate value                           |
+|10 111 000|0x00 | CRA |CMP A|   1   | all   | compare A and A, set flags                         |
+|10 111 001|0x00 | CRB |CMP B|   1   | all   | compare A and B, set flags                         |
+|10 111 010|0x00 | CRC |CMP C|   1   | all   | compare A and C, set flags                         |
+|10 111 011|0x00 | CRD |CMP D|   1   | all   | compare A and D, set flags                         |
+|10 111 100|0x00 | CRE |CMP E|   1   | all   | compare A and E, set flags                         |
+|10 111 101|0x00 | CRH |CMP H|   1   | all   | compare A and H, set flags                         |
+|10 111 110|0x00 | CRL |CMP L|   1   | all   | compare A and L, set flags                         |
+|10 111 111|0x00 | CRM |CMP M|   1   | all   | compare A and value at address M, set flags        |
+|00 111 100|0x00 | CRI | CPI |   2   | all   | compare A and immediate value, set flags           |
+|00 000 010|0x00 | RLC | RLC |   1   | C     | Rotate bits in A left once                         |
+|00 001 010|0x00 | RRC | RRC |   1   | C     | Rotate bits in A right once                        |
+|00 010 010|0x00 | RAL | RAL |   1   | C     | Rotate A left through Carry once                   |
+|00 011 010|0x00 | RAR | RAR |   1   | C     | Rotate A right through Carry once                  |
+|01 00M MM1|0x00 | INP | IN  |   1   | C     | A = Port MMM                                       |
+|01 RRM MM1|0x00 | OUT | OUT |   1   | C     | A = Port RRMMM = A(RR != 00)                       |
+|11 xxx yyy|0x00 | Lxy |MOV x, y|1   | C     | set x to y                                         |
+|11 xxx 111|0x00 | LxM |MOV x, M|1   | C     | set x to value at memory location M                |
+|11 111 xxx|0x00 | LMx |MOV M, x|1   | C     | set value at memory location M to x                |
+|00 xxx 110|0x00 | LxI |MVI x|   1   | C     | set x to immediate value                           |
+|00 111 110|0x00 | LMI |MVI M|   1   | C     | set value at memory location M to immediate value  |
+|00 xxx 000|0x00 | INx |INR x|   1   | S P Z | x++                                                |
+|00 xxx 001|0x00 | DCx |DCR x|   1   | S P Z | x--                                                |
 
 Sources / further reading
 -------------------------

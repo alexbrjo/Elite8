@@ -1,6 +1,6 @@
 /build
 /dist
-/test/Elite8.*
+/test/MolassOS.*
 
 /nbproject
 /node_modules
