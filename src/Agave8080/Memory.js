@@ -1,7 +1,8 @@
 /**
- * Constructing this function is buying a physical stick of RAM. The Intel 8008
- * only has a 14-bit wide address bus so only 16384 (not 65536) bytes can be 
- * accessed.
+ * Constructing this function is buying a physical stick of RAM. The Agave 8080
+ * has a 16-bit wide address bus so not 65536 bytes can be accessed.
+ * ISSUE: MEMORY TAKES UP TOO MUCH SPACE
+ * 
  * @param {Number} size the size of the memory
  * @param {String} mem_type the type of memory 
  *      "RAM" - Read and write are enabled(default) 

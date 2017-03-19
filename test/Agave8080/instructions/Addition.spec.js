@@ -8,7 +8,7 @@ describe("testIntructionsAddition", function() {
     /** Tests adding reg A to A */
     it("ADD A", function() {
         
-        reg = new Intel8008Registers(); 
+        reg = new AgaveRegisters(); 
         
         // When A = 0
         operation[operation.ADD_A](reg);  // preform op
@@ -72,7 +72,7 @@ describe("testIntructionsAddition", function() {
     /** Tests adding reg B to A */
     it("ADD B", function() {
         
-        reg = new Intel8008Registers(); 
+        reg = new AgaveRegisters(); 
         
         // When A = 0 and B = 0
         operation[operation.ADD_B](reg);  // preform op
@@ -122,7 +122,7 @@ describe("testIntructionsAddition", function() {
     /** Tests adding reg C to A */
     it("ADD C", function() {
         
-        reg = new Intel8008Registers(); 
+        reg = new AgaveRegisters(); 
         
         // When A = 0 and C = 0
         operation[operation.ADD_C](reg);  // preform op
@@ -172,7 +172,7 @@ describe("testIntructionsAddition", function() {
     /** Tests adding reg D to A */
     it("ADD D", function() {
         
-        reg = new Intel8008Registers(); 
+        reg = new AgaveRegisters(); 
         
         // When A = 0 and D = 0
         operation[operation.ADD_D](reg);  // preform op
@@ -222,7 +222,7 @@ describe("testIntructionsAddition", function() {
     /** Tests adding reg E to A */
     it("ADD E", function() {
         
-        reg = new Intel8008Registers(); 
+        reg = new AgaveRegisters(); 
         
         // When A = 0 and E = 0
         operation[operation.ADD_E](reg);  // preform op
@@ -272,7 +272,7 @@ describe("testIntructionsAddition", function() {
     /** Tests adding reg H to A */
     it("ADD H", function() {
         
-        reg = new Intel8008Registers(); 
+        reg = new AgaveRegisters(); 
         
         // When A = 0 and H = 0
         operation[operation.ADD_H](reg);  // preform op
@@ -322,7 +322,7 @@ describe("testIntructionsAddition", function() {
     /** Tests adding reg L to A */
     it("ADD L", function() {
         
-        reg = new Intel8008Registers(); 
+        reg = new AgaveRegisters(); 
         
         // When A = 0 and L = 0
         operation[operation.ADD_L](reg);  // preform op

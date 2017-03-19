@@ -11,7 +11,7 @@ describe("testRegisters", function() {
     it("testCostruction", function() {
         
         /* Should not throw error */
-        reg =  Intel8008Registers();
+        reg =  AgaveRegisters();
         expect(reg.A).toEqual(0); 
         expect(reg.B).toEqual(0); 
         expect(reg.C).toEqual(0); 
@@ -27,7 +27,7 @@ describe("testRegisters", function() {
      * Tests 8-bit registers
      */
     var registers = ['A', 'B', 'C', 'D', 'E', 'H', 'L'];
-    reg =  Intel8008Registers();
+    reg =  AgaveRegisters();
     for (var i = 0; i < registers.length; i++) {
         var name = registers[i];
         
@@ -79,7 +79,7 @@ describe("testRegisters", function() {
      */
     it("testRegisterM", function() {
         
-        reg =  Intel8008Registers();
+        reg =  AgaveRegisters();
         
         expect(reg.M).toEqual(0); // default value of h is 0, and l is 0
         expect(reg.M).toEqual(0); // getting doesn't change value

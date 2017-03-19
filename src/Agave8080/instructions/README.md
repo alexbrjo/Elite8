@@ -1,5 +1,7 @@
-The Intel 8008 Instruction Chart
-================================
+The Agave8080 Instruction Set
+==============================
+
+TODO: chart has Intel 8008 instructions but needs to be Agave
 
 What are Opcodes?
 -----------------
@@ -29,8 +31,7 @@ Old and New Mnemonics
 In 1972 Intel released the first set of mnemonics for their assembly codes. All
 the original mnemonics fit nicely into three characters. But later in 1975 when
 the Intel 8080 was released the 8008 mnemonics were updated to more closely 
-model the 8080's. The Sugar Assembler uses the new mnemonics because they are 
-more readable and closer to modern day assembly.
+model the 8080's.
 
 1 Byte Instructions
 ------------------------
@@ -53,8 +54,8 @@ parity to true.
 The Lookup Chart
 ----------------
 All operations are listed in their entirety except move operations and I/O 
-because they're very redundant. Sugar Assembly uses a modified version of the
-updated mnemonics (new) that more closely resembles modern x86 assembly.
+because they're very redundant. Sugar Assembler uses a modified version of the
+Intel 8080 mnemonics (new) that more closely resembles modern x86 assembly.
 
 |  Binary  | hex | old | new*| bytes | flags| Description                                   |
 |----------|-----|-----|-----|-------|------|-----------------------------------------------|

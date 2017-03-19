@@ -49,7 +49,7 @@ table, tr, td, th {
 td.math {background-color: #E6E1C5;}
 td.inpt, td.otpt {background-color: #80A4ED;}
 td.jump {background-color: #BCD3F2;}
-td.call {background-color: #BCD3F2;}
+td.call {background-color: #80A4ED;}
 td.rtrn {background-color: #D4CB92;}
 td.load {background-color: #64A4C1;}
 td.ctrl {background-color: #BBAAAA;}

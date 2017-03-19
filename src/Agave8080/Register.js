@@ -1,4 +1,7 @@
-function Intel8008Registers () {
+/**
+ * The registers for the Agave 8080
+ */
+function AgaveRegisters () {
     return {
         /**
          * The 8-bit A (Accumulator) Register
