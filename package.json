@@ -1,5 +1,5 @@
 {
-  "name": "Elite8",
+  "name": "MolassOS",
   "version": "0.0.1",
   "scripts": {
     "test": "grunt build"

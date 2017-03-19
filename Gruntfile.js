@@ -12,7 +12,7 @@ module.exports = function (grunt) {
                     'build/SugarAsm/**/*.js',   // assembler files
                     'build/HoneyBasic/**/*.js'  // Compiler files
                 ],
-                dest: 'dist/Elite8.js'
+                dest: 'dist/MolassOS.js'
             }
         },
         copy:{
@@ -24,7 +24,7 @@ module.exports = function (grunt) {
             },
             test:{
                 cwd:'dist',
-                src:"Elite8.*",
+                src:"MolassOS.*",
                 dest:'test',
                 expand:true
             }
@@ -34,18 +34,18 @@ module.exports = function (grunt) {
                 src:'build'
             },
             test:{
-                src:'Elite8.*'
+                src:'MolassOS.*'
             }
         },
         uglify: {
             build: {
                 files: {
-                    'dist/Sweet16.min.js': [ 'dist/Elite8.js' ]
+                    'dist/MolassOS.min.js': [ 'dist/MolassOS.js' ]
                 }
             }
         },
         jasmine : {
-            src : 'dist/Elite8.js',
+            src : 'dist/MolassOS.js',
                 options : {
                     specs : 'test/**/*.spec.js'
                 }

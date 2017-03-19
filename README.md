@@ -1,8 +1,8 @@
-Elite8 [![Build Status](https://travis-ci.org/alexbrjo/Elite8.svg?branch=master)](https://travis-ci.org/alexbrjo/Elite8)
-========
-Elite8 is not a true emulator, but a simulator. All the operation codes and 
-assembly instructions are exactly what the Intel8008 uses, but I/O and memory is 
-done slightly differently. Elite8 assembler uses the Intel8080 updated assembly 
+MolassOS [![Build Status](https://travis-ci.org/alexbrjo/MolassOS.svg?branch=master)](https://travis-ci.org/alexbrjo/MolassOS)
+=======================
+MolassOS is not a true emulator, but a simulator. All the operation codes and 
+assembly instructions are exactly what the Intel 8008 uses, but I/O and memory is 
+done slightly differently. Elite8 assembler uses the Intel 8080 updated assembly 
 mnemonics.
 
 - [Source Code](src/) 
@@ -37,7 +37,11 @@ of visual aids and interactive demos.
 4. BASIC
     * The Language: 
     * Compilation: Compiler to assembly to machine with visual processor, memory and output
+5. Bootloaders and the OS
+6. MolassOS
 
 Special Thanks to these fantastic resources
 -------------------------------------------
-[wikipedia](en.wikipedia.org/wiki/BASIC)
+[wikipedia](https://en.wikipedia.org/wiki/BASIC)
+[DataPoint 2200 introduction](http://www.sbprojects.com/sbasm/dp2200.php)
+The DataPoint 2200 Programs Manual, published 1971
