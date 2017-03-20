@@ -1,19 +1,19 @@
 body {
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     width: 100%;
     height: 100%;
     background-color: #EEEEEE;
 }
 
 #main {    
-    border: 0px solid #000;
-    padding: 0px;
+    border: 0 solid #000;
+    padding: 0;
     margin: auto;
-    margin-bottom: 50px;
+    margin-bottom: 50;
     border-collapse: collapse;
-    height: 600px;
-    width: 1000px;
+    height: 600;
+    width: 1000;
 }
 
 #main th {                
@@ -28,32 +28,32 @@ table, tr, td, th {
     text-align: center; 
     font-family: monospace;
     border: 1px solid #EEEEEE;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 
 #main td {
     font-size: 8pt;
     text-align: center; 
     font-family: monospace; 
-    margin: 0px;
+    margin: 0;
     border: 1px solid #EEEEEE;
-    width: 60px;
+    width: 60;
 }
 
 #info {
     width: 100%;
-    height: 200px;
+    height: 200;
 }
 
-td.math {background-color: #E6E1C5;}
-td.inpt, td.otpt {background-color: #80A4ED;}
-td.jump {background-color: #BCD3F2;}
-td.call {background-color: #80A4ED;}
-td.rtrn {background-color: #D4CB92;}
-td.load {background-color: #64A4C1;}
-td.ctrl {background-color: #BBAAAA;}
-td.itrp {background-color: #90B4A2;}
+.math {background-color: #E6E1C5;}
+.inpt, td.otpt {background-color: #80A4ED;}
+.jump {background-color: #BCD3F2;}
+.call {background-color: #80A4ED;}
+.rtrn {background-color: #D4CB92;}
+.load {background-color: #64A4C1;}
+.ctrl {background-color: #BBAAAA;}
+.itrp {background-color: #90B4A2;}
 
 td:hover {
     background-color: #CD8888; 

@@ -70,8 +70,8 @@ function SugarAssembler() {
                     machineCode.write(operation.JZ); // write operation code
                     state = "wait_address"; // wait for address 
                     break;
-                case "JP":
-                    machineCode.write(operation.JP); // write operation code
+                case "JC":
+                    machineCode.write(operation.JC); // write operation code
                     state = "wait_address"; // wait for address 
                     break;
                 case "JM":
@@ -86,8 +86,8 @@ function SugarAssembler() {
                 case "db":
                 case "DB":
                     var def = token[1];
-                    for (var i = 0; i < def.length; i++) {
-                        machineCode.write(def.charAt(i));
+                    for (var j = 0; j < def.length; j++) {
+                        machineCode.write(def.charAt(j));
                     }
                     state = "new_line";
                     break;
