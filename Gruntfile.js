@@ -48,7 +48,16 @@ module.exports = function (grunt) {
             build: {
                 configFile: 'karma.conf.js'
             }
-        }
+        },
+        sloc: {
+   	    'my-source-files': {
+            files: {
+               'src': [ '**/*.js' ],
+               'test': [ '**/*.js' ],
+               'doc': ['**/*.html', '**/*.css']
+            }
+    }
+  }
     });
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
@@ -58,6 +67,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('karma-coverage');
+    grunt.loadNpmTasks('grunt-sloc');
     grunt.registerTask(
         'default', 
         'cleans, copys to build folder and uglifies', 
