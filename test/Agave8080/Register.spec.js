@@ -27,12 +27,12 @@ describe("testRegisters", function() {
      * Tests 8-bit registers
      */
     var registers = ['A', 'B', 'C', 'D', 'E', 'H', 'L'];
-    reg =  AgaveRegisters();
     for (var i = 0; i < registers.length; i++) {
         var name = registers[i];
         
         var ii = 0; // hacky loop for parameterized tests
         it("testRegister" + name, function() {
+            reg =  AgaveRegisters();
             var r = registers[ii];
             ii++;
             expect(reg[r]).toEqual(0); // get should return 0, default value

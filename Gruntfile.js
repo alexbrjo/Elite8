@@ -44,21 +44,21 @@ module.exports = function (grunt) {
                 }
             }
         },
-        jasmine : {
-            src : 'dist/MolassOS.js',
-                options : {
-                    specs : 'test/**/*.spec.js'
-                }
+        karma: {
+            build: {
+                configFile: 'karma.conf.js'
+            }
         }
     });
+    grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.registerTask(
-        'build', 
+        'default', 
         'cleans, copys to build folder and uglifies', 
-        ['clean', 'copy:build', 'concat', 'uglify', 'copy:test', 'jasmine']
+        ['clean', 'copy:build', 'concat', 'uglify', 'copy:test', 'karma']
     );
 };

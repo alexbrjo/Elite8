@@ -2,9 +2,17 @@
   "name": "MolassOS",
   "version": "0.0.1",
   "scripts": {
-    "test": "grunt build"
+    "test": "grunt"
   },
   "devDependencies": {
+    "karma-script-launcher": "~1.0.0",
+    "karma-chrome-launcher": "~2.0.0",
+    "karma-firefox-launcher": "~1.0.1",
+    "karma-ie-launcher": "~1.0.0",
+    "karma-jasmine": "~1.1.0",
+    "karma-phantomjs-launcher": "~1.0.4",
+    "karma-story-reporter": "~0.3.1",
+    "grunt-karma": "~1.0.0",
     "grunt": "~0.4.5",
     "grunt-contrib-clean": "~0.4.x",
     "grunt-contrib-concat": "~0.4.x",

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/alexbrjo/MolassOS/master/logo.png" alt="MolassOS"/>
+  <img src="https://raw.githubusercontent.com/alexbrjo/MolassOS/master/logo.png" alt="MolassOS 70s style logo"/>
 </p>
 
 [![Build Status](https://travis-ci.org/alexbrjo/MolassOS.svg?branch=master)](https://travis-ci.org/alexbrjo/MolassOS) [![Code Climate](https://codeclimate.com/github/alexbrjo/MolassOS/badges/gpa.svg)](https://codeclimate.com/github/alexbrjo/MolassOS)
@@ -48,6 +48,8 @@ use of visual aids and interactive demos.
 
 Special Thanks to these fantastic resources
 -------------------------------------------
+* Travis-ci 
+* Code Climate for the free student account
 * [wikipedia](https://en.wikipedia.org/wiki/BASIC)
 * [DataPoint 2200 introduction](http://www.sbprojects.com/sbasm/dp2200.php)
 * The DataPoint 2200 Programmer's Manual (1971, Intel corp.)
