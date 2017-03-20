@@ -2,7 +2,7 @@
   <img src="https://raw.githubusercontent.com/alexbrjo/MolassOS/master/logo.png" alt="MolassOS 70s style logo"/>
 </p>
 
-[![Build Status](https://travis-ci.org/alexbrjo/MolassOS.svg?branch=master)](https://travis-ci.org/alexbrjo/MolassOS) [![Code Climate](https://codeclimate.com/github/alexbrjo/MolassOS/badges/gpa.svg)](https://codeclimate.com/github/alexbrjo/MolassOS)
+[![Build Status](https://travis-ci.org/alexbrjo/MolassOS.svg?branch=master)](https://travis-ci.org/alexbrjo/MolassOS) [![Code Climate](https://codeclimate.com/github/alexbrjo/MolassOS/badges/gpa.svg)](https://codeclimate.com/github/alexbrjo/MolassOS)[![Test Coverage](https://codeclimate.com/github/alexbrjo/MolassOS/badges/coverage.svg)](https://codeclimate.com/github/alexbrjo/MolassOS/coverage)
 ===============================
 MolassOS is an operating system simulator that can run in your web browser. It 
 is modeled after the Datapoint 2200 personal computer and the i8080 microprocessor.

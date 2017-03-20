@@ -5,3 +5,6 @@ before_script:
   - npm install grunt-cli -g
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
+addons:
+    code_climate:
+        repo_token: b713b7a454c49121eeb53fd5bd3fca2738e5f2501ce220b8bb2e1aa97b453dab
