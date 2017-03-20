@@ -5,13 +5,21 @@ module.exports = function(config) {
     config.set({
         frameworks: ['jasmine'],
         files: [
-            'test/**/*.js'
+            'test/**/*.js', 'src/**/*.js'
         ],
-        reporters: ['progress'],
+        preprocessors: {
+            'src/**/*.js': 'coverage'
+        },
+        reporters: ['progress', 'coverage'],
         port: 9876,
         autoWatch: true,
         browsers: ['PhantomJS'],
         captureTimeout: 30000,
-        singleRun: true
+        singleRun: true,
+        coverageReporter: {
+            type : 'lcov',
+            dir : 'coverage/',
+            file : 'lcov.info'
+        }
     });
 };

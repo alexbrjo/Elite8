@@ -51,11 +51,13 @@ module.exports = function (grunt) {
         }
     });
     grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
+    grunt.loadNpmTasks('karma-coverage');
     grunt.registerTask(
         'default', 
         'cleans, copys to build folder and uglifies', 
