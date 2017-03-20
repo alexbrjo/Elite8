@@ -17,7 +17,7 @@ module.exports = function(config) {
         captureTimeout: 30000,
         singleRun: true,
         coverageReporter: {
-            type : 'lcov',
+            type : 'lcovonly',
             dir : 'coverage/',
             file : 'lcov.info'
         }
