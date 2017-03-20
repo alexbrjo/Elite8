@@ -1,6 +1,7 @@
 <p align="center">
-  <img src="https://github.com/alexbrjo/MolassOS/logo.png?raw=true" alt="MolassOS"/>
+  <img src="https://raw.githubusercontent.com/alexbrjo/MolassOS/master/logo.png" alt="MolassOS"/>
 </p>
+
 [![Build Status](https://travis-ci.org/alexbrjo/MolassOS.svg?branch=master)](https://travis-ci.org/alexbrjo/MolassOS)
 ===============================
 MolassOS is an operating system simulator that can run in your web browser. It 
