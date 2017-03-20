@@ -24,6 +24,12 @@ a {
     color: inherit;
 }
 
+a:hover {
+    text-decoration: underline;
+    color: inherit;
+    cursor: pointer;
+}
+
 body > div {
     margin: 0;
     padding: 0;

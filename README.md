@@ -43,14 +43,21 @@ use of visual aids and interactive demos.
 4. BASIC
     * The Language: 
     * Compilation: Compiler to assembly to machine with visual processor, memory and output
-5. Bootloaders and the OS
-6. MolassOS
+5. OS Concepts
+    * POST and BIOS
+    * Real and Protected mode
+    * The Boot Sector and Loading
+        * The Partion Boot Sector
+        * One, two and mixed stage loading 0x0000:0x7c00
+    * Setting up memory pages
+    * Capturing Input with interrupts
 
 Special Thanks to these fantastic resources
 -------------------------------------------
-* Travis-ci 
-* Code Climate for the free student account
 * [wikipedia](https://en.wikipedia.org/wiki/BASIC)
-* [DataPoint 2200 introduction](http://www.sbprojects.com/sbasm/dp2200.php)
+* [wikichip](https://en.wikichip.org)
+* [OS Dev Wiki](http://wiki.osdev.org/)
+* [DataPoint 2200 introductions](http://www.sbprojects.com/sbasm/dp2200.php)
 * The DataPoint 2200 Programmer's Manual (1971, Intel corp.)
 * The Intel 8080 Assembly Programming Manual (1975, Intel corp.)
+* Code Climate for the free student account

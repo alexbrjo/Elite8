@@ -1,3 +1,6 @@
+/**
+ * Grunt task Configuration
+ */
 module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -31,10 +34,10 @@ module.exports = function (grunt) {
         },
         clean:{
             build:{
-                src:'build'
-            },
-            test:{
-                src:'MolassOS.*'
+                src: [
+                    'build', 'dist', 'coverage',
+                    '**/MolassOS.*'
+                    ]
             }
         },
         uglify: {
@@ -50,14 +53,16 @@ module.exports = function (grunt) {
             }
         },
         sloc: {
-   	    'my-source-files': {
-            files: {
-               'src': [ '**/*.js' ],
-               'test': [ '**/*.js' ],
-               'doc': ['**/*.html', '**/*.css']
+            prebuild : {
+                options: {
+                    reportType: 'json',
+                    reportPath: 'coverage/sloc.json',
+                },
+                files: {
+                    'src':  [ '**/*.js' ] // only source code
+                }
             }
-    }
-  }
+        }
     });
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
@@ -66,11 +71,16 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
-    grunt.loadNpmTasks('karma-coverage');
     grunt.loadNpmTasks('grunt-sloc');
     grunt.registerTask(
         'default', 
-        'cleans, copys to build folder and uglifies', 
-        ['clean', 'copy:build', 'concat', 'uglify', 'copy:test', 'karma']
+        'Runs SLOC, builds and runs Karma tests', 
+        [
+            'clean', // clean environment
+            'sloc', // sloc in clean enviroment
+            // copy to build, concat and minify all sources
+            'copy:build', 'concat', 'uglify', 'copy:test', 
+            'karma' // run karma tests, generates coverage
+         ]
     );
 };

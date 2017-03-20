@@ -43,18 +43,22 @@ table, tr, td, th {
 
 #info {
     width: 100%;
-    height: 200px;
+    height: 100px;
 }
 
 .math {background-color: #E6E1C5;}
 .inpt, td.otpt {background-color: #80A4ED;}
 .jump {background-color: #BCD3F2;}
+.push {background-color: #BCAAF2;}
+.pop  {background-color: #80AAF2;}
 .call {background-color: #80A4ED;}
 .rtrn {background-color: #D4CB92;}
 .load {background-color: #64A4C1;}
 .ctrl {background-color: #BBAAAA;}
 .itrp {background-color: #90B4A2;}
 
+.selected {background-color: #CD8888;}
+
 td:hover {
-    background-color: #CD8888; 
+    opacity: 0.8;
 }

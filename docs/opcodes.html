@@ -3,15 +3,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
         <title>Agave 8080 Instruction Chart</title>
+        <script type="text/javascript" src="jquery.js"></script>
         <link rel="stylesheet" href="style/content.css">
         <link rel="stylesheet" href="style/codes.css">
     </head>
     <body>
         <div id="info-wrapper">
             <div id="info">
-                <div>XCHG</div>
-                <div>INC pair</div>
-                <div>DEC pair</div>
+                <div>XCHG: Assembler imp.</div>
+                <div>INC pair: Assembler imp.</div>
+                <div>DEC pair: Assembler imp.</div>
                 <div>Set INT flags</div>
                 <div>PUSH/POP all</div>
                 <div>PUSH/POP flags</div>
@@ -29,78 +30,78 @@
                     <td  class="ctrl">HALT*</td>
                     <td  class="math rota">RCL</td>
                     <td></td>
-                    <td></td>
-                    <td></td>
+                    <td class="math inc">INC B</td>
+                    <td class="math dec">DEC B</td>
                     <td  class="load">MOV B,I</td>
-                    <td  class="rtrn">RET</td>
-                    <td  class="math inc">INC B</td>
-                    <td  class="math inc">DCR B</td>
+                    <td  class="math add">ADD I</td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
+                    <td class="math inc">INC C</td>
+                    <td class="math dec">DEC C</td>
                     <td  class="load">MOV C,I</td>
-                    <td  class="rtrn">RET*</td>
+                    <td  class="math add">ADC I*</td>
                     <th>0_</th>
                 </tr>
                 <tr>
                     <th>1_</th>
-                    <td  class="math inc">INC C</td>
-                    <td  class="math inc">DCR C</td>
+                    <td></td>
+                    <td></td>
                     <td  class="math rota">ROL</td>
                     <td></td>
-                    <td></td>
-                    <td></td>
+                    <td class="math inc">INC D</td>
+                    <td class="math dec">DEC D</td>
                     <td  class="load">MOV D,I</td>
-                    <td  class="rtrn">RET*</td>
-                    <td  class="math inc">INC D</td>
-                    <td  class="math inc">DCR D</td>
+                    <td  class="math sub">SUB I</td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
+                    <td  class="math inc">INC E</td>
+                    <td  class="math dec">DEC E</td>
                     <td  class="load">MOV E,I</td>
-                    <td  class="rtrn">RET*</td>
+                    <td  class="math sub">SBB I</td>
                     <th>1_</th>
                 </tr>
                 <tr>
                     <th>2_</th>
-                    <td  class="math inc">INC E</td>
-                    <td  class="math inc">DCR E</td>
+                    <td class="stack push">PUSHA</td>
+                    <td class="stack pop">POPA</td>
                     <td  class="math rota">RCR</td>
                     <td></td>
-                    <td></td>
-                    <td></td>
+                    <td class="math inc">INC H</td>
+                    <td class="math dec">DEC H</td>
                     <td  class="load">MOV H,I</td>
-                    <td  class="rtrn">RET*</td>
-                    <td  class="math inc">INC H</td>
-                    <td  class="math inc">DCR H</td>
-                    <td ></td>
+                    <td  class="math bool">AND I</td>
                     <td></td>
                     <td></td>
                     <td></td>
+                    <td></td>
+                    <td class="math inc">INC L</td>
+                    <td class="math dec">DEC L</td>
                     <td  class="load">MOV L,I</td>
-                    <td  class="rtrn">RET*</td>
+                    <td  class="math bool xor">XOR I</td>
                     <th>2_</th>
                 </tr>
                 <tr>
                     <th>3_</th>
-                    <td  class="math inc">INC L</td>
-                    <td  class="math inc">DCR L</td>
+                    <td class="stack push">PUSHF</td>
+                    <td class="stack pop">POPF</td>
                     <td  class="math rota">ROR</td>
                     <td></td>
-                    <td></td>
-                    <td></td>
+                    <td class="math inc">INC M</td>
+                    <td class="math dec">DEC M</td>
                     <td  class="load">MOV M,I</td>
-                    <td  class="rtrn">RET*</td>
+                    <td  class="math bool or_r">OR I</td>
                     <td ></td>
                     <td ></td>
                     <td ></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
+                    <td class="math inc">INC A</td>
+                    <td class="math dec">DEC A</td>
                     <td  class="load">MOV A,I</td>
-                    <td  class="rtrn">RET*</td>
+                    <td  class="math bool">CMP I</td>
                     <th>3_</th>
                 </tr>
                 <tr>
@@ -265,81 +266,81 @@
                 </tr>
                 <tr>
                     <th>C_</th>
-                    <td class="jump">JFC</td>
-                    <td class="call">CFC</td>
-                    <td class="rtrn">RFC</td>
+                    <td class="jump">JNZ</td>
+                    <td class="call">CNZ</td>
+                    <td class="rtrn">RNZ</td>
                     <td class="itrp">INT 0</td>
                     <td class="stack push">PUSH B</td>
-                    <td class="stack push">POP B</td>
-                    <td class="math add">ADD I</td>
+                    <td class="stack pop">POP B</td>
                     <td></td>
-                    <td class="jump">JFZ</td>
-                    <td class="call">CFZ</td>
-                    <td class="rtrn">RFZ</td>
+                    <td></td>
+                    <td class="jump">JZ</td>
+                    <td class="call">CZ</td>
+                    <td class="rtrn">RZ</td>
                     <td class="itrp">INT 1</td>
                     <td class="stack push">PUSH D</td>
-                    <td class="stack push">POP D</td>
-                    <td  class="math add">ADC I</td>
+                    <td class="stack pop">POP D</td>
+                    <td></td>
                     <td></td>
                     <th>C_</th>
                 </tr>
                 <tr>
                     <th>D_</th>
-                    <td class="jump">JFS</td>
-                    <td class="call">CFS</td>
-                    <td class="rtrn">RFS</td>
+                    <td class="jump">JNC</td>
+                    <td class="call">CNC</td>
+                    <td class="rtrn">RNC</td>
                     <td class="itrp">INT 2</td>
                     <td class="stack push">PUSH C</td>
-                    <td class="stack push">POP C</td>
-                    <td class="math sub">SUB I</td>
+                    <td class="stack pop">POP C</td>
                     <td></td>
-                    <td class="jump">JFP</td>
-                    <td class="call">CFP</td>
-                    <td class="rtrn">RFP</td>
+                    <td></td>
+                    <td class="jump">JC</td>
+                    <td class="call">CC</td>
+                    <td class="rtrn">RC</td>
                     <td class="itrp">INT 3</td>
                     <td class="stack push">PUSH E</td>
-                    <td class="stack push">POP E</td>
-                    <td class="math sub">SBB I</td>
+                    <td class="stack pop">POP E</td>
+                    <td></td>
                     <td></td>
                     <th>D_</th>
                 </tr>
                 <tr>
                     <th>E_</th>
-                    <td class="jump">JTC</td>
-                    <td class="call">CTC</td>
-                    <td class="rtrn">RTC</td>
+                    <td class="jump">JPO</td>
+                    <td class="call">CPO</td>
+                    <td class="rtrn">RPO</td>
                     <td class="itrp">INT 4</td>
                     <td class="stack push">PUSH H</td>
-                    <td class="stack push">POP H</td>
-                    <td class="math and_r">AND I</td>
+                    <td class="stack pop">POP H</td>
                     <td></td>
-                    <td class="jump">JTZ</td>
-                    <td class="call">CTZ</td>
-                    <td class="rtrn">RTZ</td>
+                    <td></td>
+                    <td class="jump">JPE</td>
+                    <td class="call">CPE</td>
+                    <td class="rtrn">RPE</td>
                     <td class="itrp">INT 5</td>
                     <td class="stack push">PUSH L</td>
-                    <td class="stack push">POP L</td>
-                    <td class="math bool xor">XOR I</td>
+                    <td class="stack pop">POP L</td>
+                    <td></td>
                     <td></td>
                     <th>E_</th>
                 </tr>
                 <tr>
                     <th>F_</th>
-                    <td class="jump">JTS</td>
-                    <td class="call">CTS</td>
-                    <td class="rtrn">RTS</td>
+                    <td class="jump">JP</td>
+                    <td class="call">CP</td>
+                    <td class="rtrn">RP</td>
                     <td class="itrp">INT 6</td>
                     <td class="stack push">PUSH M</td>
-                    <td class="stack push">POP M</td>
-                    <td class="math bool or_r">OR I</td>
+                    <td class="stack pop">POP M</td>
                     <td></td>
-                    <td class="jump">JTP</td>
-                    <td class="call">CTP</td>
-                    <td class="rtrn">RTP</td>
+                    <td></td>
+                    <td class="jump">JM</td>
+                    <td class="call">CM</td>
+                    <td class="rtrn">RM</td>
                     <td class="itrp">INT 7</td>
                     <td class="stack push">PUSH A</td>
-                    <td class="stack push">POP A</td>
-                    <td class="math bool cmp">CMP I</td>
+                    <td class="stack pop">POP A</td>
+                    <td></td>
                     <td></td>
                     <th>F_</th>
                 </tr>
@@ -349,5 +350,11 @@
                 </tr>
             </tbody>
         </table>
+        <script type="text/javascript">
+            $("td").click(function(x) {
+                $(".selected").toggleClass("selected");
+                $(x.currentTarget).toggleClass("selected");
+            });
+        </script>
     </body>
 </html>
