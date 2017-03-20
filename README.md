@@ -1,10 +1,10 @@
-MolassOS ![80's logo](logo.png)
-===============================
+<p align="center">
+  <img src="https://github.com/alexbrjo/MolassOS/logo.png?raw=true" alt="MolassOS"/>
+</p>
 [![Build Status](https://travis-ci.org/alexbrjo/MolassOS.svg?branch=master)](https://travis-ci.org/alexbrjo/MolassOS)
-
-MolassOS is an operating system simulator modeled after the Datapoint 2200 
-personal computer and the Intel 8080 microprocessor that can run in your web
-browser.
+===============================
+MolassOS is an operating system simulator that can run in your web browser. It 
+is modeled after the Datapoint 2200 personal computer and the i8080 microprocessor.
 
 All the operation codes and assembly instructions are exactly what the Intel 
 8008 uses, but I/O and memory is done differently. The Sugar Assembler uses the 
@@ -45,13 +45,9 @@ use of visual aids and interactive demos.
 5. Bootloaders and the OS
 6. MolassOS
 
-Legacy Code
------------
-The microprocessor simulator that powers MolassOS is related to the Intel 8008 
-and the Intel 8080. 
-
 Special Thanks to these fantastic resources
 -------------------------------------------
-[wikipedia](https://en.wikipedia.org/wiki/BASIC)
-[DataPoint 2200 introduction](http://www.sbprojects.com/sbasm/dp2200.php)
-The DataPoint 2200 Programs Manual, published 1971
+* [wikipedia](https://en.wikipedia.org/wiki/BASIC)
+* [DataPoint 2200 introduction](http://www.sbprojects.com/sbasm/dp2200.php)
+* The DataPoint 2200 Programmer's Manual (1971 Intel corp.)
+* The Intel 8080 Assembly Programming Manual (1975 Intel corp.)

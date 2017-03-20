@@ -1,0 +1,141 @@
+/** The Microprocessor visualizer */
+
+@font-face {
+    font-family: lobster;
+    src: url("Lobster.otf") format("opentype");
+}      
+
+html, body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font: 10pt monospace;
+}
+
+body {
+    background-color: white;
+    color: black;
+    display: table;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body > div {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    vertical-align: top;
+}
+
+#internals-wrapper {
+    display: table-cell;
+    font: 14pt monospace;
+    background-color: #444444;
+    color: #DDDDDD;
+}
+
+#internals {
+    width: 340px;
+}
+
+#internals > div {
+    margin: auto;
+}
+
+#internals .title {
+    font-family: sans-serif;
+    text-align: left;
+    padding: 2px;
+    background-color: #888888;
+    color: #EEEEEE;
+}
+
+#internals .author {
+    font: 8pt monospace;
+    text-align: center;
+}
+
+/** Internals children */
+#register {
+    padding: 20px;
+    padding-top: 10px;
+}
+
+#register table {
+    border-collapse: initial;
+    font-weight: bold;
+}
+
+#register td {
+    border-radius: 5px;
+    padding: 2px;
+    text-align: center;
+}
+
+#register .acc {
+    background-color: #30832a;
+}
+
+#register .gpr {
+    background-color: #b32c2c;
+}
+
+#register .regM {
+    background-color: #2a5783;
+}
+
+#register .flag {
+    background-color: #80A4ED;
+}
+
+#register #reg_stack_0 { opacity: 1.0; }
+#register #reg_stack_1 { opacity: 0.9; }
+#register #reg_stack_2 { opacity: 0.8; }
+#register #reg_stack_3 { opacity: 0.7; }
+#register #reg_stack_4 { opacity: 0.6; }
+#register #reg_stack_5 { opacity: 0.5; }
+#register #reg_stack_6 { opacity: 0.4; }
+#register #reg_stack_7 { opacity: 0.3; }
+
+#alu {
+    padding: 20px;
+    padding-top: 10px;
+}
+
+#alu > div {
+    padding-left: 20px;
+    border-radius: 5px;
+    margin-top: 2px;
+    background-color: #AF5500;
+}
+
+#control {
+    padding: 20px;
+    padding-top: 10px;
+}
+
+#control > div {
+    padding-left: 20px;
+    border-radius: 5px;
+    margin-top: 2px;
+    background-color: #8a158c;
+}
+
+#internals .hr {
+    height: 2px;
+    width: 100%;
+    background-color: #DDDDDD;
+    margin: -7px 0px 15px 0px;
+}
+
+#input-output {
+    display: table-cell;
+    background-color: #F8F8F8;
+    width: 100%;
+    height: 80%;
+    font-family: Myriad, 'Myriad Pro', 'PT Sans', 'Gill Sans', sans-serif;
+}

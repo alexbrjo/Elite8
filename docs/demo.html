@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Inside a Microprocessor</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style/demo.css">
+        <script type="text/javascript" src="Intel8008/Memory.js"></script>
+        <script type="text/javascript" src="jquery.js"></script>
+    </head>
+    <body>
+        <div id="internals-wrapper">
+            <div id="fixed-helper"></div>
+            <div id="internals">
+                <div class="title">Registers</div>
+                <div id="register-wrapper">
+                    <div id="register">
+                        <table>
+                            <tbody>
+                                <tr id="reg_stack_7"> 
+                                    <td class="acc">00</td>
+                                    <td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td>
+                                    <td class="regM">00</td><td class="regM">00</td>
+                                    <td class="flag">00000000</td>
+                                </tr>
+                                <tr id="reg_stack_6"> 
+                                    <td class="acc">00</td>
+                                    <td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td>
+                                    <td class="regM">00</td><td class="regM">00</td>
+                                    <td class="flag">00000000</td>
+                                </tr>
+                                <tr id="reg_stack_5"> 
+                                    <td class="acc">00</td>
+                                    <td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td>
+                                    <td class="regM">00</td><td class="regM">00</td>
+                                    <td class="flag">00000000</td>
+                                </tr>
+                                <tr id="reg_stack_4"> 
+                                    <td class="acc">00</td>
+                                    <td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td>
+                                    <td class="regM">00</td><td class="regM">00</td>
+                                    <td class="flag">00000000</td>
+                                </tr>
+                                <tr id="reg_stack_3"> 
+                                    <td class="acc">00</td>
+                                    <td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td>
+                                    <td class="regM">00</td><td class="regM">00</td>
+                                    <td class="flag">00000000</td>
+                                </tr>
+                                <tr id="reg_stack_2">  
+                                    <td class="acc">00</td>
+                                    <td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td>
+                                    <td class="regM">00</td><td class="regM">00</td>
+                                    <td class="flag">00000000</td>
+                                </tr>
+                                <tr id="reg_stack_1">  
+                                    <td class="acc">00</td>
+                                    <td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td>
+                                    <td class="regM">00</td><td class="regM">00</td>
+                                    <td class="flag">00000000</td>
+                                </tr>
+                                <tr id="reg_stack_0"> 
+                                    <td class="acc">00</td>
+                                    <td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td>
+                                    <td class="regM">00</td><td class="regM">00</td>
+                                    <td class="flag">00000000</td>
+                                </tr>
+                                <tr id="register-names"> 
+                                    <th>A</th>
+                                    <th>B</th><th>C</th><th>D</th><th>E</th>
+                                    <th>H</th><th>L</th>
+                                    <th>C P A ZS</th>
+                                </tr>
+                                <tr id="register-groups">
+                                    <th>A</th>
+                                    <th colspan="4">GPR</th>
+                                    <th colspan="2">M</th>
+                                    <th colspan="8">Flags</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="title">ALU</div>
+                <div id="alu">
+                    <div style="opacity: 1.0;">A = A + B = 7</div>
+                    <div style="opacity: 0.8;">B = 72</div>
+                    <div style="opacity: 0.6;">A = A || C</div>
+                    <div style="opacity: 0.4;">A = A - B - CARRY = 28</div>
+                    <div style="opacity: 0.2;">C = 34</div>
+                </div>
+                <div class="title">Control Unit</div>
+                <div id="control">
+                    <div style="opacity: 1.0;">HLT</div>
+                    <div style="opacity: 0.8;">ADD A</div>
+                    <div style="opacity: 0.6;">MOV A, B</div>
+                    <div style="opacity: 0.4;">JMP 0xF51B</div>
+                    <div style="opacity: 0.2;">XOR B</div>
+                </div>
+                <div class="author">2017 &copy; <a href="http://alexjo.co">Alex Johnson</a></div>
+                <div class="author"><a href="https://github.com/alexbrjo/MolassOS">Git Repository</a></div>
+            </div>
+        </div>
+        <div id="input-output">
+            <div id="screen-wrapper"></div>
+        </div>
+    </body>
+</html>
