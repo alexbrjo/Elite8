@@ -32,6 +32,7 @@
     "karma-jasmine": "~1.1.0",
     "karma-phantomjs-launcher": "~1.0.4",
     "karma-story-reporter": "~0.3.1",
+    "karma-coverage": "latest",
     "grunt-sloc": "0.7.1"
   }
 }
