@@ -43,11 +43,11 @@ table, tr, td, th {
 
 #info {
     width: 100%;
-    height: 100px;
+    height: 60px;
 }
 
 .math {background-color: #E6E1C5;}
-.inpt, td.otpt {background-color: #80A4ED;}
+.inpt, .otpt {background-color: #DDBB88;}
 .jump {background-color: #BCD3F2;}
 .push {background-color: #BCAAF2;}
 .pop  {background-color: #80AAF2;}
