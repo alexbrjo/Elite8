@@ -1,7 +1,7 @@
 /**
  * Assembles 1975 updated Intel 8008 assembly mnuemonics to machine code
  */
-function SugarAssembler() {
+function SyrupAssembler() {
     
     /**
      * Seperates ("chews") a 16-bit number into 2 bytes 
@@ -24,8 +24,8 @@ function SugarAssembler() {
     };
     
     /**
-     * The main feature of SugarAssembler: the assembler. Assembles text into 
-     * Intel 8008 machine code.
+     * The main feature of SyrupAssembler: the assembler. Assembles text into 
+     * Sugar8080 machine code.
      * @param {String} src The input to assemble
      * @param {type} size The size of the memory to write to
      * @returns {Object} object with assembled memory and info.

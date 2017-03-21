@@ -6,18 +6,18 @@ If you are a developers please feel welcome to work on the tasks below.
 Subfolders all have README's with general information on structure and design
 rationale. But the best way to become familiar with the code is to read it (duh).
 
-- [Processor Simulator](Agave8080) 
-  - [Operation codes](Agave8008/instructions)
-- [Sugar Assembler](SugarAsm)
+- [Processor Simulator](Sugar8080) 
+  - [Operation codes](Sugar8008/instructions)
+- [Syrup Assembler](SyrupAsm)
 
-The Agave 8080 Simulator
+The Sugar 8080 Simulator
 ------------------------
 Incomplete Tasks
 - Operations for all opcodes
 - Stack implementation
 - Virtual register implementation
 
-Sugar Assembler
+Syrup Assembler
 ---------------
 Incomplete Tasks
 - Assemble Jump group

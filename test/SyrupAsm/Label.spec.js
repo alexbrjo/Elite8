@@ -3,7 +3,7 @@
  */
 describe("LabelAssembly", function() {    
     
-    var sasm = new SugarAssembler();
+    var sasm = new SyrupAssembler();
     
     /**
      * Tests label stacking

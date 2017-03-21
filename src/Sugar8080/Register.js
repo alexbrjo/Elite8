@@ -1,7 +1,7 @@
 /**
- * The registers for the Agave 8080
+ * The registers for the Sugar 8080
  */
-function AgaveRegisters () {
+function SugarRegisters () {
     return {
         /**
          * The 8-bit A (Accumulator) Register

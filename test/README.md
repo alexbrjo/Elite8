@@ -5,6 +5,6 @@ in this folder and all subfolders. The jasmine task is run by default when you
 build the project.
 
 
-- [Intel 8008 Simulator Tests](Intel8008) 
-  - [Operations Tests](Intel8008/instructions)
-- [Sugar Assembler Tests](SugarAsm) 
+- [Sugar8080 Simulator Tests](Sugar8080) 
+  - [Operations Tests](Sugar8080/instructions)
+- [Syrup Assembler Tests](SyrupAsm) 

@@ -11,8 +11,8 @@ module.exports = function (grunt) {
             dist: {
                 src: [
                     'build/global.js',          // add global vars first
-                    'build/Agave8080/**/*.js',  // enumlator files
-                    'build/SugarAsm/**/*.js',   // assembler files
+                    'build/Sugar8080/**/*.js',  // enumlator files
+                    'build/SyrupAsm/**/*.js',   // assembler files
                     'build/HoneyBasic/**/*.js'  // Compiler files
                 ],
                 dest: 'dist/MolassOS.js'
