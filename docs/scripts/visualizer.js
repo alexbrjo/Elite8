@@ -1,5 +1,5 @@
 /**
- * Simulatesa and displays the processor
+ * Simulates and displays the processor
  * @param {Object} processor the processor to visualize
  */
 function Simulator (processor) {

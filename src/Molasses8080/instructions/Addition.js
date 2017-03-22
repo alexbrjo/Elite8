@@ -241,7 +241,7 @@ operation[operation.ADC_C] = function (reg) {
 
 /* ADC 'R' for D */
 operation[operation.ADC_D] = function (reg) {
-    var sum = reg.A + reg.D; // sum A and D
+    var sum = reg.A + reg.D + reg.CARRY; // sum A and D
     
     // if sum is greater than 255, carry 
     if (sum > 0xFF) {

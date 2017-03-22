@@ -1,7 +1,7 @@
 /**
- * Tests the Addition operations.
+ * Tests the Addition Carry operations.
  */
-describe("testIntructionsAddition", function () {
+describe("testIntructionsAdditionCarry", function () {
 
     var reg = null;
 
@@ -11,40 +11,43 @@ describe("testIntructionsAddition", function () {
         var name = registers[i];
 
         var ii = 0; // hacky loop for parameterized tests
-        it("ADD " + name, function () {
+        it("ADC " + name, function () {
             reg = MolassesRegisters();
             var r = registers[ii];
             ii++;
 
             reg = new MolassesRegisters();
 
-            // When A = 0 and R = 0
-            operation[operation["ADD_" + r]](reg);  // preform op
-            expect(reg.A).toEqual(0);      // 0 + 0 = 0
+            // When A = 0, R = 0, and Carry = 1
+            reg.CARRY = 1;
+            operation[operation["ADC_" + r]](reg);  // preform op
+            expect(reg.A).toEqual(1);      // 0 + 0 + 1 = 1
             expect(reg[r]).toEqual(0);      // shouldn't be affected
 
             expect(reg.SIGN).toEqual(0);   // not negative
-            expect(reg.ZERO).toEqual(1);   // zero
+            expect(reg.ZERO).toEqual(0);   // not zero
             expect(reg.CARRY).toEqual(0);  // no carry
-            expect(reg.PARITY).toEqual(1); // 0 is even
+            expect(reg.PARITY).toEqual(0); // 1 is odd
 
-            // When A = 53, R = 42
+            // When A = 53, R = 42, and Carry = 1
             reg.A  = 53;
             reg[r] = 42;
-            operation[operation["ADD_" + r]](reg);  // preform op
-            expect(reg.A).toEqual(95);     // 53 + 42 = 95
+            reg.CARRY = 1;
+            operation[operation["ADC_" + r]](reg);  // preform op
+            expect(reg.A).toEqual(96);     // 53 + 42 + 1 = 96
             expect(reg[r]).toEqual(42);     // shouldn't be affected
 
             expect(reg.SIGN).toEqual(0);   // not negative
             expect(reg.ZERO).toEqual(0);   // not zero
             expect(reg.CARRY).toEqual(0);  // no carry
-            expect(reg.PARITY).toEqual(0); // 95 is odd
+            expect(reg.PARITY).toEqual(1); // 96 is even
 
-            // When A = 128, R = 200
+            // When A = 128, R = 200, and Carry = 0
             reg.A  = 128;
             reg[r] = 200;
-            operation[operation["ADD_" + r]](reg);  // preform op
-            expect(reg.A).toEqual(72);     // 128 + 200 = 328 -> 72
+            reg.CARRY = 0;
+            operation[operation["ADC_" + r]](reg);  // preform op
+            expect(reg.A).toEqual(72);     // 128 + 200 + 0 = 328 -> 72
             expect(reg[r]).toEqual(200);    // shouldn't be affected
 
             expect(reg.SIGN).toEqual(0);   // not negative
@@ -53,24 +56,26 @@ describe("testIntructionsAddition", function () {
             expect(reg.PARITY).toEqual(1); // 72 is even
 
             // Tests double operation no fail
-            operation[operation["ADD_" + r]](reg);  // preform op
-            expect(reg.A).toEqual(16);     // 72 + 200 = 272 -> 16
+            reg.CARRY = 1;
+            operation[operation["ADC_" + r]](reg);  // preform op
+            expect(reg.A).toEqual(17);     // 72 + 200 + 1 = 273 -> 17
             expect(reg[r]).toEqual(200);    // shouldn't be affected
 
             expect(reg.SIGN).toEqual(0);   // not negative
             expect(reg.ZERO).toEqual(0);   // not zero
             expect(reg.CARRY).toEqual(1);  // carry
-            expect(reg.PARITY).toEqual(1); // 16 is even
+            expect(reg.PARITY).toEqual(0); // 17 is odd
         });
     }
 
     /** Tests adding reg A to A */
-    it("ADD A", function () {
+    it("ADC A", function () {
 
         reg = new MolassesRegisters();
 
-        // When A = 0
-        operation[operation.ADD_A](reg);  // preform op
+        // When A = 0 and carry = 0
+        reg.CARRY = 0;
+        operation[operation.ADC_A](reg);  // preform op
         expect(reg.A).toEqual(0);      // 0 + 0 = 0
 
         expect(reg.SIGN).toEqual(0);   // not negative
@@ -78,54 +83,59 @@ describe("testIntructionsAddition", function () {
         expect(reg.CARRY).toEqual(0);  // no carry
         expect(reg.PARITY).toEqual(1); // 0 is even
 
-        // When A = 53
+        // When A = 53 and carry = 1
         reg.A = 53;
-        operation[operation.ADD_A](reg);  // preform op
-        expect(reg.A).toEqual(106);    // 53 + 53 = 106
+        reg.CARRY = 1;
+        operation[operation.ADC_A](reg);  // preform op
+        expect(reg.A).toEqual(107);    // 53 + 53 + 1 = 107
 
         expect(reg.SIGN).toEqual(0);   // not negative
         expect(reg.ZERO).toEqual(0);   // not zero
         expect(reg.CARRY).toEqual(0);  // no carry
-        expect(reg.PARITY).toEqual(1); // 254 is even
+        expect(reg.PARITY).toEqual(0); // 107 is odd
 
-        // When A = 127
+        // When A = 127 and carry = 0
         reg.A = 127;
-        operation[operation.ADD_A](reg);  // preform op
-        expect(reg.A).toEqual(254);    // 127 + 127 = 254
+        reg.CARRY = 0;
+        operation[operation.ADC_A](reg);  // preform op
+        expect(reg.A).toEqual(254);    // 127 + 127 + 0 = 254
 
         expect(reg.SIGN).toEqual(0);   // not negative
         expect(reg.ZERO).toEqual(0);   // not zero
         expect(reg.CARRY).toEqual(0);  // no carry
         expect(reg.PARITY).toEqual(1); // 254 is even
 
-        // When A = 128, tests carry
+        // When A = 128 and carry = 1
         reg.A = 128;
-        operation[operation.ADD_A](reg);  // preform op
-        expect(reg.A).toEqual(0);      // 128 + 128 = 256 -> 0
-
-        expect(reg.SIGN).toEqual(0);   // not negative
-        expect(reg.ZERO).toEqual(1);   // zero
-        expect(reg.CARRY).toEqual(1);  // carry
-        expect(reg.PARITY).toEqual(1); // 0 is even
-
-        // When A = 250, tests carry
-        reg.A = 250;
-        operation[operation.ADD_A](reg);  // preform op
-        expect(reg.A).toEqual(244);    // 250 + 250 = 500 -> 244
+        reg.CARRY = 1;
+        operation[operation.ADC_A](reg);  // preform op
+        expect(reg.A).toEqual(1);      // 128 + 128 + 1 = 257 -> 1
 
         expect(reg.SIGN).toEqual(0);   // not negative
         expect(reg.ZERO).toEqual(0);   // not zero
         expect(reg.CARRY).toEqual(1);  // carry
-        expect(reg.PARITY).toEqual(1); // 244 is even
+        expect(reg.PARITY).toEqual(0); // 1 is odd
 
-        // Tests double operation no fail
-        operation[operation.ADD_A](reg);  // preform op
-        expect(reg.A).toEqual(232);    // 244 + 244 = 488 -> 232
+        // When A = 250 and carry = 1
+        reg.A = 250;
+        reg.CARRY = 1;
+        operation[operation.ADC_A](reg);  // preform op
+        expect(reg.A).toEqual(245);    // 250 + 250 + 1 = 501 -> 245
+
+        expect(reg.SIGN).toEqual(0);   // not negative
+        expect(reg.ZERO).toEqual(0);   // not zero
+        expect(reg.CARRY).toEqual(1);  // carry
+        expect(reg.PARITY).toEqual(0); // 245 is odd
+
+        // Tests double operation no fail and carry = 0
+        reg.CARRY = 1;
+        operation[operation.ADC_A](reg);  // preform op
+        expect(reg.A).toEqual(235);    // 245 + 245 + 1 = 491 -> 235
 
         expect(reg.SIGN).toEqual(0);   // not negative
         expect(reg.ZERO).toEqual(0);   // no zero
         expect(reg.CARRY).toEqual(1);  // carry
-        expect(reg.PARITY).toEqual(1); // 232 is even
+        expect(reg.PARITY).toEqual(0); // 233 is odd
     });
 
 });
