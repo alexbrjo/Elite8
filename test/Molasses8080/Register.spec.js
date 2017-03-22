@@ -11,7 +11,7 @@ describe("testRegisters", function() {
     it("testCostruction", function() {
         
         /* Should not throw error */
-        reg =  SugarRegisters();
+        reg =  MolassesRegisters();
         expect(reg.A).toEqual(0); 
         expect(reg.B).toEqual(0); 
         expect(reg.C).toEqual(0); 
@@ -32,7 +32,7 @@ describe("testRegisters", function() {
         
         var ii = 0; // hacky loop for parameterized tests
         it("testRegister" + name, function() {
-            reg =  SugarRegisters();
+            reg =  MolassesRegisters();
             var r = registers[ii];
             ii++;
             expect(reg[r]).toEqual(0); // get should return 0, default value
@@ -79,7 +79,7 @@ describe("testRegisters", function() {
      */
     it("testRegisterM", function() {
         
-        reg =  SugarRegisters();
+        reg =  MolassesRegisters();
         
         expect(reg.M).toEqual(0); // default value of h is 0, and l is 0
         expect(reg.M).toEqual(0); // getting doesn't change value

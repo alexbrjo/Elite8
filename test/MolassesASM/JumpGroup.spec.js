@@ -3,7 +3,7 @@
  */
 describe("JumpGroupAssembly", function() {
     
-    var sasm = new SyrupAssembler();
+    var sasm = new MolassesAssembler();
     
     /**
      * Tests Assembly of JMP from Jump Group.

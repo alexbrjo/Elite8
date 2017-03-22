@@ -1,7 +1,7 @@
-The Sugar8080 Instruction Set
-==============================
+The Molasses8080 Instruction Set
+===============================
 
-TODO: chart has Intel 8008 instructions but needs to be Sugar
+TODO: chart has Intel 8008 instructions but needs to be MolassOS
 
 What are Opcodes?
 -----------------

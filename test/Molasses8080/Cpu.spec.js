@@ -16,7 +16,7 @@ describe("testCpu", function() {
         mem.write(1, 0x0F); // low-order address
         mem.write(2, 0x00); // high-order address
         
-        cpu =  new Sugar8080(mem);
+        cpu =  new Molasses8080(mem);
         expect(function() { cpu.cycle(); }).not.toThrow();
         
     });

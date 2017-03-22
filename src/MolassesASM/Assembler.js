@@ -1,7 +1,7 @@
 /**
  * Assembles 1975 updated Intel 8008 assembly mnuemonics to machine code
  */
-function SyrupAssembler() {
+function MolassesAssembler() {
     
     /**
      * Seperates ("chews") a 16-bit number into 2 bytes 

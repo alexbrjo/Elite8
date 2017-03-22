@@ -1,5 +1,5 @@
 /**
- * The Agave 8080 Instruction Set
+ * The Molasses8080 Instruction Set
  */
 var operation = {
     

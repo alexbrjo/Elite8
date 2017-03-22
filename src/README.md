@@ -6,18 +6,18 @@ If you are a developers please feel welcome to work on the tasks below.
 Subfolders all have README's with general information on structure and design
 rationale. But the best way to become familiar with the code is to read it (duh).
 
-- [Processor Simulator](Sugar8080) 
-  - [Operation codes](Sugar8008/instructions)
-- [Syrup Assembler](SyrupAsm)
+- [Processor Simulator](Molasses8080) 
+  - [Operation codes](Molasses8080/instructions)
+- [Molasses Assembler](MolassesASM)
 
-The Sugar 8080 Simulator
-------------------------
+The Molasses 8080 Simulator
+---------------------------
 Incomplete Tasks
 - Operations for all opcodes
 - Stack implementation
 - Virtual register implementation
 
-Syrup Assembler
+Molasses Assembler
 ---------------
 Incomplete Tasks
 - Assemble Jump group
@@ -28,8 +28,8 @@ Incomplete Tasks
 - Assemble IO group
 - Assemble Load group
 
-Honey BASIC Compiler
---------------------
+Molasses BASIC Compiler
+-----------------------
 Module not begun
 
 MolassOS  

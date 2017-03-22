@@ -8,17 +8,17 @@ MolassOS is an operating system simulator that can run in your web browser. It
 is modeled after the Datapoint 2200 personal computer and the i8080 microprocessor.
 
 All the operation codes and assembly instructions are exactly what the Intel 
-8008 uses, but I/O and memory is done differently. The Syrup Assembler uses the 
-Sugar8080 assembly mnemonics.
+8008 uses, but I/O and memory is done differently. The Assembler uses the 
+Molasses8080 assembly mnemonics.
 
 - [Source Code](src/) 
-  - [Microprocessor Simulator](src/Sugar8080) 
-    - [Operation codes](src/Sugar8080/instructions)
-  - [Syrup Assembler](src/SyrupAsm) 
+  - [Microprocessor Simulator](src/Molasses8080) 
+    - [Operation codes](src/Molasses8080/instructions)
+  - [Molasses Assembler](src/MolassesASM) 
 - [Test Code](test/)
-  - [for Sugar8080 Simulator](test/Sugar8080) 
-    - [for operations](test/Sugar8080/instructions)
-  - [for Syrup Assembler](test/SyrupAsm) 
+  - [for Molasses8080 Simulator](test/Molasses8080) 
+    - [for operations](test/Molasses8080/instructions)
+  - [for Molasses Assembler](test/MolassesASM) 
 - [Interactive Book](test/) 
 
 The Interactive Course

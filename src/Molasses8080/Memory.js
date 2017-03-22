@@ -1,5 +1,5 @@
 /**
- * Constructing this function is buying a physical stick of RAM. The Agave 8080
+ * Constructing this function is buying a physical stick of RAM. The Molasses8080
  * has a 16-bit wide address bus so not 65536 bytes can be accessed.
  * ISSUE: MEMORY TAKES UP TOO MUCH SPACE
  * 
