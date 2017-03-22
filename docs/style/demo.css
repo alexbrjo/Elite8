@@ -13,6 +13,18 @@ html, body {
     font: 10pt monospace;
 }
 
+sup {
+    top: -0.4em;
+    vertical-align: baseline;
+    position: relative;
+}
+
+sub { 
+    top: 0.4em; 
+    vertical-align: baseline;
+    position: relative;
+}
+
 body {
     background-color: white;
     color: black;
@@ -83,15 +95,15 @@ body > div {
     text-align: center;
 }
 
-#register .acc {
+#register .regAX {
     background-color: #30832a;
 }
 
-#register .gpr {
+#register .regBX {
     background-color: #b32c2c;
 }
 
-#register .regM {
+#register .regC {
     background-color: #2a5783;
 }
 
@@ -99,6 +111,10 @@ body > div {
     background-color: #80A4ED;
 }
 
+.spacer {
+    width: 20px;
+}
+    
 #register #reg_stack_0 { opacity: 1.0; }
 #register #reg_stack_1 { opacity: 0.9; }
 #register #reg_stack_2 { opacity: 0.8; }

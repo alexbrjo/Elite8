@@ -5,7 +5,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style/demo.css">
-        <script type="text/javascript" src="Intel8008/Memory.js"></script>
         <script type="text/javascript" src="jquery.js"></script>
         <script type="text/javascript" src="style/demo.js"></script>
     </head>
@@ -18,65 +17,23 @@
                     <div id="register">
                         <table>
                             <tbody>
-                                <tr id="reg_stack_7"> 
-                                    <td class="acc">00</td>
-                                    <td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td>
-                                    <td class="regM">00</td><td class="regM">00</td>
-                                    <td class="flag">00000000</td>
-                                </tr>
-                                <tr id="reg_stack_6"> 
-                                    <td class="acc">00</td>
-                                    <td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td>
-                                    <td class="regM">00</td><td class="regM">00</td>
-                                    <td class="flag">00000000</td>
-                                </tr>
-                                <tr id="reg_stack_5"> 
-                                    <td class="acc">00</td>
-                                    <td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td>
-                                    <td class="regM">00</td><td class="regM">00</td>
-                                    <td class="flag">00000000</td>
-                                </tr>
-                                <tr id="reg_stack_4"> 
-                                    <td class="acc">00</td>
-                                    <td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td>
-                                    <td class="regM">00</td><td class="regM">00</td>
-                                    <td class="flag">00000000</td>
-                                </tr>
-                                <tr id="reg_stack_3"> 
-                                    <td class="acc">00</td>
-                                    <td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td>
-                                    <td class="regM">00</td><td class="regM">00</td>
-                                    <td class="flag">00000000</td>
-                                </tr>
-                                <tr id="reg_stack_2">  
-                                    <td class="acc">00</td>
-                                    <td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td>
-                                    <td class="regM">00</td><td class="regM">00</td>
-                                    <td class="flag">00000000</td>
-                                </tr>
-                                <tr id="reg_stack_1">  
-                                    <td class="acc">00</td>
-                                    <td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td>
-                                    <td class="regM">00</td><td class="regM">00</td>
-                                    <td class="flag">00000000</td>
-                                </tr>
                                 <tr id="reg_stack_0"> 
-                                    <td class="acc">00</td>
-                                    <td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td><td class="gpr">00</td>
-                                    <td class="regM">00</td><td class="regM">00</td>
-                                    <td class="flag">00000000</td>
+                                    <td class="regAX">00</td><td class="regAX">00</td>
+                                    <td class="regBX">00</td><td class="regBX">00</td>
+                                    <th></th>
+                                    <td class="flag">00000000</td><td class="regC">00</td>
                                 </tr>
                                 <tr id="register-names"> 
-                                    <th>A</th>
-                                    <th>B</th><th>C</th><th>D</th><th>E</th>
-                                    <th>H</th><th>L</th>
-                                    <th>C P A ZS</th>
+                                    <th>AH</th><th>AL</th>
+                                    <th>BH</th><th>BL</th>
+                                    <th></th>
+                                    <th>C P A ZS</th><th>C</th>
                                 </tr>
                                 <tr id="register-groups">
-                                    <th>A</th>
-                                    <th colspan="4">GPR</th>
-                                    <th colspan="2">M</th>
-                                    <th colspan="8">Flags</th>
+                                    <th colspan="2">AX</th>
+                                    <th colspan="2">BX</th>
+                                    <td class="spacer"></td>
+                                    <th>Flags</th><th colspan="1"></th>
                                 </tr>
                             </tbody>
                         </table>

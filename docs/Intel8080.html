@@ -1,0 +1,391 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title>Intel8080 Instruction Chart</title>
+        <script type="text/javascript" src="jquery.js"></script>
+        <link rel="stylesheet" href="style/content.css">
+        <link rel="stylesheet" href="style/codes.css">
+        <style>
+            .math {background-color: #E6E1C5;}
+            .math16 {background-color: #DDBB88;}
+            .jump {background-color: #BCD3F2;}
+            .move {background-color: #BCAAF2;}
+            .move16 {background-color: #80AAF2;}
+            .call {background-color: #80A4ED;}
+            .rtrn {background-color: #D4CB92;}
+            .load {background-color: #64A4C1;}
+            .control {background-color: #BBAAAA;}
+            .itrp {background-color: #90B4A2;}
+        </style>
+    </head>
+    <body>
+        <div id="info-wrapper">
+            <div id="info">
+                <h1>Intel 8080 Instruction set</h1>
+            </div>
+        </div>
+        <table id="main">
+            <tbody>
+                <tr>
+                    <th></th>
+                    <th>_0</th>
+                    <th>_1</th>
+                    <th>_2</th>
+                    <th>_3</th>
+                    <th>_4</th>
+                    <th>_5</th>
+                    <th>_6</th>
+                    <th>_7</th>
+                    <th>_8</th>
+                    <th>_9</th>
+                    <th>_A</th>
+                    <th>_B</th>
+                    <th>_C</th>
+                    <th>_D</th>
+                    <th>_E</th>
+                    <th>_F</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>0_</th>
+                    <td class="control">NOP</td>
+                    <td class="move16">LXI B, d<sub>16</sub></td>
+                    <td class="move">STAX B</td>
+                    <td class="math16">INX B</td>
+                    <td class="math">INR B</td>
+                    <td class="math">DCR B</td>
+                    <td class="move">MVI B, d<sub>8</sub></td>
+                    <td class="math">RLC</td>
+                    <td class="control">*NOP</td>
+                    <td class="math16">DAD B</td>
+                    <td class="move">LDAX B</td>
+                    <td class="math16">DCX B</td>
+                    <td class="math">INR C</td>
+                    <td class="math">DCR C</td>
+                    <td class="move">MVI C, d<sub>8</sub></td>
+                    <td class="math">RRC</td>
+                    <th>0_</th>
+                </tr>
+                <tr>
+                    <th>1_</th>
+                    <td class="control">*NOP</td>
+                    <td class="move16">LXI D, d<sub>16</sub></td>
+                    <td class="move">STAX D</td>
+                    <td class="math16">INX D</td>
+                    <td class="math">INR D</td>
+                    <td class="math">DCR D</td>
+                    <td class="move">MVI D, d<sub>8</sub></td>
+                    <td class="math">RAL</td>
+                    <td class="control">*NOP</td>
+                    <td class="math16">DAD D</td>
+                    <td class="move">LDAX D</td>
+                    <td class="math16">DCX D</td>
+                    <td class="math">INR E</td>
+                    <td class="math">DCR E</td>
+                    <td class="move">MVI E, d<sub>8</sub></td>
+                    <td class="math">RAR</td>
+                    <th>1_</th>
+                </tr>
+                <tr>
+                    <th>2_</th>
+                    <td class="control">*NOP</td>
+                    <td class="move16">LXI H, d<sub>16</sub></td>
+                    <td class="move16">SHLD a<sub>16</sub></td>
+                    <td class="math16">INX H</td>
+                    <td class="math">INR H</td>
+                    <td class="math">DCR H</td>
+                    <td class="move">MVI H, d<sub>8</sub></td>
+                    <td class="math">DAA</td>
+                    <td class="control">*NOP</td>
+                    <td class="math16">DAD H</td>
+                    <td class="move16">LHLD a<sub>16</sub></td>
+                    <td class="math16">DCX H</td>
+                    <td class="math">INR L</td>
+                    <td class="math">DCR L</td>
+                    <td class="move">MVI L, d<sub>8</sub></td>
+                    <td class="math">CMA</td>
+                    <th>2_</th>
+                </tr>
+                <tr>
+                    <th>3_</th>
+                    <td class="control">*NOP</td>
+                    <td class="move16">LXI SP, d<sub>16</sub></td>
+                    <td class="move">STA a<sub>16</sub></td>
+                    <td class="math16">INX SP</td>
+                    <td class="math">INR M</td>
+                    <td class="math">DCR M</td>
+                    <td class="move">MVI M, d<sub>8</sub></td>
+                    <td class="math">STC</td>
+                    <td class="control">*NOP</td>
+                    <td class="math16">DAD SP</td>
+                    <td class="move">LDA a<sub>16</sub></td>
+                    <td class="math16">DCX SP</td>
+                    <td class="math">INR A</td>
+                    <td class="math">DCR A</td>
+                    <td class="move">MVI A, d<sub>8</sub></td>
+                    <td class="math">CMC</td>
+                    <th>3_</th>
+                </tr>
+                <tr>
+                    <th>4_</th>
+                    <td class="move">MOV B, B</td>
+                    <td class="move">MOV B, C</td>
+                    <td class="move">MOV B, D</td>
+                    <td class="move">MOV B, E</td>
+                    <td class="move">MOV B, H</td>
+                    <td class="move">MOV B, L</td>
+                    <td class="move">MOV B, M</td>
+                    <td class="move">MOV B, A</td>
+                    <td class="move">MOV C, B</td>
+                    <td class="move">MOV C, C</td>
+                    <td class="move">MOV C, D</td>
+                    <td class="move">MOV C, E</td>
+                    <td class="move">MOV C, H</td>
+                    <td class="move">MOV C, L</td>
+                    <td class="move">MOV C, M</td>
+                    <td class="move">MOV C, A</td>
+                    <th>4_</th>
+                </tr>
+                <tr>
+                    <th>5_</th>
+                    <td class="move">MOV D, B</td>
+                    <td class="move">MOV D, C</td>
+                    <td class="move">MOV D, D</td>
+                    <td class="move">MOV D, E</td>
+                    <td class="move">MOV D, H</td>
+                    <td class="move">MOV D, L</td>
+                    <td class="move">MOV D, M</td>
+                    <td class="move">MOV D, A</td>
+                    <td class="move">MOV E, B</td>
+                    <td class="move">MOV E, C</td>
+                    <td class="move">MOV E, D</td>
+                    <td class="move">MOV E, E</td>
+                    <td class="move">MOV E, H</td>
+                    <td class="move">MOV E, L</td>
+                    <td class="move">MOV E, M</td>
+                    <td class="move">MOV E, A</td>
+                    <th>5_</th>
+                </tr>
+                <tr>
+                    <th>6_</th>
+                    <td class="move">MOV H, B</td>
+                    <td class="move">MOV H, C</td>
+                    <td class="move">MOV H, D</td>
+                    <td class="move">MOV H, E</td>
+                    <td class="move">MOV H, H</td>
+                    <td class="move">MOV H, L</td>
+                    <td class="move">MOV H, M</td>
+                    <td class="move">MOV H, A</td>
+                    <td class="move">MOV L, B</td>
+                    <td class="move">MOV L, C</td>
+                    <td class="move">MOV L, D</td>
+                    <td class="move">MOV L, E</td>
+                    <td class="move">MOV L, H</td>
+                    <td class="move">MOV L, L</td>
+                    <td class="move">MOV L, M</td>
+                    <td class="move">MOV L, A</td>
+                    <th>6_</th>
+                </tr>
+                <tr>
+                    <th>7_</th>
+                    <td class="move">MOV M, B</td>
+                    <td class="move">MOV M, C</td>
+                    <td class="move">MOV M, D</td>
+                    <td class="move">MOV M, E</td>
+                    <td class="move">MOV M, H</td>
+                    <td class="move">MOV M, L</td>
+                    <td class="control">HLT</td>
+                    <td class="move">MOV M, A</td>
+                    <td class="move">MOV A, B</td>
+                    <td class="move">MOV A, C</td>
+                    <td class="move">MOV A, D</td>
+                    <td class="move">MOV A, E</td>
+                    <td class="move">MOV A, H</td>
+                    <td class="move">MOV A, L</td>
+                    <td class="move">MOV A, M</td>
+                    <td class="move">MOV A, A</td>
+                    <th>7_</th>
+                </tr>
+                <tr><th>8_</th>
+                    <td class="math">ADD B</td>
+                    <td class="math">ADD C</td>
+                    <td class="math">ADD D</td>
+                    <td class="math">ADD E</td>
+                    <td class="math">ADD H</td>
+                    <td class="math">ADD L</td>
+                    <td class="math">ADD M</td>
+                    <td class="math">ADD A</td>
+                    <td class="math">ADC B</td>
+                    <td class="math">ADC C</td>
+                    <td class="math">ADC D</td>
+                    <td class="math">ADC E</td>
+                    <td class="math">ADC H</td>
+                    <td class="math">ADC L</td>
+                    <td class="math">ADC M</td>
+                    <td class="math">ADC A</td>
+                    <th>8_</th>
+                </tr>
+                <tr>
+                    <th>9_</th>
+                    <td class="math">SUB B</td>
+                    <td class="math">SUB C</td>
+                    <td class="math">SUB D</td>
+                    <td class="math">SUB E</td>
+                    <td class="math">SUB H</td>
+                    <td class="math">SUB L</td>
+                    <td class="math">SUB M</td>
+                    <td class="math">SUB A</td>
+                    <td class="math">SBB B</td>
+                    <td class="math">SBB C</td>
+                    <td class="math">SBB D</td>
+                    <td class="math">SBB E</td>
+                    <td class="math">SBB H</td>
+                    <td class="math">SBB L</td>
+                    <td class="math">SBB M</td>
+                    <td class="math">SBB A</td>
+                    <th>9_</th>
+                </tr>
+                <tr>
+                    <th>A_</th>
+                    <td class="math">ANA B</td>
+                    <td class="math">ANA C</td>
+                    <td class="math">ANA D</td>
+                    <td class="math">ANA E</td>
+                    <td class="math">ANA H</td>
+                    <td class="math">ANA L</td>
+                    <td class="math">ANA M</td>
+                    <td class="math">ANA A</td>
+                    <td class="math">XRA B</td>
+                    <td class="math">XRA C</td>
+                    <td class="math">XRA D</td>
+                    <td class="math">XRA E</td>
+                    <td class="math">XRA H</td>
+                    <td class="math">XRA L</td>
+                    <td class="math">XRA M</td>
+                    <td class="math">XRA A</td>
+                    <th>A_</th>
+                </tr>
+                <tr>
+                    <th>B_</th>
+                    <td class="math">ORA B</td>
+                    <td class="math">ORA C</td>
+                    <td class="math">ORA D</td>
+                    <td class="math">ORA E</td>
+                    <td class="math">ORA H</td>
+                    <td class="math">ORA L</td>
+                    <td class="math">ORA M</td>
+                    <td class="math">ORA A</td>
+                    <td class="math">CMP B</td>
+                    <td class="math">CMP C</td>
+                    <td class="math">CMP D</td>
+                    <td class="math">CMP E</td>
+                    <td class="math">CMP H</td>
+                    <td class="math">CMP L</td>
+                    <td class="math">CMP M</td>
+                    <td class="math">CMP A</td>
+                    <th>B_</th>
+                </tr>
+                <tr>
+                    <th>C_</th>
+                    <td class="jump">RNZ</td>
+                    <td class="move16">POP B</td>
+                    <td class="jump">JNZ a<sub>16</sub></td>
+                    <td class="jump">JMP a<sub>16</sub></td>
+                    <td class="jump">CNZ a<sub>16</sub></td>
+                    <td class="move16">PUSH B</td>
+                    <td class="math">ADI d<sub>8</sub></td>
+                    <td class="jump">RST 0</td>
+                    <td class="jump">RZ</td>
+                    <td class="jump">RET</td>
+                    <td class="jump">JZ a<sub>16</sub></td>
+                    <td class="jump">*JMP a<sub>16</sub></td>
+                    <td class="jump">CZ a<sub>16</sub></td>
+                    <td class="jump">CALL a<sub>16</sub></td>
+                    <td class="math">ACI d<sub>8</sub></td>
+                    <td class="jump">RST 1</td>
+                    <th>C_</th>
+                </tr>
+                <tr>
+                    <th>D_</th>
+                    <td class="jump">RNC</td>
+                    <td class="move16">POP D</td>
+                    <td class="jump">JNC a<sub>16</sub></td>
+                    <td class="control">OUT d<sub>8</sub></td>
+                    <td class="jump">CNC a<sub>16</sub></td>
+                    <td class="move16">PUSH D</td>
+                    <td class="math">SUI d<sub>8</sub></td>
+                    <td class="jump">RST 2</td>
+                    <td class="jump">RC</td>
+                    <td class="jump">*RET</td>
+                    <td class="jump">JC a<sub>16</sub></td>
+                    <td class="control">IN d<sub>8</sub></td>
+                    <td class="jump">CC a<sub>16</sub></td>
+                    <td class="jump">*CALL a<sub>16</sub></td>
+                    <td class="math">SBI d<sub>8</sub></td>
+                    <td class="jump">RST 3</td>
+                    <th>D_</th>
+                </tr>
+                <tr>
+                    <th>E_</th>
+                    <td class="jump">RPO</td>
+                    <td class="move16">POP H</td>
+                    <td class="jump">JPO a<sub>16</sub></td>
+                    <td class="move16">XTHL</td>
+                    <td class="jump">CPO a<sub>16</sub></td>
+                    <td class="move16">PUSH H</td>
+                    <td class="math">ANI d<sub>8</sub></td>
+                    <td class="jump">RST 4</td>
+                    <td class="jump">RPE</td>
+                    <td class="jump">PCHL</td>
+                    <td class="jump">JPE a<sub>16</sub></td>
+                    <td class="move16">XCHG</td>
+                    <td class="jump">CPE a<sub>16</sub></td>
+                    <td class="jump">*CALL a<sub>16</sub></td>
+                    <td class="math">XRI d<sub>8</sub></td>
+                    <td class="jump">RST 5</td>
+                    <th>E_</th>
+                </tr>
+                <tr>
+                    <th>F_</th>
+                    <td class="jump">RP</td>
+                    <td class="move16">POP PSW</td>
+                    <td class="jump">JP a<sub>16</sub></td>
+                    <td class="control">DI</td>
+                    <td class="jump">CP a<sub>16</sub></td>
+                    <td class="move16">PUSH PSW</td>
+                    <td class="math">ORI d<sub>8</sub></td>
+                    <td class="jump">RST 6</td>
+                    <td class="jump">RM</td>
+                    <td class="move16">SPHL</td>
+                    <td class="jump">JM a<sub>16</sub></td>
+                    <td class="control">EI</td>
+                    <td class="jump">CM a<sub>16</sub></td>
+                    <td class="jump">*CALL a<sub>16</sub></td>
+                    <td class="math">CPI d<sub>8</sub></td>
+                    <td class="jump">RST 7</td>
+                    <th>F_</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>_0</th>
+                    <th>_1</th>
+                    <th>_2</th>
+                    <th>_3</th>
+                    <th>_4</th>
+                    <th>_5</th>
+                    <th>_6</th>
+                    <th>_7</th>
+                    <th>_8</th>
+                    <th>_9</th>
+                    <th>_A</th>
+                    <th>_B</th>
+                    <th>_C</th>
+                    <th>_D</th>
+                    <th>_E</th>
+                    <th>_F</th>
+                    <th></th>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

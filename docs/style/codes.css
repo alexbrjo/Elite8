@@ -13,7 +13,7 @@ body {
     margin-bottom: 50px;
     border-collapse: collapse;
     height: 600px;
-    width: 1000px;
+    width: 100%;
 }
 
 #main th {                
@@ -38,7 +38,7 @@ table, tr, td, th {
     font-family: monospace; 
     margin: 0;
     border: 1px solid #EEEEEE;
-    width: 60px;
+    width: 70px;
 }
 
 #info {
@@ -46,16 +46,7 @@ table, tr, td, th {
     height: 60px;
 }
 
-.math {background-color: #E6E1C5;}
-.inpt, .otpt {background-color: #DDBB88;}
-.jump {background-color: #BCD3F2;}
-.push {background-color: #BCAAF2;}
-.pop  {background-color: #80AAF2;}
-.call {background-color: #80A4ED;}
-.rtrn {background-color: #D4CB92;}
-.load {background-color: #64A4C1;}
-.ctrl {background-color: #BBAAAA;}
-.itrp {background-color: #90B4A2;}
+
 
 .selected {background-color: #CD8888;}
 
