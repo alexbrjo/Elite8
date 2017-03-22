@@ -55,10 +55,12 @@ describe("testRegisters", function() {
             }
 
             // Register should only be able to hold integers 0 to 255
-            expect(function() { reg[r] = -1; }).toThrow();
-            expect(function() { reg[r] = 256; }).toThrow();
-            expect(function() { reg[r] = 1.5; }).toThrow();
-            expect(function() { reg[r] = "1e4"; }).toThrow();
+            reg[r] = -1;
+            expect(reg[r]).toEqual(255); 
+            reg[r] = 256;
+            expect(reg[r]).toEqual(0); 
+            expect(function() { reg[r] = 1.5; }).toThrow(); 
+            expect(function() { reg[r] = "1e4";}).toThrow();
 
             // check that no other registers were changed
             reg[r] = 0x00;
