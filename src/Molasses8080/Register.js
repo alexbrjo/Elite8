@@ -101,6 +101,23 @@ function MolassesRegisters () {
         set PUSH(v) {
             if (v < 0 && v > 0x4000) throw new Error("PC cannot store value: " + v);
             this.pc = v;
+        },
+        
+        set acc (v) {
+            if (v > 0xFF) {
+                v = v % 256;
+                this.CARRY = 1;
+            } else if (v < 0) {
+                v += 256;
+                this.CARRY = 1;
+            } else {
+                this.CARRY = 0;
+            }
+
+            this.SIGN = 0;               // result of addition never negative
+            this.ZERO = v === 0 ? 1 : 0;       // set zero flag
+            this.PARITY = v % 2 === 0 ? 1 : 0; // set parity flag
+            this.A = v;                // set sum in Accumulator
         }
     };
 }

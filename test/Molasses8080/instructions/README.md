@@ -15,16 +15,12 @@ A = A - A, B, C, D, E, H, L, M or immed
 - Check all flags
 - Check value of Accumulation and read registers
 
-Multiplication Operations
--------------------------
-A = A * A, B, C, D, E, H, L, M or immed
+Boolean Operations
+------------------
+A [xor|or|and|cmp] A, B, C, D, E, H, L, M or immed
 - Check all flags
 - Check value of Accumulation and read registers
 - Pay special attention to carry
 
-Division Operations
--------------------------
-A = A / A, B, C, D, E, H, L, M or immed
-- Check all flags
-- Check value of Accumulation and read registers
-- Pay special attention to carry
+Increment / Decrement Operations
+--------------------------------
