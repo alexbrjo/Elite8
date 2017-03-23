@@ -95,14 +95,13 @@ function MolassesRegisters () {
         byte: function (v) {
             if (v % 1 !== 0 || typeof v !== "number") throw "Register can only store integer values";
             
+            this.CARRY = 0;
             if (v > 0xFF) {
                 v = v % 256;
                 this.CARRY = 1;
             } else if (v < 0) {
                 v += 256;
                 this.CARRY = 1;
-            } else {
-                this.CARRY = 0;
             }
 
             this.SIGN = 0;                      // set sign flag

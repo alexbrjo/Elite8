@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.org/alexbrjo/MolassOS.svg?branch=master)](https://travis-ci.org/alexbrjo/MolassOS) [![Code Climate](https://codeclimate.com/github/alexbrjo/MolassOS/badges/gpa.svg)](https://codeclimate.com/github/alexbrjo/MolassOS) [![Test Coverage](https://codeclimate.com/github/alexbrjo/MolassOS/badges/coverage.svg)](https://codeclimate.com/github/alexbrjo/MolassOS/coverage) ![size](https://img.shields.io/badge/size-1.3k-blue.svg)
 ===============================
 MolassOS is an operating system simulator that can run in your web browser. It 
-is modeled after the Datapoint 2200 personal computer and the i8080 microprocessor.
+is modeled after the i8080 microprocessor and the Datapoint 2200 programmable terminal .
 
 All the operation codes and assembly instructions are exactly what the Intel 
 8008 uses, but I/O and memory is done differently. The Assembler uses the 
@@ -60,4 +60,5 @@ Special Thanks to these fantastic resources
 * [DataPoint 2200 introductions](http://www.sbprojects.com/sbasm/dp2200.php)
 * The DataPoint 2200 Programmer's Manual (1971, Intel corp.)
 * The Intel 8080 Assembly Programming Manual (1975, Intel corp.)
+* Intel 8080/85 Assembly Language Programming  (1977, Intel corp.)
 * Code Climate for the free student account
