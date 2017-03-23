@@ -10,7 +10,6 @@ module.exports = function (grunt) {
             },
             dist: {
                 src: [
-                    'build/global.js',          // add global vars first
                     'build/Molasses8080/**/*.js',  // enumlator files
                     'build/MolassesASM/**/*.js',   // assembler files
                     'build/MolassesBASIC/**/*.js'  // Compiler files
@@ -23,12 +22,6 @@ module.exports = function (grunt) {
                 cwd:'src',
                 src:['**'],
                 dest:'build',
-                expand:true
-            },
-            test:{
-                cwd:'dist',
-                src:"MolassOS.*",
-                dest:'test',
                 expand:true
             }
         },
@@ -56,7 +49,7 @@ module.exports = function (grunt) {
             prebuild : {
                 options: {
                     reportType: 'json',
-                    reportPath: 'coverage/sloc.json',
+                    reportPath: 'coverage/sloc.json'
                 },
                 files: {
                     'src':  [ '**/*.js' ] // only source code
@@ -80,7 +73,7 @@ module.exports = function (grunt) {
             'clean', // clean environment
             'sloc', // sloc in clean enviroment
             // copy to build, concat and minify all sources
-            'copy:build', 'concat', 'uglify', 'copy:test', 
+            'copy:build', 'concat', 'uglify',
             'karma' // run karma tests, generates coverage
          ]
     );

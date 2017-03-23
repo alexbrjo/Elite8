@@ -4,7 +4,7 @@
 module.exports = function(config) {
     config.set({
         frameworks: ['jasmine'],
-        files: ['test/**/*.js', 'src/**/*.js'],
+        files: ['src/**/*.js', 'test/**/*.spec.js'],
         preprocessors: {
             'src/**/*.js': 'coverage'
         },

@@ -2,7 +2,7 @@
  * Tests the Assembly of Jump operations
  */
 describe("JumpGroupAssembly", function() {
-    
+
     var sasm = new MolassesAssembler();
     
     /**
