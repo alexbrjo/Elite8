@@ -3,28 +3,35 @@
  * and the clock. Program data and RAM occupy the same memory space so the
  * program must be loaded into RAM at a memory location 0x400.
  * 
- * Usable addresses for 512mb: 0x000 to 0x1FF
+ * Usable addresses for 256mb: 0x000 to 0xFF
  * Default starts exectuing at Memory 0x000
  */
 function Molasses8080 (memory) {
     
     /* General, flag, program, stack registers */
     var reg = MolassesRegisters();
-    /* The Memory of the cpu: 512 mb */
-    var mem = memory || new Memory(512);
+    /* The Memory of the cpu: 256 mb */
+    var mem = memory || new Memory(256);
     /* Operation for opcode array. This is a legnth 256 array of functions */
     var opc = operation;
     
     var manual_instr = [
-        opc.MOV_B_I, 42,
-        opc.MOV_A_B,
-        opc.ADD_B
-    ];
-    
-    for (var i =0; i < manual_instr.length; i++) {
-        mem.write(manual_instr[i]);
-        console.log(manual_instr[i]);
-    }     
+            opc.MOV_B_I, 42,
+            opc.MOV_A_B,
+            opc.ADD_B,
+            opc.HLT
+        ];
+        
+    this.init = function () {
+        for (var i = 0; i < manual_instr.length; i++) {
+            mem.write(manual_instr[i]);
+            console.log(manual_instr[i]);
+        }   
+
+        for (var i = 0xF7; i < 0x100; i++) {
+            mem.write(i, ("A").charCodeAt(0));
+        }
+    };
     
     /**
      * Executes a single operation.
@@ -51,5 +58,20 @@ function Molasses8080 (memory) {
             console.log("Error executing");
         }
         return reg;
+    };
+    
+    /** Outputs result */
+    this.output = function () {
+        var s = "";
+        s +=  String.fromCharCode(mem.read(0xF7));
+        s +=  String.fromCharCode(mem.read(0xF8));
+        s +=  String.fromCharCode(mem.read(0xF9));
+        s +=  String.fromCharCode(mem.read(0xFA));
+        s +=  String.fromCharCode(mem.read(0xFB));
+        s +=  String.fromCharCode(mem.read(0xFC));
+        s +=  String.fromCharCode(mem.read(0xFD));
+        s +=  String.fromCharCode(mem.read(0xFE));
+        s +=  String.fromCharCode(mem.read(0xFF));
+        return s;
     };
 }

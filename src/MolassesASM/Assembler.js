@@ -1,8 +1,7 @@
 /**
- * Assembles 1975 updated Intel 8008 assembly mnuemonics to machine code
+ * Assembles Intel 8080 assembly mnuemonics to machine code
  */
 function MolassesAssembler() {
-    
     /**
      * Seperates ("chews") a 16-bit number into 2 bytes 
      * @param {Number} addr a number 0 to 65536 
@@ -40,74 +39,45 @@ function MolassesAssembler() {
         for(var i = 0; i < line.length; i++) {
             // line split into tokens
             var token = line[i].split(" ").filter(function(a) { return a.length !== 0; });
-            switch (token[0]) {
-                case "HLT":
-                    machineCode.write(operation.HLT); // write 1 byte halt operation
-                    state = "new_line";
-                    break;
-                    
-                case "JMP":
-                    machineCode.write(operation.JMP); // write operation code
-                    state = "wait_address"; // wait for address
-                    break;
-                case "JNZ":
-                    machineCode.write(operation.JNZ); // write operation code
-                    state = "wait_address"; // wait for address
-                    break;
-                case "JNC":
-                    machineCode.write(operation.JNC); // write operation code
-                    state = "wait_address"; // wait for address
-                    break;
-                case "JP":
-                    machineCode.write(operation.JP); // write operation code
-                    state = "wait_address"; // wait for address
-                    break;
-                case "JPO":
-                    machineCode.write(operation.JPO); // write operation code
-                    state = "wait_address"; // wait for address
-                    break;
-                case "JZ":
-                    machineCode.write(operation.JZ); // write operation code
-                    state = "wait_address"; // wait for address 
-                    break;
-                case "JC":
-                    machineCode.write(operation.JC); // write operation code
-                    state = "wait_address"; // wait for address 
-                    break;
-                case "JM":
-                    machineCode.write(operation.JM); // write operation code
-                    state = "wait_address"; // wait for address
-                    break;
-                case "JPE":
-                    machineCode.write(operation.JPE); // write operation code
-                    state = "wait_address";
-                    break;
-                    
-                case "db":
-                case "DB":
-                    var def = token[1];
-                    for (var j = 0; j < def.length; j++) {
-                        machineCode.write(def.charAt(j));
-                    }
-                    state = "new_line";
-                    break;
-                case "CONST":
-                    label[token[1]] = token[2]; // create new constant
-                    state = "wait_immed";
-                    break;
-                default:
-                    label[token[0]] = machineCode.pos() + 1; // create new address label
-                    state = "new_line";
+            var t = token[0];
+            if (typeof operation[t] !== "undefined") {
+                machineCode.write(operation[t]);
+                state = this.getState(t);
+            } else {
+                switch (t) {
+                    case "db":
+                    case "DB":
+                        var def = t;
+                        for (var j = 0; j < def.length; j++) {
+                            machineCode.write(def.charAt(j));
+                        }
+                        state = "new_line";
+                        break;
+                    case "CONST":
+                        constant[token[1]] = token[2]; // create new constant
+                        state = "wait_immed";
+                        break;
+                    default:
+                        label[t] = machineCode.pos() + 1; // create new address label
+                        state = "new_line";
+                }
             }
             
             /*
                Based on state will read an immediate value or 16-bit address
              */
             if (state === "wait_immed") {
-                // TODO if next token is a number, use that number. If its a 
-                // constant use that constant
-                machineCode.write(0); // write immediate value
+                var immed;
+                try {
+                    immed = parseInt(token[1]);
+                } catch (e) {
+                    immed = constant[token[1]];
+                }
+                machineCode.write(immed); // write immediate value
             } else if (state === "wait_address") {
+                if (token[1] === "undefined") throw new Error("No immed address label: line" + i);
+                if (typeof label[token[1]] === "undefined") throw new Error("Could not find label: line" + i);
+                
                 var address = chewAddress(label[token[1]]); // get address of label
                 machineCode.write(address.low); // write low order 
                 machineCode.write(address.high); // write high order 
@@ -125,5 +95,17 @@ function MolassesAssembler() {
             data: machineCode,
             size: machineCode.size()
         };
+    };
+    
+    /**
+     * Regex patterns for different states
+     * 
+     * @param {string} t The operation string
+     * @returns {string} the state of the input
+     */
+    this.getState = function (t) {
+        if ((/^(JMP|RET|CALL)$|^[JRC]{1}(NZ|NC|PO|P|Z|P|PE|M)$/).test(t)) return "wait_address";
+        if ((/^(AD|AC|SU|SB|OR|XR|AN|CP)I$/).test(t)) return "wait_immed";
+        return "new_line";
     };
 }

@@ -71,6 +71,44 @@ describe("testMemory", function() {
     });
     
     /**
+     * Tests the peek() method of memery
+     */
+    it("testPeek", function() {
+        
+        mem = new Memory(10);
+        mem.write(7, 0x30);
+        mem.write(8, 0x31);
+        mem.write(9, 0x32);
+        
+        expect(mem.read(7)).toEqual(0x30);
+        expect(mem.peek() ).toEqual(0x31);
+        expect(mem.peek(0)).toEqual(0x30);
+        expect(mem.peek(1)).toEqual(0x31);
+        expect(mem.peek(2)).toEqual(0x32);
+        
+        expect(function(){ mem.peek(3); }).toThrow();
+        expect(function(){ mem.peek(-10); }).toThrow();
+        
+    });
+    
+    /**
+     * Tests the hasHas() method of memory
+     */
+    it("testPeek", function() {
+        
+        mem = new Memory(4);
+        mem.write(1, 0x00);
+        mem.write(1, 0x30);
+        mem.write(2, 0xFF);
+        mem.write(3, 0x54);
+        
+        while (mem.hasNext()) {
+            expect(function(){ mem.read(); }).not.toThrow();
+        }
+        
+    });
+    
+    /**
      * Tests the write() and read() function of memory
      */
     it("testReadWrite", function() {
@@ -94,6 +132,12 @@ describe("testMemory", function() {
         mem.write(11, 0x77);
         expect(mem.read(10)).toEqual(0x66);
         expect(mem.read(11)).toEqual(0x77);
+        
+        // but reading/writing out of scope doesn't
+        expect(function() { mem.read(-1); }).toThrow();
+        expect(function() { mem.read(mem.size()); }).toThrow();
+        expect(function() { mem.write(-1, 0x55); }).toThrow();
+        expect(function() { mem.write(mem.size(), 0x55); }).toThrow();
         
         // write ascii "HELLO WORLD!"
         var offset = 22;
@@ -137,6 +181,29 @@ describe("testMemory", function() {
             expect(mem.read(i)).toEqual(0);
         }
         
+    });
+    
+    /**
+     * Tests the ROM functionality of memory
+     */
+    it("testRom", function() {
+        mem = new Memory(26, "ROM"); // test writing throws 
+        expect(function () {mem.write(0xF8); }).toThrow();
+        expect(function () {mem.write(9, 0x06); }).toThrow();
+        expect(function () {mem.write(9, 0xAF); }).toThrow();
+        
+        // test reading doesn't throw
+        for (var i = 0; i < 16; i++) {
+            expect(mem.read(i)).toEqual(0);
+        }
+        
+        // other functions work still
+        expect(function() {
+            mem.read(0);
+            while (mem.hasNext()) {
+                mem.read();
+            }
+        }).not.toThrow();
     });
 });
 

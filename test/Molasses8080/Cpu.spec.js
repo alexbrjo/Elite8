@@ -20,5 +20,21 @@ describe("testCpu", function() {
         expect(function() { cpu.cycle(); }).not.toThrow();
         
     });
+    
+    /**
+     * Tests Running Cpu.
+     */
+    it("testCpuRun", function() {
+        
+        /* JMP to blank mem should throw error */
+        var mem = new Memory(32); 
+        mem.write(0, 0x44); 
+        mem.write(1, 0x0F);
+        mem.write(2, 0x00); 
+        
+        cpu =  new Molasses8080(mem);
+        expect(function() { cpu.run(); }).not.toThrow();
+        
+    });
 });
 
