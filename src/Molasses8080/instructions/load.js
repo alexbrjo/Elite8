@@ -77,3 +77,13 @@ operation[operation.MOV_A_H] = function (reg) { reg.A = reg.H; reg.PC++;};
 operation[operation.MOV_A_L] = function (reg) { reg.A = reg.L; reg.PC++;};
 operation[operation.MOV_A_M] = function (reg) { throw "Unsupported operation"; reg.PC++;};
 operation[operation.MOV_A_A] = function (reg) { reg.A = reg.A; reg.PC++;};
+
+/** Loads R with I */
+operation[operation.MOV_B_I] = function (reg, a) { reg.B = a; reg.PC += 2;};
+operation[operation.MOV_C_I] = function (reg, a) { reg.C = a; reg.PC += 2;};
+operation[operation.MOV_D_I] = function (reg, a) { reg.D = a; reg.PC += 2;};
+operation[operation.MOV_E_I] = function (reg, a) { reg.E = a; reg.PC += 2;};
+operation[operation.MOV_H_I] = function (reg, a) { reg.H = a; reg.PC += 2;};
+operation[operation.MOV_L_I] = function (reg, a) { reg.L = a; reg.PC += 2;};
+operation[operation.MOV_M_I] = function (reg, a) { reg.M = a; reg.PC += 2;};
+operation[operation.MOV_A_I] = function (reg, a) { reg.A = a; reg.PC += 2;};

@@ -70,21 +70,21 @@ function MolassesRegisters () {
             else this.carry = v;
         },
         
-        /* 14-bit Program register (16-bit but with 2 most sign. bits ignored) */
-        pc: 0,
-        get PC() { return this.pc; },
+        /* Seven 14-bit PC and stack register */
+        stack: [0, 0, 0, 0, 0, 0, 0, 0],
+        stacklvl: 1, // 1 is first because first 2 bytes are PC
+        get PC() { return this.stack[0]; },
         set PC(v) {
             if (v < 0 && v > 0x4000) throw new Error("PC cannot store value: " + v);
+            this.stack[0] = v;
+        },
+        get SP() { return this.stack[this.stacklvl]; },
+        set SP(v) {
+            if (v < 0 && v > 0x4000) throw new Error("SP cannot store value: " + v);
             this.pc = v;
         },
-        
-        /* Seven 14-bit stack register */
-        stack: [0, 0, 0, 0, 0, 0, 0],
-        get POP() { return this.pc; },
-        set PUSH(v) {
-            if (v < 0 && v > 0x4000) throw new Error("PC cannot store value: " + v);
-            this.pc = v;
-        },
+        POP: function() { this.stacklvl++; return this.SP; },
+        PUSH: function(v) { this.stacklvl--; return this.SP; },
         
         /**
          * Chops integers to fit in the domain of 0-255 and sets all valid 

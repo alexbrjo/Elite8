@@ -1,6 +1,6 @@
 /**
- * Tests the Program counter operations.
+ * Tests the Jump operations.
  */
-describe("testIntructionsProgramCounter", function() {
-
+describe("testIntructionsJump", function() {
+    //TODO test PC
 });

@@ -1,6 +1,6 @@
 /**
- * Tests the Push register operations.
+ * Tests the Push/Pop operations.
  */
-describe("testIntructionsPush", function() {
-
+describe("testIntructionsStack", function() {
+    // TODO test Push/Pop
 });
