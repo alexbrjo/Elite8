@@ -9,15 +9,11 @@ describe("testInstructionsAnd", function() {
     var const3 = parseInt('11001100', 2);
     var const4 = parseInt('01000100', 2);
 
-    var registers = ['B', 'C', 'D', 'E', 'H', 'L'];
-    for (var i = 0; i < registers.length; i++) {
-        var name = registers[i];
-
-        var ii = 0; // hacky loop for parameterized tests
-        it("ANA " + name, function () {
+    it("ANA R", function () {
+        var registers = ['B', 'C', 'D', 'E', 'H', 'L'];
+        for (var i = 0; i < registers.length; i++) {
             var reg = MolassesRegisters();
-            var r = registers[ii];
-            ii++;
+            var r = registers[i];
             
             // When A = 0b0000-0000 and R = 0b0000-0000
             operation[operation["ANA_" + r]](reg);  // preform op
@@ -65,8 +61,8 @@ describe("testInstructionsAnd", function() {
             expect(reg.CARRY).toEqual(0);  // no carry
             expect(reg.PARITY).toEqual(1); // even
             
-        });
-    }
+        }
+    });
     
     /** A anded with itself, always just equals itself */
     it("ANA A", function () {     

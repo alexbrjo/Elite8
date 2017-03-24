@@ -12,7 +12,7 @@ module.exports = function(config) {
         port: 9876,
         autoWatch: true,
         browsers: ['PhantomJS'],
-        captureTimeout: 60000,
+        captureTimeout: 30000,
         browserDisconnectTimeout: 30000,
         browserDisconnectTolerance: 0,
         browserNoActivityTimeout: 10000,

@@ -3,15 +3,10 @@
  */
 describe("testIntructionsCMP", function() {
 
-    var registers = ['B', 'C', 'D', 'E', 'H', 'L'];
-    for (var i = 0; i < registers.length; i++) {
-        var name = registers[i];
-        
-        var ii = 0; // hacky loop for parameterized tests
-        it("CMP " + name, function() {
-            reg =  MolassesRegisters();
-            var r = registers[ii];
-            ii++;
+    it("CMP R", function() {
+        var registers = ['B', 'C', 'D', 'E', 'H', 'L'];
+        for (var i = 0; i < registers.length; i++) {
+            var r = registers[i];
             
             reg = new MolassesRegisters();
 
@@ -55,8 +50,8 @@ describe("testIntructionsCMP", function() {
             expect(reg.CARRY).toEqual(1);  // carry
             expect(reg.PARITY).toEqual(1); // 246 is even
             
-        });
-    }
+        }
+    });
            
     /** Tests subtracting A from A, always will equal 0 */
     it("CMP A", function () {

@@ -6,17 +6,12 @@ describe("testIntructionsAddition", function () {
     var reg = null;
 
     /** Tests GPR and H L*/
-    var registers = ['B', 'C', 'D', 'E', 'H', 'L'];
-    for (var i = 0; i < registers.length; i++) {
-        var name = registers[i];
+    it("ADD R", function () {
+        var registers = ['B', 'C', 'D', 'E', 'H', 'L'];
+        for (var i = 0; i < registers.length; i++) {
+            var r = registers[i];
 
-        var ii = 0; // hacky loop for parameterized tests
-        it("ADD " + name, function () {
             reg = MolassesRegisters();
-            var r = registers[ii];
-            ii++;
-
-            reg = new MolassesRegisters();
 
             // When A = 0 and R = 0
             operation[operation["ADD_" + r]](reg);  // preform op
@@ -61,8 +56,8 @@ describe("testIntructionsAddition", function () {
             expect(reg.ZERO).toEqual(0);   // not zero
             expect(reg.CARRY).toEqual(1);  // carry
             expect(reg.PARITY).toEqual(1); // 16 is even
-        });
-    }
+        }
+    });
 
     /** Tests adding reg A to A */
     it("ADD A", function () {

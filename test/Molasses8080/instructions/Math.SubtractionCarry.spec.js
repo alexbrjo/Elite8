@@ -3,17 +3,11 @@
  */
 describe("testIntructionsSubtractionCarry", function() {
 
-    var registers = ['B', 'C', 'D', 'E', 'H', 'L'];
-    for (var i = 0; i < registers.length; i++) {
-        var name = registers[i];
-        
-        var ii = 0; // hacky loop for parameterized tests
-        it("SBB " + name, function() {
+    it("SBB R", function() {
+        var registers = ['B', 'C', 'D', 'E', 'H', 'L'];
+        for (var i = 0; i < registers.length; i++) {
             reg =  MolassesRegisters();
-            var r = registers[ii];
-            ii++;
-            
-            reg = new MolassesRegisters();
+            var r = registers[i];
 
             // When A = 0, R = 0 and carry = 0
             reg.CARRY = 0;
@@ -59,8 +53,8 @@ describe("testIntructionsSubtractionCarry", function() {
             expect(reg.CARRY).toEqual(0);  // no carry
             expect(reg.PARITY).toEqual(0); // 216 is odd
             
-        });
-    }
+        }
+    });
            
     /** Tests subtracting A from A, always will equal 0 */
     it("SBB A", function () {

@@ -10,15 +10,11 @@ describe("testInstructionsORA", function() {
     var const4 = parseInt('01000100', 2);
     var const5 = parseInt('11011101', 2);
 
-    var registers = ['B', 'C', 'D', 'E', 'H', 'L'];
-    for (var i = 0; i < registers.length; i++) {
-        var name = registers[i];
-
-        var ii = 0; // hacky loop for parameterized tests
-        it("ORA " + name, function () {
+    it("ORA R", function () {
+        var registers = ['B', 'C', 'D', 'E', 'H', 'L'];
+        for (var i = 0; i < registers.length; i++) {
             var reg = MolassesRegisters();
-            var r = registers[ii];
-            ii++;
+            var r = registers[i];
             
             // When A = 0b0000-0000 and R = 0b0000-0000
             operation[operation["ORA_" + r]](reg);  // preform op
@@ -66,8 +62,8 @@ describe("testInstructionsORA", function() {
             expect(reg.CARRY).toEqual(0);  // no carry
             expect(reg.PARITY).toEqual(0); // odd
             
-        });
-    }
+        }
+    });
     
     /** A anded with itself, always just equals itself */
     it("ORA A", function () {     

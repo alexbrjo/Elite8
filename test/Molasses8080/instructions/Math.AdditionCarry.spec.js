@@ -6,17 +6,11 @@ describe("testIntructionsAdditionCarry", function () {
     var reg = null;
 
     /** Tests GPR and H L*/
-    var registers = ['B', 'C', 'D', 'E', 'H', 'L'];
-    for (var i = 0; i < registers.length; i++) {
-        var name = registers[i];
-
-        var ii = 0; // hacky loop for parameterized tests
-        it("ADC " + name, function () {
+    it("ADC R", function () {
+        var registers = ['B', 'C', 'D', 'E', 'H', 'L'];
+        for (var i = 0; i < registers.length; i++) {
             reg = MolassesRegisters();
-            var r = registers[ii];
-            ii++;
-
-            reg = new MolassesRegisters();
+            var r = registers[i];
 
             // When A = 0, R = 0, and Carry = 1
             reg.CARRY = 1;
@@ -65,8 +59,8 @@ describe("testIntructionsAdditionCarry", function () {
             expect(reg.ZERO).toEqual(0);   // not zero
             expect(reg.CARRY).toEqual(1);  // carry
             expect(reg.PARITY).toEqual(0); // 17 is odd
-        });
-    }
+        }
+    });
 
     /** Tests adding reg A to A */
     it("ADC A", function () {

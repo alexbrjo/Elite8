@@ -3,15 +3,12 @@
  */
 describe("testIntructionsSubtraction", function() {
 
-    var registers = ['B', 'C', 'D', 'E', 'H', 'L'];
-    for (var i = 0; i < registers.length; i++) {
-        var name = registers[i];
-        
-        var ii = 0; // hacky loop for parameterized tests
-        it("SUB " + name, function() {
+    it("SUB R", function() {
+        var registers = ['B', 'C', 'D', 'E', 'H', 'L'];
+        for (var i = 0; i < registers.length; i++) {
             reg =  MolassesRegisters();
-            var r = registers[ii];
-            ii++;
+            var r = registers[i];
+            i++;
             
             reg = new MolassesRegisters();
 
@@ -55,8 +52,8 @@ describe("testIntructionsSubtraction", function() {
             expect(reg.CARRY).toEqual(0);  // cno arry
             expect(reg.PARITY).toEqual(1); // 216 is even
             
-        });
-    }
+        }
+    });
            
     /** Tests subtracting A from A, always will equal 0 */
     it("SUB A", function () {
