@@ -65,7 +65,7 @@ operation[operation.MOV_M_D] = function (reg) { reg.M = reg.D; reg.PC++;};
 operation[operation.MOV_M_E] = function (reg) { reg.M = reg.E; reg.PC++;};
 operation[operation.MOV_M_H] = function (reg) { reg.M = reg.H; reg.PC++;};
 operation[operation.MOV_M_L] = function (reg) { reg.M = reg.L; reg.PC++;};
-operation[operation.MOV_M_M] = function (reg) { throw "Unsupported operation"; reg.PC++;};
+// MOV M M is HLT
 operation[operation.MOV_M_A] = function (reg) { reg.M = reg.A; reg.PC++;};
 
 /** Loads A with R */

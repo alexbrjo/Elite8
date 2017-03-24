@@ -1,7 +1,7 @@
 /**
  * Tests the Boolean XRA operations.
  */
-describe("testInstructionsXor", function() {
+describe("testInstructionsXRA", function() {
 
     var const0 = parseInt('00000000', 2);
     var const1 = parseInt('11111111', 2);

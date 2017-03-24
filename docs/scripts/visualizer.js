@@ -17,3 +17,6 @@ function Simulator (processor) {
     };
     
 }
+
+var mem = new Memory;
+var intel = new Molasses8080(mem);

@@ -95,15 +95,15 @@ body > div {
     text-align: center;
 }
 
-#register .regAX {
+#register .acc {
     background-color: #30832a;
 }
 
-#register .regBX {
+#register .gpr {
     background-color: #b32c2c;
 }
 
-#register .regC {
+#register .regM {
     background-color: #2a5783;
 }
 

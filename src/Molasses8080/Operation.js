@@ -55,9 +55,9 @@ var operation = {
     RST_7: 0xF8, // return to subroutine at 7
     
     /** Rotate byte */
-    RCL: 0x07, // rotate content of A left through CY
+    RLC: 0x07, // rotate content of A left through CY
     RAL: 0x17, // rotate content of A left
-    RCR: 0x0F, // rotate content of A right through CY
+    RRC: 0x0F, // rotate content of A right through CY
     RAR: 0x1F, // rotate content of A right
     
     // LXI, STAX, SHLD, STA, INX, INR, DCR, MVI, 
@@ -104,3 +104,7 @@ var operation = {
     MOV_C_M: 0x4E, MOV_E_M: 0x5E, MOV_L_M: 0x6E, MOV_A_M: 0x7E,
     MOV_C_A: 0x4F, MOV_E_A: 0x5F, MOV_L_A: 0x6F, MOV_A_A: 0x7F
 };
+
+for (var i = 0; i < 0xFF; i++) {
+    operation[i] = function(){};
+}

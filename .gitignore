@@ -1,7 +1,8 @@
 /build
 /dist
-/test/MolassOS.*
 /coverage
+MolassOS.js
+MolassOS.min.js
 
 /nbproject
 /node_modules
