@@ -2,6 +2,10 @@
  * Assembles Intel 8080 assembly mnuemonics to machine code
  */
 function MolassesAssembler() {
+    /** The Project Control group */
+    var pcGroup = new RegExp("^(JMP|RET|CALL)$|^[JRC]{1}(NZ|NC|PO|P|Z|P|PE|M)$");
+    /** The math group, needs immed value */
+    var mathGroup = new RegExp("^(AD|AC|SU|SB|OR|XR|AN|CP)I$");
     /**
      * Seperates ("chews") a 16-bit number into 2 bytes 
      * @param {Number} addr a number 0 to 65536 
@@ -104,8 +108,8 @@ function MolassesAssembler() {
      * @returns {string} the state of the input
      */
     this.getState = function (t) {
-        if ((/^(JMP|RET|CALL)$|^[JRC]{1}(NZ|NC|PO|P|Z|P|PE|M)$/).test(t)) return "wait_address";
-        if ((/^(AD|AC|SU|SB|OR|XR|AN|CP)I$/).test(t)) return "wait_immed";
+        if (pcGroup.test(t)) return "wait_address";
+        if (mathGroup.test(t)) return "wait_immed";
         return "new_line";
     };
 }

@@ -12,10 +12,10 @@ module.exports = function(config) {
         port: 9876,
         autoWatch: true,
         browsers: ['PhantomJS'],
-        captureTimeout: 60000,
+        captureTimeout: 10000,
         browserDisconnectTimeout: 10000,
         browserDisconnectTolerance: 0,
-        browserNoActivityTimeout: 60000,
+        browserNoActivityTimeout: 10000,
         singleRun: true,
         coverageReporter: {
             type : 'lcov', // change to lcovonly for no HTML
