@@ -11,7 +11,7 @@ module.exports = function(config) {
         reporters: ['progress', 'coverage'],
         port: 9876,
         autoWatch: true,
-        browsers: ['Chrome'],
+        browsers: ['PhantomJS'],
         captureTimeout: 10000,
         browserDisconnectTimeout: 10000,
         browserDisconnectTolerance: 0,
