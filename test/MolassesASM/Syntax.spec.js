@@ -1,5 +1,5 @@
 /**
- * Tests the Assembly of Jump operations
+ * Tests the Assembly Syntax errors
  */
 describe("AssemblySyntax", function() {
 
