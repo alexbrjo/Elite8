@@ -4,9 +4,9 @@
 function MolassesAssembler() {
     
     /** The Project Control group */
-    var pcGroup = new RegExp("^(JMP|RET|CALL)$|^[JRC]{1}(NZ|NC|PO|P|Z|P|PE|M)$");
+    var pcGroup = /^(JMP|RET|CALL)$|^[JRC]{1}(NZ|NC|PO|P|Z|P|PE|M)$/;
     /** The math group, needs immed value */
-    var mathGroup = new RegExp("^(AD|AC|SU|SB|OR|XR|AN|CP)I$");
+    var mathGroup = /^(AD|AC|SU|SB|OR|XR|AN|CP)I$/;
     
     /**
      * Seperates ("chews") a 16-bit number into 2 bytes 
