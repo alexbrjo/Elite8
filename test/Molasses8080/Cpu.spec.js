@@ -3,13 +3,11 @@
  */
 describe("testCpu", function() {
     
-    var cpu = null;
-    
     /**
      * Tests constructing Cpu.
      */
     it("testCostruction", function() {
-        
+        var cpu = null;
         /* Should not throw error */
         var mem = new Memory(32); // 32 byte memory
         mem.write(0, 0x44); // JMP to address 00000000-00010000, which will HLT
@@ -24,9 +22,9 @@ describe("testCpu", function() {
     /**
      * Tests Running Cpu.
      */
-    //it("testCpuRun", function() {
-        
-        /* JMP to blank mem should throw error 
+    it("testCpuRun", function() {
+        var cpu = null;
+        /* JMP to blank mem should throw error */
         var mem = new Memory(32); 
         mem.write(0, 0x44); 
         mem.write(1, 0x0F);
@@ -35,5 +33,5 @@ describe("testCpu", function() {
         cpu =  new Molasses8080(mem);
         expect(function() { cpu.run(); }).not.toThrow();
         
-    });*/
+    });
 });
