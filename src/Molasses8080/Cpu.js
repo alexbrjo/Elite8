@@ -44,7 +44,8 @@ function Molasses8080 (memory) {
     /** Runs the program loaded in memory */
     this.run = function () {
         try {
-            while (true) {
+            // max lines safe guard 
+            for (var i = 0; i < 1000; i++) {
                 this.cycle();
             }
         } catch (e) {
