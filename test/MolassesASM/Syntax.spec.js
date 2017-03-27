@@ -13,7 +13,7 @@ describe("AssemblySyntax", function() {
         var src = "JMP \n \n HLT";
         expect(function() {
             sasm.assemble(src, 8);
-        }).not.toThrow();
+        }).toThrow();
         
     });
 });

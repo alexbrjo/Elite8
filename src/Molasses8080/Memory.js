@@ -3,15 +3,15 @@
  * has a 16-bit wide address bus so not 65536 bytes can be accessed.
  * ISSUE: MEMORY TAKES UP TOO MUCH SPACE
  * 
- * @param {Number} size the size of the memory
+ * @param {Number} s the size of the memory
  * @param {String} mem_type the type of memory 
  *      "RAM" - Read and write are enabled(default) 
  *      "ROM" - Read only memory
  */
-function Memory (size, mem_type) {
+function Memory (s, mem_type) {
     
     // Validate size parameter
-    if (size < 1) {
+    if (s < 1) {
         throw new Error("Memory must have at least 1 byte.");
     }
     // Validate mem_type parameter
@@ -21,7 +21,7 @@ function Memory (size, mem_type) {
     }
     
     /** The size of the memory */
-    var size = size || 512;
+    var size = s || 512;
     /** The size of the  */
     var cursor = -1;
     /** If you can write to memory */
@@ -50,7 +50,7 @@ function Memory (size, mem_type) {
      * @returns {Number} the value in the memory location
      */
     this.peek = function (d) {
-        var address = cursor + d;
+        var address = cursor + (typeof d === "undefined" ? 1 : d);
         // Checks that location is a valid memory address
         if (address < 0 || address >= data.length) {
             throw new Error("Illegal memory access: " + address);
