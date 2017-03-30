@@ -1,70 +1,41 @@
 /**
  * The Molasses8080 Instruction Set
+ * 
+ * Instruction groups:
+ *      - Control
+ *      - Program counter
+ *      - Arithmatic/logic (ALU)
+ *      - Move (assignment)
  */
 var operation = {
     
+    /*  Unsupported operations
+      
+         LXI, STAX, SHLD,  STA,  INX,  INR,  DCR, MVI, 
+         DAA,  STI,  CMA,  CMC, LDAX,  LDA, LHLD, DAD,
+        PUSH,  POP, XTHL, XCHG, PCHL, SPHL
+     */
+    
     /** Control group */
-    NOP: 0x00,
-    HLT: 0x76, // halts the cpu
-    IN:  0xD3,
-    OUT: 0xDB,
-    DI:  0xF3,
-    EI:  0xFB,
+    NOP: 0x00, HLT: 0x76, // No operation, Halt process
+    IN:  0xD3, OUT: 0xDB, // Input, output
+    DI:  0xF3, EI:  0xFB, // enable interrupt, disable interrupt
     
-    /** Jump */
-    JMP: 0xC3, // unconditional jump
-    JNZ: 0xC2, // jump if zero  = 0
-    JNC: 0xD2, // jump if carry = 0
-    JPO: 0xE2, // jump if parity= 0 
-    JP:  0xF2, // jump if sign  = 0
-    JZ:  0xCA, // jump if zero  = 1
-    JC:  0xDA, // jump if carry = 1
-    JPE: 0xEA, // jump if parity= 1
-    JM:  0xFA, // jump if sign  = 1
+/*      Jump |   Call   |  Return  |  Interrupt      */
+    JMP: 0xC3, CALL:0xCD, RET: 0xC8, RST_0: 0xC7, 
+    JNZ: 0xC2, CNZ: 0xC4, RNZ: 0xC0, RST_1: 0xC8,
+    JNC: 0xD2, CNC: 0xD4, RNC: 0xD0, RST_2: 0xD7, 
+    JPO: 0xE2, CPO: 0xE4, RPO: 0xE0, RST_3: 0xD8, 
+    JP:  0xF2, CP:  0xF4, RP:  0xF0, RST_4: 0xE7,
+    JZ:  0xCA, CZ:  0xCC, RZ:  0xC8, RST_5: 0xE8,
+    JC:  0xDA, CC:  0xDC, RC:  0xD8, RST_6: 0xF7,
+    JPE: 0xEA, CPE: 0xEC, RPE: 0xE8, RST_7: 0xF8,
+    JM:  0xFA, CM:  0xFC, RM:  0xF8, 
     
-    /** Call (push address and jump) */
-    CALL:0xCD, // unconditional call 
-    CNZ: 0xC4, // call if zero  = 0
-    CNC: 0xD4, // call if carry = 0
-    CPO: 0xE4, // call if parity= 0 
-    CP:  0xF4, // call if sign  = 0
-    CZ:  0xCC, // call if zero  = 1
-    CC:  0xDC, // call if carry = 1
-    CPE: 0xEC, // call if parity= 1
-    CM:  0xFC, // call if sign  = 1
+/*   Left w/ C | Rotate Left| Right w/ C | Rotate Right   */
+      RLC: 0x07,   RAL: 0x17,   RRC: 0x0F,   RAR: 0x1F, 
     
-    /** Return (pop address and jump back) */
-    RET: 0xC8, // unconditional return 
-    RNZ: 0xC0, // return if zero  = 0
-    RNC: 0xD0, // return if carry = 0
-    RPO: 0xE0, // return if parity= 0 
-    RP:  0xF0, // return if sign  = 0
-    RZ:  0xC8, // return if zero  = 1
-    RC:  0xD8, // return if carry = 1
-    RPE: 0xE8, // return if parity= 1
-    RM:  0xF8, // return if sign  = 1
-    
-    /** Return to Subroutine at 'R' */
-    RST_0: 0xC7, // return to subroutine at 0
-    RST_1: 0xC8, // return to subroutine at 1
-    RST_2: 0xD7, // return to subroutine at 2
-    RST_3: 0xD8, // return to subroutine at 3
-    RST_4: 0xE7, // return to subroutine at 4
-    RST_5: 0xE8, // return to subroutine at 5
-    RST_6: 0xF7, // return to subroutine at 6
-    RST_7: 0xF8, // return to subroutine at 7
-    
-    /** Rotate byte */
-    RLC: 0x07, // rotate content of A left through CY
-    RAL: 0x17, // rotate content of A left
-    RRC: 0x0F, // rotate content of A right through CY
-    RAR: 0x1F, // rotate content of A right
-    
-    // LXI, STAX, SHLD, STA, INX, INR, DCR, MVI, 
-    // DAA, STI, CMA, CMC, LDAX, LDA, LHLD, DAD,
-    // PUSH, POP, XTHL, XCHG, PCHL, SPHL
-    
-    /** Math operations: add, subtract, and, xor, or and compare */
+/*   addition  |  w/ carry  | subtraction|  w/ carry      */
     ADD_B: 0x80, ADC_B: 0x88, SUB_B: 0x90, SBB_B: 0x98,
     ADD_C: 0x81, ADC_C: 0x89, SUB_C: 0x91, SBB_C: 0x99,
     ADD_D: 0x82, ADC_D: 0x8A, SUB_D: 0x92, SBB_D: 0x9A,
@@ -75,6 +46,7 @@ var operation = {
     ADD_A: 0x87, ADC_A: 0x8F, SUB_A: 0x97, SBB_A: 0x9F,
     ADI:   0xC6, ACI:   0xCE, SUI:   0xD6, SBI:   0xDE,
     
+/*   and bits  |  xor bits  |   or bits  |  compare diff  */ 
     ANA_B: 0xA0, XRA_B: 0xA8, ORA_B: 0xB0, CMP_B: 0xB8,
     ANA_C: 0xA1, XRA_C: 0xA9, ORA_C: 0xB1, CMP_C: 0xB9,
     ANA_D: 0xA2, XRA_D: 0xAA, ORA_D: 0xB2, CMP_D: 0xBA,

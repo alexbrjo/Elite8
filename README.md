@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.org/alexbrjo/MolassOS.svg?branch=master)](https://travis-ci.org/alexbrjo/MolassOS) [![Code Climate](https://codeclimate.com/github/alexbrjo/MolassOS/badges/gpa.svg)](https://codeclimate.com/github/alexbrjo/MolassOS) [![Test Coverage](https://codeclimate.com/github/alexbrjo/MolassOS/badges/coverage.svg)](https://codeclimate.com/github/alexbrjo/MolassOS/coverage) ![size](https://img.shields.io/badge/size-1.3k-blue.svg)
 ===============================
 MolassOS is an operating system simulator that can run in your web browser. It 
-is modeled after the i8080 microprocessor and the Datapoint 2200 programmable terminal .
+is modeled after the i8080 microprocessor and the Datapoint 2200 programmable terminal.
 
 All the operation codes and assembly instructions are exactly what the Intel 
 8008 uses, but I/O and memory is done differently. The Assembler uses the 
@@ -40,16 +40,14 @@ use of visual aids and interactive demos.
     * Abstraction
     * Assembling: Assembler to machine with visual processor, memory and output
     * More on Assemblers
-4. BASIC
-    * The Language: 
-    * Compilation: Compiler to assembly to machine with visual processor, memory and output
-5. OS Concepts
+4. OS Concepts
     * POST and BIOS
     * Real and Protected mode
     * The Boot Sector and Loading
         * The Partion Boot Sector
         * One, two and mixed stage loading 0x0000:0x7c00
     * Setting up memory pages
+    * The File System and File Formats
     * Capturing Input with interrupts
 
 Special Thanks to these fantastic resources
