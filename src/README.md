@@ -28,10 +28,6 @@ Incomplete Tasks
 - Assemble IO group
 - Assemble Load group
 
-Molasses BASIC Compiler
------------------------
-Module not begun
-
 MolassOS  
 --------
 Module not begun
