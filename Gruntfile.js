@@ -52,7 +52,8 @@ module.exports = function (grunt) {
                     reportPath: 'coverage/sloc.json'
                 },
                 files: {
-                    'src':  [ '**/*.js' ] // only source code
+                    'src':  [ '**/*.js' ], // only source code
+                    'test':  [ '**/*.js' ] // only test code
                 }
             }
         }

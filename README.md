@@ -1,15 +1,16 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/alexbrjo/MolassOS/master/logo.png" alt="MolassOS 70s style logo"/>
+  <img src="https://raw.githubusercontent.com/alexbrjo/MolassOS/master/docs/logo.png" alt="Molasses 70s style logo"/>
 </p>
 
-[![Build Status](https://travis-ci.org/alexbrjo/MolassOS.svg?branch=master)](https://travis-ci.org/alexbrjo/MolassOS) [![Code Climate](https://codeclimate.com/github/alexbrjo/MolassOS/badges/gpa.svg)](https://codeclimate.com/github/alexbrjo/MolassOS) [![Test Coverage](https://codeclimate.com/github/alexbrjo/MolassOS/badges/coverage.svg)](https://codeclimate.com/github/alexbrjo/MolassOS/coverage) ![size](https://img.shields.io/badge/size-1.3k-blue.svg)
+[![Build Status](https://travis-ci.org/alexbrjo/MolassOS.svg?branch=master)](https://travis-ci.org/alexbrjo/MolassOS) [![Code Climate](https://codeclimate.com/github/alexbrjo/MolassOS/badges/gpa.svg)](https://codeclimate.com/github/alexbrjo/MolassOS) [![Test Coverage](https://codeclimate.com/github/alexbrjo/MolassOS/badges/coverage.svg)](https://codeclimate.com/github/alexbrjo/MolassOS/coverage) ![size](https://img.shields.io/badge/SLOC-0.7k-blue.svg) ![size](https://img.shields.io/badge/TestLOC-1.2k-lightgrey.svg)
 ===============================
-MolassOS is an operating system simulator that can run in your web browser. It 
-is modeled after the i8080 microprocessor and the Datapoint 2200 programmable terminal.
+MolassOS is an operating system simulator that can run in your web browser. Currently 
+I'm in the stage of building the hardware emulator.
 
-All the operation codes and assembly instructions are exactly what the Intel 
-8008 uses, but I/O and memory is done differently. The Assembler uses the 
-Molasses8080 assembly mnemonics.
+The operation codes and assembly instructions are exactly what the Intel 
+8080 uses. The Assembler uses the Intel 8080 assembly mnemonics. A lot of the 
+modules are designed used the i8080 microprocessor and the Datapoint 2200 
+programmable terminal as guidance.
 
 - [Source Code](src/) 
   - [Microprocessor Simulator](src/Molasses8080) 
@@ -21,12 +22,17 @@ Molasses8080 assembly mnemonics.
   - [for Molasses Assembler](test/MolassesASM) 
 - [Interactive Book](test/) 
 
+Current Tasks
+-------------
+- Instructions 
+  - MOV instructions using M and immed
+- Assembler
+
 The Interactive Course
 ----------------------
-The goal of the Course is to give developers with experience in high-level 
-programming (high-level of abstraction, not advanced programming) an
-understanding and basic knowledge of assembling, compiling and booting through 
-use of visual aids and interactive demos.
+To solidify what my knowledge of OS, assembly and hardware I'm writing my notes 
+in a way that someone with only higher level programming knowledge could
+understand it.
 
 1. Hardware 101
     * Meet the Intel 8080: chart of specs

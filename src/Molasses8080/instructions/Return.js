@@ -1,44 +1,34 @@
 
-operation[operation.RET] = function (reg, l, h) { reg.POP(); reg.PC = l * 0xFF + h; };
-operation[0x17] = operation[operation.RET];
-operation[0x27] = operation[operation.RET];
-operation[0x37] = operation[operation.RET];
-operation[0x1F] = operation[operation.RET];
-operation[0x2F] = operation[operation.RET];
-operation[0x3F] = operation[operation.RET]; 
-operation[0x4F] = operation[operation.RET];
+operation[operation.RET] = function (reg) { reg.POP(); };
+operation[0xD9] = operation[operation.RET];
 
-operation[operation.RNZ] = function (reg, l, h) {
+operation[operation.RNZ] = function (reg) {
     if (reg.ZERO === 0) {
         reg.POP();
-        reg.PC = l * 0xFF + h; 
     } else {
         reg.PC += 3; 
     }
 };
 
-operation[operation.RNC] = function (reg, l, h) {
+operation[operation.RNC] = function (reg) {
     if (reg.CARRY === 0) {
-        reg.POP();
-        reg.PC = l * 0xFF + h; 
+        reg.POP(); 
     } else {
         reg.PC += 3; 
     }
 };
 
-operation[operation.RP] = function (reg, l, h) {
+operation[operation.RP] = function (reg) {
     if (reg.SIGN === 0) {
         reg.POP();
-        reg.PC = l * 0xFF + h; 
     } else {
         reg.PC += 3; 
     }
 };
 
-operation[operation.RPO] = function (reg, l, h) {
-    if (reg.PARITY % 2 === 1) {
+operation[operation.RPO] = function (reg) {
+    if (reg.PARITY === 0) {
         reg.POP();
-        reg.PC = l * 0xFF + h; 
     } else {
         reg.PC += 3; 
     }
@@ -47,39 +37,36 @@ operation[operation.RPO] = function (reg, l, h) {
 operation[operation.RC] = function (reg, l, h) {
     if (reg.CARRY === 1) {
         reg.POP();
-        reg.PC = l * 0xFF + h; 
     } else {
         reg.PC += 3; 
     }
 };
 
 operation[operation.RZ] = function (reg, l, h) {
-    if (reg.RESULT === 0) {
+    if (reg.ZERO === 1) {
         reg.POP();
-        reg.PC = l * 0xFF + h; 
     } else {
         reg.PC += 3; 
     }
 };
 
 operation[operation.RM] = function (reg, l, h) {
-    if (reg.SIGN === 0) {
+    if (reg.SIGN === 1) {
         reg.POP();
-        reg.PC = l * 0xFF + h; 
     } else {
         reg.PC += 3; 
     }
 };
 
 operation[operation.RPE] = function (reg, l, h) {
-    if (reg.PARITY % 2 === 0) {
+    if (reg.PARITY === 1) {
         reg.POP();
-        reg.PC = l * 0xFF + h; 
     } else {
         reg.PC += 3; 
     }
 };
 
+/** return to interrupt function TODO: implement */
 operation[operation.RST_0] = function () {};
 operation[operation.RST_1] = function () {};
 operation[operation.RST_2] = function () {};

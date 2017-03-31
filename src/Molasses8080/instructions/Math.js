@@ -87,7 +87,7 @@ operation[operation.CMP_A] = function (reg) { reg.byte(reg.A - reg.A); reg.PC++;
 operation[operation.CPI] = function (reg, a) { reg.A = reg.A - a; reg.PC += 2; };
 
 /** Rotate bits (w/ and w/o carry) */
-operation[operation.RLC] = function (reg) { reg.A = (reg.A << 1) + reg.CARRY;  reg.PC++; };
-operation[operation.RRC] = function (reg) { reg.A = (reg.A >>> 1) + reg.CARRY; reg.PC++; };
+operation[operation.RLC] = function (reg) { reg.A = (reg.A << 1) + Math.floor(reg.A / 128);  reg.PC++; };
+operation[operation.RRC] = function (reg) { reg.A = (reg.A >>> 1) + 128 * (reg.A % 2); reg.PC++; };
 operation[operation.RAL] = function (reg) { reg.A = reg.A << 1;  reg.PC++; };
 operation[operation.RAR] = function (reg) { reg.A = reg.A >>> 1; reg.PC++; };
