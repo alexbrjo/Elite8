@@ -2,5 +2,8 @@
  * Tests the Control operations.
  */
 describe("testIntructionsControl", function() {
-    //TODO test controls
+    it('HALT', function(){});
+    it('NOP', function(){});
+    it('EI', function(){});
+    it('DI', function(){});
 });
