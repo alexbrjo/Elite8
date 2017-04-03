@@ -1,7 +1,7 @@
 Project Source Code
 ===================
 Currently the project goal is to simply finish. The remaining tasks are below.
-If you are a developers please feel welcome to work on the tasks below.
+If you'd like to contribute please feel welcome to check out the tasks below.
 
 Subfolders all have README's with general information on structure and design
 rationale. But the best way to become familiar with the code is to read it (duh).

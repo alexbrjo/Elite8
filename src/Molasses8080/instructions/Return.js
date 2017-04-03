@@ -65,15 +65,3 @@ operation[operation.RPE] = function (reg, l, h) {
         reg.PC += 3; 
     }
 };
-
-/** return to interrupt function TODO: implement */
-operation[operation.RST_0] = function () {};
-operation[operation.RST_1] = function () {};
-operation[operation.RST_2] = function () {};
-operation[operation.RST_3] = function () {};
-operation[operation.RST_4] = function () {};
-operation[operation.RST_5] = function () {};
-operation[operation.RST_6] = function () {};
-operation[operation.RST_7] = function () {};
-
-
