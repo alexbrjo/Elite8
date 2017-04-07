@@ -15,22 +15,8 @@ function Molasses8080 (memory) {
     /* Operation for opcode array. This is a legnth 256 array of functions */
     var opc = operation;
     
-    var manual_instr = [
-            opc.MOV_B_I, 42,
-            opc.MOV_A_B,
-            opc.ADD_B,
-            opc.HLT
-        ];
-        
-    this.init = function () {
-        for (var i = 0; i < manual_instr.length; i++) {
-            mem.write(manual_instr[i]);
-            console.log(manual_instr[i]);
-        }   
-
-        for (var i = 0xF7; i < 0x100; i++) {
-            mem.write(i, ("A").charCodeAt(0));
-        }
+    this.init = function (m) {
+        mem = m;
     };
     
     /**
@@ -45,7 +31,7 @@ function Molasses8080 (memory) {
           
         // excute operation
         opc[instr](reg, immed, hiadr);
-        
+        console.log(reg);
     };
         
     /** Runs the program loaded in memory */

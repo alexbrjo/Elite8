@@ -26,6 +26,7 @@ Current Tasks
 -------------
 - Instructions 
   - MOV instructions using M and immed
+- Instead of having the instructions change the program counter, have it increment when the instruction requests an immed value or address
 - Assembler
 
 The Interactive Course
@@ -62,6 +63,7 @@ Special Thanks to these fantastic resources
 * [wikichip](https://en.wikichip.org)
 * [OS Dev Wiki](http://wiki.osdev.org/)
 * [DataPoint 2200 introductions](http://www.sbprojects.com/sbasm/dp2200.php)
+* [BDS C source code]()
 * The DataPoint 2200 Programmer's Manual (1971, Intel corp.)
 * The Intel 8080 Assembly Programming Manual (1975, Intel corp.)
 * Intel 8080/85 Assembly Language Programming  (1977, Intel corp.)
