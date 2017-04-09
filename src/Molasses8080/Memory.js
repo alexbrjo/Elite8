@@ -119,5 +119,17 @@ function Memory (s, mem_type) {
         return size;
     };
     
+    /**
+     * Creates a string representation of the memory state
+     * @returns {String} a string of the memory's state
+     */
+    this.toString = function () {
+        var str = "";
+        for (var i = 0; i < data.length; i++) {
+            str += data[i].toString(16);
+        }
+        return str;
+    };
+    
     this.clear();
 }

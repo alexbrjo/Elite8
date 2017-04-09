@@ -3,7 +3,7 @@
  */
 describe("LabelAssembly", function() {    
     
-    var sasm = new MolassesAssembler();
+    var sasm = new MolassesASM();
     
     /**
      * Tests label stacking
