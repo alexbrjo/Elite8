@@ -26,8 +26,8 @@ var MolassesASM = function() {
         };
     };
     
-    this.assemble = assemble;
     this.preprocess = preprocess;
+    this.assemble = assemble;
     
     /**
      * Regex patterns for different states
@@ -40,4 +40,4 @@ var MolassesASM = function() {
         if (mathGroup.test(t)) return "wait_immed";
         return "new_line";
     };
-}
+};

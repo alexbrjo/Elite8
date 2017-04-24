@@ -5,12 +5,12 @@
  * @returns {Object} object with assembled memory and info.
  */
 var assemble = function (src, size) {
-    var line = src.split("\n"); // the input split into lines
     var constant = {}; // stores values of constants
     var label = {}; // stores memory locations of labels
     var machineCode = new Memory(size || 512); // assembled machine code
-
     var state = "init";
+    
+    var line = src.split("\n"); // the input split into lines
     for (var i = 0; i < line.length; i++) {
         // line split into tokens
         var token = line[i].split(" ").filter(function (a) {
@@ -52,12 +52,17 @@ var assemble = function (src, size) {
             }
             machineCode.write(immed); // write immediate value
         } else if (state === "wait_address") {
-            if (token[1] === "undefined")
-                throw new Error("No immed address label: line" + i);
-            if (typeof label[token[1]] === "undefined")
-                throw new Error("Could not find label: line" + i);
-
-            var address = this.chewAddress(label[token[1]]); // get address of label
+            var address;
+            if (token[1] === "undefined") {
+                throw new Error("No immed address label: line " + i);
+            } else if (!isNaN(parseInt(token[1], 10))) {
+                address = this.chewAddress(parseInt(token[1], 10));
+            } else {
+                if (typeof label[token[1]] === "undefined") {
+                    throw new Error("Could not find label: line " + i);
+                }
+                address = this.chewAddress(label[token[1]]); // get address of label
+            }
             machineCode.write(address.low); // write low order 
             machineCode.write(address.high); // write high order 
             state = "new_line";
