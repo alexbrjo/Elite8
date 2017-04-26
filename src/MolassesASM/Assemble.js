@@ -17,11 +17,19 @@ var assemble = function (src, size) {
             return a.length !== 0;
         });
         var t = token[0];
+        // checks basic non-variable opcodes
         if (typeof operation[t] !== "undefined") {
             machineCode.write(operation[t]);
             state = this.getState(t);
         } else {
             switch (t) {
+                case "add": case "ADD": case "adc": case "ADC":
+                case "sub": case "SUB": case "sbb": case "SBB":
+                case "ana": case "ANA": case "xra": case "XRA":
+                case "ora": case "ORA": case "cmp": case "CMP":
+                    machineCode.write(operation[t.toUpperCase() + "_" + token[1].charAt(0)]);
+                    state = "new_line";
+                    break;
                 case "db":
                 case "DB":
                     var def = t;
@@ -51,6 +59,7 @@ var assemble = function (src, size) {
                 immed = constant[token[1]];
             }
             machineCode.write(immed); // write immediate value
+            state = "new_line";
         } else if (state === "wait_address") {
             var address;
             if (token[1] === "undefined") {
