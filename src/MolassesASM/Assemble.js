@@ -72,7 +72,7 @@ var assemble = function (src, size) {
                 }
                 address = this.chewAddress(label[token[1]]); // get address of label
             }
-            machineCode.write(address.low); // write low order 
+            machineCode.write(address.low); // write low order
             machineCode.write(address.high); // write high order 
             state = "new_line";
         }

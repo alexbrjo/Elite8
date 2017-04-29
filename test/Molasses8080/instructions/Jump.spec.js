@@ -10,22 +10,22 @@ describe("testIntructionsJump", function() {
         
         reg.CARRY = 0; reg.PARITY = 0; reg.SIGN = 1; reg.ZERO = 1;
         expect(reg.PC).toEqual(0);
-        operation[op](reg, 0, 8);  // mem location 0x0008
+        operation[op](reg, 8, 0);  // mem location 0x0008
         expect(reg.PC).toEqual(8); // jumped to 8
         
         reg.CARRY = 1; reg.PARITY = 1; reg.SIGN = 0; reg.ZERO = 0;
         reg.PC = 250;
-        operation[op](reg, 5, 100);  // mem location 0x0564
+        operation[op](reg, 100, 5);  // mem location 0x0564
         expect(reg.PC).toEqual(1380);// jumped to 100
         
         reg.CARRY = 0; reg.PARITY = 1; reg.SIGN = 0; reg.ZERO = 1;
         reg.PC = 133;
-        operation[op](reg, 0, 95);  // mem location 0x005F
+        operation[op](reg, 95, 0);  // mem location 0x005F
         expect(reg.PC).toEqual(95); // jumped to 95
         
         reg.CARRY = 1; reg.PARITY = 0; reg.SIGN = 1; reg.ZERO = 0;
         reg.PC = 2000;
-        operation[op](reg, 0, 55);  // mem location 0x0037
+        operation[op](reg, 55, 0);  // mem location 0x0037
         expect(reg.PC).toEqual(55); // jumped to 100
     });
     
@@ -36,19 +36,19 @@ describe("testIntructionsJump", function() {
         
         reg.PC = 500;
         reg.CARRY = 1; reg.PARITY = 1; reg.SIGN = 0; reg.ZERO = 0;
-        operation[op](reg, 0, 400);
+        operation[op](reg, 400, 0);
         expect(reg.PC).toEqual(400);// call
         
         reg.CARRY = 0; reg.PARITY = 0; reg.SIGN = 1; reg.ZERO = 1;
-        operation[op](reg, 0, 300);
+        operation[op](reg, 300, 0);
         expect(reg.PC).toEqual(403);// no call
         
         reg.CARRY = 1; reg.PARITY = 0; reg.SIGN = 1; reg.ZERO = 0;
-        operation[op](reg, 0, 200);
+        operation[op](reg, 200, 0);
         expect(reg.PC).toEqual(200);// call
         
         reg.CARRY = 0; reg.PARITY = 1; reg.SIGN = 0; reg.ZERO = 1;
-        operation[op](reg, 0, 100);
+        operation[op](reg, 100, 0);
         expect(reg.PC).toEqual(203);// no call
     });
     
@@ -59,19 +59,19 @@ describe("testIntructionsJump", function() {
         
         reg.PC = 500;
         reg.CARRY = 1; reg.PARITY = 1; reg.SIGN = 0; reg.ZERO = 0;
-        operation[op](reg, 0, 400);
+        operation[op](reg, 400, 0);
         expect(reg.PC).toEqual(503);// no call
         
         reg.CARRY = 0; reg.PARITY = 0; reg.SIGN = 1; reg.ZERO = 1;
-        operation[op](reg, 0, 300);
+        operation[op](reg, 300, 0);
         expect(reg.PC).toEqual(300);// call
         
         reg.CARRY = 1; reg.PARITY = 0; reg.SIGN = 1; reg.ZERO = 0;
-        operation[op](reg, 0, 200);
+        operation[op](reg, 200, 0);
         expect(reg.PC).toEqual(303);// no call
         
         reg.CARRY = 0; reg.PARITY = 1; reg.SIGN = 0; reg.ZERO = 1;
-        operation[op](reg, 0, 100);
+        operation[op](reg, 100, 0);
         expect(reg.PC).toEqual(100);// call
     });
     
@@ -82,19 +82,19 @@ describe("testIntructionsJump", function() {
         
         reg.PC = 500;
         reg.CARRY = 1; reg.PARITY = 1; reg.SIGN = 0; reg.ZERO = 0;
-        operation[op](reg, 0, 400);
+        operation[op](reg, 400, 0);
         expect(reg.PC).toEqual(503);// no call
         
         reg.CARRY = 0; reg.PARITY = 0; reg.SIGN = 1; reg.ZERO = 1;
-        operation[op](reg, 0, 300);
+        operation[op](reg, 300, 0);
         expect(reg.PC).toEqual(300);// call
         
         reg.CARRY = 1; reg.PARITY = 0; reg.SIGN = 1; reg.ZERO = 0;
-        operation[op](reg, 0, 200);
+        operation[op](reg, 200, 0);
         expect(reg.PC).toEqual(200);// call
         
         reg.CARRY = 0; reg.PARITY = 1; reg.SIGN = 0; reg.ZERO = 1;
-        operation[op](reg, 0, 100);
+        operation[op](reg, 100, 0);
         expect(reg.PC).toEqual(203);// no call
     });
     
@@ -105,19 +105,19 @@ describe("testIntructionsJump", function() {
         
         reg.PC = 500;
         reg.CARRY = 1; reg.PARITY = 1; reg.SIGN = 0; reg.ZERO = 0;
-        operation[op](reg, 0, 400);
+        operation[op](reg, 400, 0);
         expect(reg.PC).toEqual(400);// call
         
         reg.CARRY = 0; reg.PARITY = 0; reg.SIGN = 1; reg.ZERO = 1;
-        operation[op](reg, 0, 300);
+        operation[op](reg, 300, 0);
         expect(reg.PC).toEqual(403);// no call
         
         reg.CARRY = 1; reg.PARITY = 0; reg.SIGN = 1; reg.ZERO = 0;
-        operation[op](reg, 0, 200);
+        operation[op](reg, 200, 0);
         expect(reg.PC).toEqual(406);// no call
         
         reg.CARRY = 0; reg.PARITY = 1; reg.SIGN = 0; reg.ZERO = 1;
-        operation[op](reg, 0, 100);
+        operation[op](reg, 100, 0);
         expect(reg.PC).toEqual(100);// call
     });
     
@@ -128,19 +128,19 @@ describe("testIntructionsJump", function() {
         
         reg.PC = 500;
         reg.CARRY = 1; reg.PARITY = 1; reg.SIGN = 0; reg.ZERO = 0;
-        operation[op](reg, 0, 400);
+        operation[op](reg, 400, 0);
         expect(reg.PC).toEqual(503);// no call
         
         reg.CARRY = 0; reg.PARITY = 0; reg.SIGN = 1; reg.ZERO = 1;
-        operation[op](reg, 0, 300);
+        operation[op](reg, 300, 0);
         expect(reg.PC).toEqual(300);// call
         
         reg.CARRY = 1; reg.PARITY = 0; reg.SIGN = 1; reg.ZERO = 0;
-        operation[op](reg, 0, 200);
+        operation[op](reg, 200, 0);
         expect(reg.PC).toEqual(303);// no call
         
         reg.CARRY = 0; reg.PARITY = 1; reg.SIGN = 0; reg.ZERO = 1;
-        operation[op](reg, 0, 100);
+        operation[op](reg, 100, 0);
         expect(reg.PC).toEqual(100);// call
     });
     
@@ -151,19 +151,19 @@ describe("testIntructionsJump", function() {
         
         reg.PC = 500;
         reg.CARRY = 1; reg.PARITY = 1; reg.SIGN = 0; reg.ZERO = 0;
-        operation[op](reg, 0, 400);
+        operation[op](reg, 400, 0);
         expect(reg.PC).toEqual(400);// call
         
         reg.CARRY = 0; reg.PARITY = 0; reg.SIGN = 1; reg.ZERO = 1;
-        operation[op](reg, 0, 300);
+        operation[op](reg, 300, 0);
         expect(reg.PC).toEqual(403);// no call
         
         reg.CARRY = 1; reg.PARITY = 0; reg.SIGN = 1; reg.ZERO = 0;
-        operation[op](reg, 0, 200);
+        operation[op](reg, 200, 0);
         expect(reg.PC).toEqual(200);// call
         
         reg.CARRY = 0; reg.PARITY = 1; reg.SIGN = 0; reg.ZERO = 1;
-        operation[op](reg, 0, 100);
+        operation[op](reg, 100, 0);
         expect(reg.PC).toEqual(203);// no call
     });
     
@@ -174,19 +174,19 @@ describe("testIntructionsJump", function() {
         
         reg.PC = 500;
         reg.CARRY = 1; reg.PARITY = 1; reg.SIGN = 0; reg.ZERO = 0;
-        operation[op](reg, 0, 400);
+        operation[op](reg, 400, 0);
         expect(reg.PC).toEqual(400);// call
         
         reg.CARRY = 0; reg.PARITY = 0; reg.SIGN = 1; reg.ZERO = 1;
-        operation[op](reg, 0, 300);
+        operation[op](reg, 300, 0);
         expect(reg.PC).toEqual(403);// no call
         
         reg.CARRY = 1; reg.PARITY = 0; reg.SIGN = 1; reg.ZERO = 0;
-        operation[op](reg, 0, 200);
+        operation[op](reg, 200, 0);
         expect(reg.PC).toEqual(406);// no call
         
         reg.CARRY = 0; reg.PARITY = 1; reg.SIGN = 0; reg.ZERO = 1;
-        operation[op](reg, 0, 100);
+        operation[op](reg, 100, 0);
         expect(reg.PC).toEqual(100);// call
     });
     
@@ -197,19 +197,19 @@ describe("testIntructionsJump", function() {
         
         reg.PC = 500;
         reg.CARRY = 1; reg.PARITY = 1; reg.SIGN = 0; reg.ZERO = 0;
-        operation[op](reg, 0, 400);
+        operation[op](reg, 400, 0);
         expect(reg.PC).toEqual(503);// no call
         
         reg.CARRY = 0; reg.PARITY = 0; reg.SIGN = 1; reg.ZERO = 1;
-        operation[op](reg, 0, 300);
+        operation[op](reg, 300, 0);
         expect(reg.PC).toEqual(300);// call
         
         reg.CARRY = 1; reg.PARITY = 0; reg.SIGN = 1; reg.ZERO = 0;
-        operation[op](reg, 0, 200);
+        operation[op](reg, 200, 0);
         expect(reg.PC).toEqual(200);// call
         
         reg.CARRY = 0; reg.PARITY = 1; reg.SIGN = 0; reg.ZERO = 1;
-        operation[op](reg, 0, 100);
+        operation[op](reg, 100, 0);
         expect(reg.PC).toEqual(203);// no call
     });
 });
