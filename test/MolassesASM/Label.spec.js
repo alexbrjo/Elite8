@@ -1,5 +1,5 @@
 /**
- * Tests Assmebly of labels 
+ * Tests Assembly of labels
  */
 describe("LabelAssembly", function() {    
     

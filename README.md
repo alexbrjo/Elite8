@@ -26,14 +26,14 @@ Current Tasks
 -------------
 - Instructions 
   - MOV instructions using M and immed
-- Instead of having the instructions change the program counter, have it increment when the instruction requests an immed value or address
+- Instructions needs to be organized better, there's a lot of redundancy
 - Assembler
 
 The Interactive Course
 ----------------------
 To solidify what my knowledge of OS, assembly and hardware I'm writing my notes 
-in a way that someone with only higher level programming knowledge could
-understand it.
+in a way that could make sense to someone with higher level programming 
+knowledge could understand it.
 
 1. Hardware 101
     * Meet the Intel 8080: chart of specs
@@ -67,4 +67,5 @@ Special Thanks to these fantastic resources
 * The DataPoint 2200 Programmer's Manual (1971, Intel corp.)
 * The Intel 8080 Assembly Programming Manual (1975, Intel corp.)
 * Intel 8080/85 Assembly Language Programming  (1977, Intel corp.)
+* Crash Course / PBS's Computer Science YouTube series
 * Code Climate for the free student account
