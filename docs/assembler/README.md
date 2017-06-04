@@ -1,11 +1,6 @@
-Molasses Assembler
-==================
-Assembles Molasses8080 Mnemonics's to machine code. Works using the operation
-global variable, an FSM for syntax and a switch statement. 
+# Molasses Assembler
 
-Knowledge Acquisition
----------------------
-- BDS C Compiler source code
-- NASM source code (excellent docs and source comments, highly recommended)
+Assembles Molasses8080 Mnemonics's to machine code. Works using the operation global variable, an FSM for syntax and a switch statement.
 
- 
+
+

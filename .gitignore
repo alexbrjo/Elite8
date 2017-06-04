@@ -9,3 +9,6 @@ MolassOS.min.js
 *.log
 .DS_Store
 .idea
+
+# unsure if I want this yet
+package-lock.json

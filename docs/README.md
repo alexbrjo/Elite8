@@ -1,33 +1,29 @@
-Project Source Code
-===================
-Currently the project goal is to simply finish. The remaining tasks are below.
-If you'd like to contribute please feel welcome to check out the tasks below.
+# ![](/logo.png)
 
-Subfolders all have README's with general information on structure and design
-rationale. But the best way to become familiar with the code is to read it (duh).
+MolassOS is an Intel 8080 microprocessor, assembler and bare-bones operating system that can run in your web browser.
 
-- [Processor Simulator](Molasses8080) 
-  - [Operation codes](Molasses8080/instructions)
-- [Molasses Assembler](MolassesASM)
+```js
+// Creates a new processor with os
+var cpu = MolassOS.create(2048);
+var canvas = document.getElementById('canvas');
 
-The Molasses 8080 Simulator
----------------------------
-Incomplete Tasks
-- Operations for all opcodes
-- Stack implementation
-- Virtual register implementation
+// Give the simulator an output 
+cpu.bindToCanvas(canvas);
+canvas.onKeyEvent = cpu.input;
 
-Molasses Assembler
----------------
-Incomplete Tasks
-- Assemble Jump group
-- Assemble Call group
-- Assemble Return group
-- Assemble Arithmetic group 
-  - Add, sub, mult, div, boolean operations, rotate
-- Assemble IO group
-- Assemble Load group
+// starts the computer
+cpu.boot();
+```
 
-MolassOS  
---------
-Module not begun
+## Hardware Simulator
+
+Simulates the Intel 8080 microprocessor, it's registers and memory. Can be used with a loaded OS.
+
+## Assembler
+
+Highly coupled with the simulator, the assembler uses defined op-code mappings to assembly text from .asm files to Intel 8080 byte code.
+
+## Operating System
+
+Written in 8-bit Intel 8080 assembly this code is assembled to byte-code and stored in memory to run. The planned featured of the OS are a BootSector, BIOS and developer utils.
+

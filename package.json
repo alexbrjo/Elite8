@@ -2,7 +2,13 @@
   "name": "MolassOS",
   "description": "JavaScript microprocessor and assembler for higher-lever programmers(me) to learn about microprocessors.",
   "version": "0.5.0",
-  "keywords": ["Intel 8080", "Intel 8008", "emulator", "assembly", "compiler"],
+  "keywords": [
+    "Intel 8080",
+    "Intel 8008",
+    "emulator",
+    "assembly",
+    "compiler"
+  ],
   "author": {
     "name": "Alex"
   },

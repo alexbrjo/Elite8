@@ -12,16 +12,6 @@ The operation codes and assembly instructions are exactly what the Intel
 modules are designed using the i8080 microprocessor and the Datapoint 2200
 programmable terminal as guidance.
 
-- [Source Code](src/) 
-  - [Microprocessor Simulator](src/Molasses8080) 
-    - [Operation codes](src/Molasses8080/instructions)
-  - [Molasses Assembler](src/MolassesASM) 
-- [Test Code](test/)
-  - [for Molasses8080 Simulator](test/Molasses8080) 
-    - [for operations](test/Molasses8080/instructions)
-  - [for Molasses Assembler](test/MolassesASM) 
-- [Project Docs](docs/)
-
 Building
 --------
 You need Nodejs and grunt-cli installed globally to build MolassOS. The tests do not take long to run so the default
@@ -38,20 +28,13 @@ Modules are planned to be built in the following order. This is subject to chang
 4. Bundle `MolassOS.cpu` and contents of `floppy.json` into `MolassOS.emu`
 5. If not a sdk build delete `MolassOS.asm`
 
-Current Tasks
--------------
-- Assembler
-- Finalizing Instructions
-  - MOV instructions using M and immed
-  - better organization, a lot of redundancy
-
-Special Thanks to these fantastic resources
--------------------------------------------
-* [wikipedia](https://en.wikipedia.org/wiki/BASIC)
+Sources and Further Reading
+---------------------------
 * [wikichip](https://en.wikichip.org)
 * [OS Dev Wiki](http://wiki.osdev.org/)
 * [DataPoint 2200 introductions](http://www.sbprojects.com/sbasm/dp2200.php)
-* [BDS C source code]()
+* [BDS C source code](http://www.bdsoft.com/resources/bdsc.html)
+* [NASM source code](http://www.nasm.us/) : excellent docs and source comments, highly recommended
 * The DataPoint 2200 Programmer's Manual (1971, Intel corp.)
 * The Intel 8080 Assembly Programming Manual (1975, Intel corp.)
 * Intel 8080/85 Assembly Language Programming  (1977, Intel corp.)
