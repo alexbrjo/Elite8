@@ -20,7 +20,7 @@ programmable terminal as guidance.
   - [for Molasses8080 Simulator](test/Molasses8080) 
     - [for operations](test/Molasses8080/instructions)
   - [for Molasses Assembler](test/MolassesASM) 
-- [Book and Project Docs](docs/)
+- [Project Docs](docs/)
 
 Building
 --------
@@ -44,12 +44,6 @@ Current Tasks
 - Finalizing Instructions
   - MOV instructions using M and immed
   - better organization, a lot of redundancy
-
-Short Book and Projects Docs
-----------------------------
-To solidify what my knowledge of OS, assembly and hardware I'm writing my notes 
-in a way that could make sense to someone with higher level programming 
-knowledge could understand it. They can be found under the [docs](docs/) folder
 
 Special Thanks to these fantastic resources
 -------------------------------------------
