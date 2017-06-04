@@ -5,6 +5,7 @@ describe("testIntructionsRotate", function() {
     
     it("RLC", function() {
         var reg = MolassesRegisters();
+        reg.memory = new Memory(8);
         
         // when A = 0
         operation[operation["RLC"]](reg);
@@ -34,6 +35,7 @@ describe("testIntructionsRotate", function() {
     
     it("RAL", function() {
         var reg = MolassesRegisters();
+        reg.memory = new Memory(8);
         
         // when A = 0
         operation[operation["RAL"]](reg);
@@ -63,6 +65,7 @@ describe("testIntructionsRotate", function() {
     
     it("RRC", function() {
         var reg = MolassesRegisters();
+        reg.memory = new Memory(8);
         
         // when A = 0
         operation[operation["RRC"]](reg);
@@ -92,6 +95,7 @@ describe("testIntructionsRotate", function() {
     
     it("RAR", function() {
         var reg = MolassesRegisters();
+        reg.memory = new Memory(8);
         
         // when A = 0
         operation[operation["RAR"]](reg);

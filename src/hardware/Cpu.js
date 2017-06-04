@@ -7,12 +7,11 @@
  * Default starts executing at Memory 0x000
  */
 function Molasses8080 (memory) {
-    
-    /* General, flag, program, stack registers */
+    /** General, flag, program, stack registers */
     var reg = MolassesRegisters();
-    /* The Memory of the cpu: 256 mb */
-    var mem = memory || new Memory(256);
-    /* Operation for opcode array. This is a length 256 array of functions */
+    /** The Memory of the cpu: 256 mb */
+    var mem = (reg.memory = (memory || new Memory(256)));
+    /** Operation for opcode array. This is a length 256 array of functions */
     var opc = operation;
 
     /**
@@ -31,22 +30,9 @@ function Molasses8080 (memory) {
         var instr = mem.read(reg.PC);   // instruction location
         var immed = mem.peek(1);        // immediate next value, or low-order address
         var hiadr = mem.peek(2);        // high-order address, used for program and stack control
-        var perms = true;
 
         // execute operation
-        opc[instr](reg, immed, hiadr,
-            /**
-             * Gets the value at a memory address
-             * @param l the low order address of requested memory
-             * @param h the high order address of the requested memory
-             * return
-             */
-            function(l, h) {
-                if (perms) {
-                    return mem.read(h * 16 + l);
-                }
-            }
-        );
+        opc[instr](reg, immed, hiadr);
         console.log(reg);
     };
         

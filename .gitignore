@@ -1,14 +1,16 @@
+# Project builds folders & files
 /build
 /dist
 /coverage
+/node_modules
 MolassOS.js
 MolassOS.min.js
 
+# Common ide & os files
 /nbproject
-/node_modules
 *.log
 .DS_Store
 .idea
 
-# unsure if I want this yet
+# currently unneeded
 package-lock.json

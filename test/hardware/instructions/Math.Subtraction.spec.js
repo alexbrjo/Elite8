@@ -85,4 +85,19 @@ describe("testIntructionsSubtraction", function() {
         expect(reg.PARITY).toEqual(1); // 0 is even
         
     });
+
+    it("SUB M", function () {
+        reg = MolassesRegisters();
+        reg.memory = new Memory(8);
+        reg.memory.write(0, 21);
+
+        reg.A = 30;
+        operation[operation["SUB_M"]](reg, 0, 0);
+        expect(reg.A).toEqual(9);
+
+        expect(reg.SIGN).toEqual(0);   // not negative
+        expect(reg.ZERO).toEqual(0);   // not zero
+        expect(reg.CARRY).toEqual(0);  // no carry
+        expect(reg.PARITY).toEqual(0); // 9 is odd
+    });
 });

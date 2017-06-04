@@ -19,7 +19,10 @@ describe("testRegisters", function() {
         expect(reg.E).toEqual(0); 
         expect(reg.H).toEqual(0);
         expect(reg.L).toEqual(0);
-        expect(reg.M).toEqual(0);   
+        expect(function () { reg.M }).toThrow();
+
+        reg.memory = new Memory(8);
+        expect(reg.M).toEqual(0);
         
     });
     
@@ -71,7 +74,6 @@ describe("testRegisters", function() {
             expect(reg.E).toEqual(0); 
             expect(reg.H).toEqual(0);
             expect(reg.L).toEqual(0);
-            expect(reg.M).toEqual(0); 
 
         });
     }
@@ -82,21 +84,21 @@ describe("testRegisters", function() {
     it("testRegisterM", function() {
         
         reg =  MolassesRegisters();
+        reg.memory = new Memory(8);
         
         expect(reg.M).toEqual(0); // default value of h is 0, and l is 0
         expect(reg.M).toEqual(0); // getting doesn't change value
         
-        // 516 is 256*2 + 4
-        reg.M = 516;
-        expect(reg.H).toEqual(2);
-        expect(reg.L).toEqual(4); 
-        expect(reg.M).toEqual(516); 
-        
-        // 0 to 65536 shouldn't throw errors
-        for (var i = 0; i < 0xFFFF; i += 0xFF) {
-            reg.M = i;
-            expect(reg.M).toEqual(i); 
-        }
+        // address 0 = 13
+        reg.M = 13;
+        expect(reg.H).toEqual(0);
+        expect(reg.L).toEqual(0);
+        expect(reg.M).toEqual(13);
+
+        // address 3 = 255
+        reg.memory.write(3, 255);
+        reg.L = 3;
+        expect(reg.M).toEqual(255);
         
     });
 });

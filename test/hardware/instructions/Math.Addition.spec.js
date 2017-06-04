@@ -123,4 +123,19 @@ describe("testIntructionsAddition", function () {
         expect(reg.PARITY).toEqual(1); // 232 is even
     });
 
+    it("ADD M", function () {
+        reg = MolassesRegisters();
+        reg.memory = new Memory(8);
+        reg.memory.write(0, 255);
+
+        expect(reg.A).toEqual(0);
+        operation[operation["ADD_M"]](reg, 0, 0);
+        expect(reg.A).toEqual(255);
+
+        expect(reg.SIGN).toEqual(0);   // not negative
+        expect(reg.ZERO).toEqual(0);   // not zero
+        expect(reg.CARRY).toEqual(0);  // no carry
+        expect(reg.PARITY).toEqual(0); // 255 is odd
+    });
+
 });

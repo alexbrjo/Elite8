@@ -3,6 +3,7 @@
  */
 function MolassesRegisters () {
     return {
+        memory: null,
         /**
          * The 8-bit A (Accumulator) Register
          */
@@ -37,11 +38,12 @@ function MolassesRegisters () {
         set L(v) { this.l = this.byte(v); },
         
         get M() {
-            return this.H * 256 + this.L;
+            if (this.memory === null) throw 'memory not initialized';
+            return this.memory.read(this.H * 256 + this.L);
         },
         set M(v) {
-            this.H = Math.floor(v / 256);      // set H to first 8 bits
-            this.L = v - this.H * 256; // set L to last 8 bits
+            if (this.memory === null) throw 'memory not initialized';
+            this.memory.write(this.H * 256 + this.L, v) ;
         },
         
         /* The flag register, split into bits */

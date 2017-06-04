@@ -1,5 +1,20 @@
 /**
  * Grunt task Configuration
+ *
+ *      > grunt build
+ *          The default task, counts sloc, runs tests and gets coverage.
+ *      > grunt deploy
+ *          Runs tests and builds/assembles the OS
+ *
+ * These are the registered tasks used by the main tasks. Not recommended to run by themselves
+ *      > grunt concat
+ *      > grunt copy:build
+ *      > grunt clean:build
+ *      > grunt uglify:build
+ *      > grunt karma:build
+ *      > grunt sloc:source
+ *      > grunt sloc:test
+ *      > grunt assemble
  */
 module.exports = function (grunt) {
     grunt.initConfig({
@@ -27,10 +42,7 @@ module.exports = function (grunt) {
         },
         clean:{
             build:{
-                src: [
-                    'build', 'dist', 'coverage',
-                    '**/MolassOS.*'
-                    ]
+                src: ['build', 'dist', 'coverage']
             }
         },
         uglify: {
@@ -46,14 +58,22 @@ module.exports = function (grunt) {
             }
         },
         sloc: {
-            prebuild : {
+            source : {
                 options: {
                     reportType: 'json',
-                    reportPath: 'coverage/sloc.json'
+                    reportPath: 'coverage/source_sloc.json'
                 },
                 files: {
                     'src':  [ '**/*.js' ], // only source code
-                    'test':  [ '**/*.js' ] // only test code
+                }
+            },
+            test : {
+                options: {
+                    reportType: 'json',
+                    reportPath: 'coverage/test_sloc.json'
+                },
+                files: {
+                    'test':  [ '**/*.js' ], // only test code
                 }
             }
         }
@@ -67,15 +87,24 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('karma-coverage');
     grunt.loadNpmTasks('grunt-sloc');
+    grunt.registerTask('assemble', 'Assembles the OS', function() {
+        // use assembler to create OS
+        return false;
+    });
     grunt.registerTask(
-        'default', 
-        'Runs SLOC, builds and runs Karma tests', 
+        'build',
+        'Runs SLOC, concats, uglifies and runs Karma tests',
         [
-            'clean', // clean environment
-            'sloc', // sloc in clean enviroment
+            'clean', 'sloc:source', 'sloc:test',// clean and count lines of code
             // copy to build, concat and minify all sources
             'copy:build', 'concat', 'uglify',
             'karma' // run karma tests, generates coverage
          ]
     );
+    grunt.registerTask(
+        'deploy',
+        'Builds, tests and assembles a new MolassOS',
+        ['test', 'assemble']
+    );
+    grunt.registerTask('default', 'build');
 };

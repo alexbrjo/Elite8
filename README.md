@@ -2,7 +2,7 @@
   <img src="https://raw.githubusercontent.com/alexbrjo/MolassOS/master/docs/logo.png" alt="Molasses 70s style logo"/>
 </p>
 
-[![Build Status](https://travis-ci.org/alexbrjo/MolassOS.svg?branch=master)](https://travis-ci.org/alexbrjo/MolassOS) [![Code Climate](https://codeclimate.com/github/alexbrjo/MolassOS/badges/gpa.svg)](https://codeclimate.com/github/alexbrjo/MolassOS) [![Test Coverage](https://codeclimate.com/github/alexbrjo/MolassOS/badges/coverage.svg)](https://codeclimate.com/github/alexbrjo/MolassOS/coverage) ![size](https://img.shields.io/badge/sloc-0.7k-blue.svg) ![size](https://img.shields.io/badge/test_loc-1.2k-lightgrey.svg)
+[![Build Status](https://travis-ci.org/alexbrjo/MolassOS.svg?branch=master)](https://travis-ci.org/alexbrjo/MolassOS) [![Code Climate](https://codeclimate.com/github/alexbrjo/MolassOS/badges/gpa.svg)](https://codeclimate.com/github/alexbrjo/MolassOS) [![Test Coverage](https://codeclimate.com/github/alexbrjo/MolassOS/badges/coverage.svg)](https://codeclimate.com/github/alexbrjo/MolassOS/coverage) ![size](https://img.shields.io/badge/sloc-1.0k-blue.svg) ![size](https://img.shields.io/badge/test_loc-1.8k-lightgrey.svg)
 ===============================
 MolassOS is an operating system simulator that can run in your web browser. Currently 
 I'm in the stage of building the hardware emulator.
@@ -22,9 +22,9 @@ npm install grunt
 grunt
 ```
 Modules are planned to be built in the following order. This is subject to change
-1. `src/Molasses8080/` > `MolassOS.cpu`
-2. `src/MolassesASM/` > `MolassOS.asm`
-3. Use `MolassOS.asm` to assemble contents of `src/MolassesOS/` into `floppy.json`
+1. `src/hardware/` > `MolassOS.cpu`
+2. `src/asm/` > `MolassOS.asm`
+3. Use `MolassOS.asm` to assemble contents of `src/os/` into `floppy.json`
 4. Bundle `MolassOS.cpu` and contents of `floppy.json` into `MolassOS.emu`
 5. If not a sdk build delete `MolassOS.asm`
 

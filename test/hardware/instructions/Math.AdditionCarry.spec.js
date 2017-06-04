@@ -132,4 +132,19 @@ describe("testIntructionsAdditionCarry", function () {
         expect(reg.PARITY).toEqual(0); // 233 is odd
     });
 
+    it("ADC M", function () {
+        reg = MolassesRegisters();
+        reg.memory = new Memory(8);
+        reg.memory.write(0, 99);
+
+        reg.CARRY = 1;
+        operation[operation["ADC_M"]](reg, 0, 0);
+        expect(reg.A).toEqual(100);
+
+        expect(reg.SIGN).toEqual(0);   // not negative
+        expect(reg.ZERO).toEqual(0);   // not zero
+        expect(reg.CARRY).toEqual(0);  // no carry
+        expect(reg.PARITY).toEqual(1); // 100 is even
+    });
+
 });

@@ -26,7 +26,7 @@ The tests do not take long to run so the default task builds and tests the appli
 > grunt
 ```
 
-[for a more detailed description of the build process](//building-developer-guidebuildingmd.md)
+[for a more detailed description of the build process](/developer-guide/building.md)
 
 ## Unit Tests
 

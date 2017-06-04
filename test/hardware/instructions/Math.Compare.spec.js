@@ -83,4 +83,19 @@ describe("testIntructionsCMP", function() {
         expect(reg.PARITY).toEqual(1); // 0 is even
         
     });
+
+    it("CMP M", function () {
+        reg = MolassesRegisters();
+        reg.memory = new Memory(8);
+        reg.memory.write(0, 33);
+
+        reg.A = 40;
+        operation[operation["CMP_M"]](reg, 0, 0);
+        expect(reg.A).toEqual(40);  // shouldn't have changed
+
+        expect(reg.SIGN).toEqual(0);   // not negative
+        expect(reg.ZERO).toEqual(0);   // not zero
+        expect(reg.CARRY).toEqual(0);  // no carry
+        expect(reg.PARITY).toEqual(0); // 7 is odd
+    });
 });
