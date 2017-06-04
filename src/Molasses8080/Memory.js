@@ -130,6 +130,6 @@ function Memory (s, mem_type) {
         }
         return str;
     };
-    
-    this.clear();
+
+    this.clear(); // makes sure memory is all 0s at creation
 }

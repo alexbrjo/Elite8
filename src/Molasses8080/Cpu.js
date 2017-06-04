@@ -14,9 +14,12 @@ function Molasses8080 (memory) {
     var mem = memory || new Memory(256);
     /* Operation for opcode array. This is a length 256 array of functions */
     var opc = operation;
-    
-    this.init = function (m) {
-        mem = m;
+
+    /**
+     * Boots the Computer by validating and starting operate at the Boot sector.
+     */
+    this.boot = function () {
+        // Boot off 'Floppy.json', this will initialize the interrupts and bootloader
     };
     
     /**
@@ -32,18 +35,18 @@ function Molasses8080 (memory) {
 
         // execute operation
         opc[instr](reg, immed, hiadr,
-
-        /**
-         * Gets the value at a memory address
-         * @param l the low order address of requested memory
-         * @param h the high order address of the requested memory
-         * return
-         */
-        function(l, h) {
-            if (perms) {
-                return mem.read(h * 16 + l);
+            /**
+             * Gets the value at a memory address
+             * @param l the low order address of requested memory
+             * @param h the high order address of the requested memory
+             * return
+             */
+            function(l, h) {
+                if (perms) {
+                    return mem.read(h * 16 + l);
+                }
             }
-        });
+        );
         console.log(reg);
     };
         

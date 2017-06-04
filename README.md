@@ -9,7 +9,7 @@ I'm in the stage of building the hardware emulator.
 
 The operation codes and assembly instructions are exactly what the Intel 
 8080 uses. The Assembler uses the Intel 8080 assembly mnemonics. A lot of the 
-modules are designed used the i8080 microprocessor and the Datapoint 2200 
+modules are designed using the i8080 microprocessor and the Datapoint 2200
 programmable terminal as guidance.
 
 - [Source Code](src/) 
@@ -20,42 +20,36 @@ programmable terminal as guidance.
   - [for Molasses8080 Simulator](test/Molasses8080) 
     - [for operations](test/Molasses8080/instructions)
   - [for Molasses Assembler](test/MolassesASM) 
-- [Interactive Book](test/) 
+- [Book and Project Docs](docs/)
+
+Building
+--------
+You need Nodejs and grunt-cli installed globally to build MolassOS. The tests do not take long to run so the default
+task builds and tests the application. The following with
+```
+npm update
+npm install grunt
+grunt
+```
+Modules are planned to be built in the following order. This is subject to change
+1. `src/Molasses8080/` > `MolassOS.cpu`
+2. `src/MolassesASM/` > `MolassOS.asm`
+3. Use `MolassOS.asm` to assemble contents of `src/MolassesOS/` into `floppy.json`
+4. Bundle `MolassOS.cpu` and contents of `floppy.json` into `MolassOS.emu`
+5. If not a sdk build delete `MolassOS.asm`
 
 Current Tasks
 -------------
-- Instructions 
-  - MOV instructions using M and immed
-- Instructions needs to be organized better, there's a lot of redundancy
 - Assembler
+- Finalizing Instructions
+  - MOV instructions using M and immed
+  - better organization, a lot of redundancy
 
-The Interactive Course
-----------------------
+Short Book and Projects Docs
+----------------------------
 To solidify what my knowledge of OS, assembly and hardware I'm writing my notes 
 in a way that could make sense to someone with higher level programming 
-knowledge could understand it.
-
-1. Hardware 101
-    * Meet the Intel 8080: chart of specs
-    * Storing Data: Memory demo with JS console
-    * What is a Register?: Register demo with JS console
-    * The Microprocessor: Machine code demo with buttons
-2. Machine Speak
-    * Machine Codes: Machine code demo with JS console
-    * Operation Codes: Opcode to machine code 
-3. Assembly
-    * Abstraction
-    * Assembling: Assembler to machine with visual processor, memory and output
-    * More on Assemblers
-4. OS Concepts
-    * POST and BIOS
-    * Real and Protected mode
-    * The Boot Sector and Loading
-        * The Partion Boot Sector
-        * One, two and mixed stage loading 0x0000:0x7c00
-    * Setting up memory pages
-    * The File System and File Formats
-    * Capturing Input with interrupts
+knowledge could understand it. They can be found under the [docs](docs/) folder
 
 Special Thanks to these fantastic resources
 -------------------------------------------
