@@ -8,18 +8,33 @@
  *      - Move (assignment)
  */
 var operation = {
-    
-    /*  Unsupported operations
-      
-         LXI, STAX, SHLD,  STA,  INX,  INR,  DCR, MVI, 
-         DAA,  STI,  CMA,  CMC, LDAX,  LDA, LHLD, DAD,
-        PUSH,  POP, XTHL, XCHG, PCHL, SPHL
-     */
-    
+
+    XCHG: 0xEB, // exchange registers DE and HL
+    XTHL: 0xE3, // exchange stack SP and HL
+    SPHL: 0xF9, // load SP from HL
+    PCHL: 0xE9, // load program counter from HL
+
+    /** Store/load accumulator at location BC or location DE */
+    STAX_B: 0x02, STAX_D: 0x12, LDAX_B: 0x0A, LDAX_D: 0x1A,
+
+    /** store/load H L direct, store/load accumulator direct */
+    SHLD: 0x22, LHLD: 0x2A, STA: 0x32, LDA: 0x3A,
+
+    /** Load Register pair with 16-bit value */
+    LXI_B: 0x01, LXI_D: 0x11, LXI_H: 0x21, LXI_SP:0x31,
+
+    /** Push and pop registers */
+    POP_B: 0xC1, PUSH_B: 0xC5,
+    POP_D: 0xD1, PUSH_D: 0xD5,
+    POP_H: 0xE1, PUSH_H: 0xE5,
+    POP_PS:0xF1, PUSH_PS:0xF5,
+
     /** Control group */
     NOP: 0x00, HLT: 0x76, // No operation, Halt process
     IN:  0xD3, OUT: 0xDB, // Input, output
     DI:  0xF3, EI:  0xFB, // enable interrupt, disable interrupt
+    CMC: 0x3F, CMA: 0x2F, // complement carry, complement a
+    STC: 0x37,            // set carry
     
 /*      Jump |   Call   |  Return  |  Interrupt      */
     JMP: 0xC3, CALL:0xCD, RET: 0xC9, RST_0: 0xC7, 
@@ -32,9 +47,12 @@ var operation = {
     JPE: 0xEA, CPE: 0xEC, RPE: 0xE8, RST_7: 0xFF,
     JM:  0xFA, CM:  0xFC, RM:  0xF8, 
     
-/*   Left w/ C | Rotate Left| Right w/ C | Rotate Right   */
-      RLC: 0x07,   RAL: 0x17,   RRC: 0x0F,   RAR: 0x1F, 
-    
+/*  Left w/ C | Rotate Left| Right w/ C | Rotate Right   */
+    RLC: 0x07,   RAL: 0x17,   RRC: 0x0F,   RAR: 0x1F,
+
+/*  Double add | Decimal adjust accumulator */
+    DAD_B: 0x09, DAD_D: 0x19, DAD_H: 0x29, DAD_SP:0x39, DAA: 0x27,
+
 /*   addition  |  w/ carry  | subtraction|  w/ carry      */
     ADD_B: 0x80, ADC_B: 0x88, SUB_B: 0x90, SBB_B: 0x98,
     ADD_C: 0x81, ADC_C: 0x89, SUB_C: 0x91, SBB_C: 0x99,
@@ -45,6 +63,16 @@ var operation = {
     ADD_M: 0x86, ADC_M: 0x8E, SUB_M: 0x96, SBB_M: 0x9E,
     ADD_A: 0x87, ADC_A: 0x8F, SUB_A: 0x97, SBB_A: 0x9F,
     ADI:   0xC6, ACI:   0xCE, SUI:   0xD6, SBI:   0xDE,
+
+/*  Increment reg | Decrement reg | inc/dcr register pair */
+    INR_B: 0x04,    DCR_B: 0x05,    INX_B: 0x03,
+    INR_C: 0x0C,    DCR_C: 0x0D,    INX_D: 0x03,
+    INR_D: 0x14,    DCR_D: 0x15,    INX_H: 0x03,
+    INR_E: 0x1C,    DCR_E: 0x1D,    INX_SP:0x03,
+    INR_H: 0x24,    DCR_H: 0x25,    DCX_B: 0x03,
+    INR_L: 0x2C,    DCR_L: 0x2D,    DCX_D: 0x03,
+    INR_M: 0x34,    DCR_M: 0x35,    DCX_H: 0x03,
+    INR_A: 0x3C,    DCR_A: 0x3D,    DCX_SP:0x03,
     
 /*   and bits  |  xor bits  |   or bits  |  compare diff  */ 
     ANA_B: 0xA0, XRA_B: 0xA8, ORA_B: 0xB0, CMP_B: 0xB8,
@@ -55,7 +83,7 @@ var operation = {
     ANA_L: 0xA5, XRA_L: 0xAD, ORA_L: 0xB5, CMP_L: 0xBD,
     ANA_M: 0xA6, XRA_M: 0xAE, ORA_M: 0xB6, CMP_M: 0xBE,
     ANA_A: 0xA7, XRA_A: 0xAF, ORA_A: 0xB7, CMP_A: 0xBF,
-    ANI  : 0xE6, XRI:   0xEE, ORI:  0xF6, CPI:   0xFE,
+    ANI  : 0xE6, XRI:   0xEE, ORI:   0xF6, CPI:   0xFE,
     
     /* Move operations */
     MOV_B_B: 0x40, MOV_D_B: 0x50, MOV_H_B: 0x60, MOV_M_B: 0x70,
@@ -78,6 +106,12 @@ var operation = {
     
     MOV_B_I: 0x06, MOV_D_I: 0x16, MOV_H_I: 0x26, MOV_M_I: 0x36,
     MOV_C_I: 0x0E, MOV_E_I: 0x1E, MOV_L_I: 0x2E, MOV_A_I: 0x3E
+
+    /** potential Z80 compatibility */
+    BIT:  0xCB, // bit instructions
+    EXTD: 0xDB, // extended instructions
+    IX:   0xDD, IX_BIT: 0xCB, // IX instructions, IX bit instructions
+    IY:   0xFC, IY_BIT: 0xCB, // IY instructions, IY bit instructions
 
 };
 
