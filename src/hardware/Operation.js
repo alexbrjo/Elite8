@@ -105,7 +105,7 @@ var operation = {
     MOV_C_A: 0x4F, MOV_E_A: 0x5F, MOV_L_A: 0x6F, MOV_A_A: 0x7F,
     
     MOV_B_I: 0x06, MOV_D_I: 0x16, MOV_H_I: 0x26, MOV_M_I: 0x36,
-    MOV_C_I: 0x0E, MOV_E_I: 0x1E, MOV_L_I: 0x2E, MOV_A_I: 0x3E
+    MOV_C_I: 0x0E, MOV_E_I: 0x1E, MOV_L_I: 0x2E, MOV_A_I: 0x3E,
 
     /** potential Z80 compatibility */
     BIT:  0xCB, // bit instructions
