@@ -86,6 +86,26 @@ operation[operation.CMP_M] = function (reg) { reg.byte(reg.A - reg.M); reg.PC++;
 operation[operation.CMP_A] = function (reg) { reg.byte(reg.A - reg.A); reg.PC++; };
 operation[operation.CPI] = function (reg, a) { reg.A = reg.A - a; reg.PC += 2; };
 
+/** Increment */
+operation[operation.INR_B] = function (reg) { reg.B++; };
+operation[operation.INR_C] = function (reg) { reg.C++; };
+operation[operation.INR_D] = function (reg) { reg.D++; };
+operation[operation.INR_E] = function (reg) { reg.E++; };
+operation[operation.INR_H] = function (reg) { reg.H++; };
+operation[operation.INR_L] = function (reg) { reg.L++; };
+operation[operation.INR_M] = function (reg) { reg.M++; };
+operation[operation.INR_A] = function (reg) { reg.A++; };
+
+/** Decrement */
+operation[operation.DCR_B] = function (reg) { reg.B--; };
+operation[operation.DCR_C] = function (reg) { reg.C--; };
+operation[operation.DCR_D] = function (reg) { reg.D--; };
+operation[operation.DCR_E] = function (reg) { reg.E--; };
+operation[operation.DCR_H] = function (reg) { reg.H--; };
+operation[operation.DCR_L] = function (reg) { reg.L--; };
+operation[operation.DCR_M] = function (reg) { reg.M--; };
+operation[operation.DCR_A] = function (reg) { reg.A--; };
+
 /** Rotate bits (w/ and w/o carry) */
 operation[operation.RLC] = function (reg) { reg.A = (reg.A << 1) + Math.floor(reg.A / 128);  reg.PC++; };
 operation[operation.RRC] = function (reg) { reg.A = (reg.A >>> 1) + 128 * (reg.A % 2); reg.PC++; };
