@@ -10,34 +10,34 @@ describe('testIntructionsCall', function() {
         reg.CLEAR_STACK();
         reg.CARRY = 0; reg.PARITY = 0; reg.SIGN = 1; reg.ZERO = 1;
         expect(reg.PC).toEqual(0);
-        operation[op](reg, 0, 8);  // mem location 0x0008
-        expect(reg.PC).toEqual(8); // called to 8
+        operation[op](reg, 0, 8);
+        expect(reg.PC).toEqual(8);
         reg.POP();
-        expect(reg.PC).toEqual(0); // called to 0
+        expect(reg.PC).toEqual(0);
         
         reg.CLEAR_STACK();
         reg.CARRY = 1; reg.PARITY = 1; reg.SIGN = 0; reg.ZERO = 0;
         reg.PC = 250;
-        operation[op](reg, 5, 100);  // mem location 0x0564
-        expect(reg.PC).toEqual(0x0564);// called to 0x0564
+        operation[op](reg, 5, 100);
+        expect(reg.PC).toEqual(0x0564);
         reg.POP();
-        expect(reg.PC).toEqual(250); // called to 250
+        expect(reg.PC).toEqual(250);
         
         reg.CLEAR_STACK();
         reg.CARRY = 0; reg.PARITY = 1; reg.SIGN = 0; reg.ZERO = 1;
         reg.PC = 133;
-        operation[op](reg, 0, 95);  // mem location 0x005F
-        expect(reg.PC).toEqual(95); // called to 95
+        operation[op](reg, 0, 95);
+        expect(reg.PC).toEqual(95);
         reg.POP();
-        expect(reg.PC).toEqual(133); // called to 133
+        expect(reg.PC).toEqual(133);
         
         reg.CLEAR_STACK();
         reg.CARRY = 1; reg.PARITY = 0; reg.SIGN = 1; reg.ZERO = 0;
         reg.PC = 2000;
-        operation[op](reg, 0, 55);  // mem location 0x0037
-        expect(reg.PC).toEqual(55); // called to 100
+        operation[op](reg, 0, 55);
+        expect(reg.PC).toEqual(55);
         reg.POP();
-        expect(reg.PC).toEqual(2000); // called to 2000
+        expect(reg.PC).toEqual(2000);
     });
     
     // test call if not zero
