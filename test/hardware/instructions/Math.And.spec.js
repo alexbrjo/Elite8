@@ -15,51 +15,51 @@ describe("testInstructionsAnd", function() {
             var reg = MolassesRegisters();
             var r = registers[i];
             
-            // When A = 0b0000-0000 and R = 0b0000-0000
-            operation[operation["ANA_" + r]](reg);  // preform op
-            expect(reg.A).toEqual(0);      // 0b0 & 0b0 = 0b0
-            expect(reg[r]).toEqual(0);      // shouldn't be affected
+            // When A = 0b00000000 and R = 0b00000000
+            operation[operation["ANA_" + r]](reg);
+            expect(reg.A).toEqual(0);
+            expect(reg[r]).toEqual(0);
 
-            expect(reg.SIGN).toEqual(0);   // not negative
-            expect(reg.ZERO).toEqual(1);   // zero
-            expect(reg.CARRY).toEqual(0);  // no carry
-            expect(reg.PARITY).toEqual(1); // 0 is even
+            expect(reg.SIGN).toEqual(0);
+            expect(reg.ZERO).toEqual(1);
+            expect(reg.CARRY).toEqual(0);
+            expect(reg.PARITY).toEqual(1);
             
             // When A = 0b11111111 and R = 0b01010101
             reg.A = const1;
             reg[r] = const2;
-            operation[operation["ANA_" + r]](reg);  // preform op
+            operation[operation["ANA_" + r]](reg);
             expect(reg.A).toEqual(const2);  // 0b11111111 & 0b01010101 = 0b01010101
-            expect(reg[r]).toEqual(const2); // shouldn't be affected
+            expect(reg[r]).toEqual(const2);
 
-            expect(reg.SIGN).toEqual(0);   // not negative
-            expect(reg.ZERO).toEqual(0);   // not zero
-            expect(reg.CARRY).toEqual(0);  // no carry
-            expect(reg.PARITY).toEqual(0); // odd
+            expect(reg.SIGN).toEqual(0);
+            expect(reg.ZERO).toEqual(0);
+            expect(reg.CARRY).toEqual(0);
+            expect(reg.PARITY).toEqual(0);
             
             // When A = 0b01010101 and R = 11001100
             reg.A = const2;
             reg[r] = const3;
-            operation[operation["ANA_" + r]](reg);  // preform op
+            operation[operation["ANA_" + r]](reg);
             expect(reg.A).toEqual(const4);  // 0b01010101 & 0b00110011 = 0b01000100
-            expect(reg[r]).toEqual(const3); // shouldn't be affected
+            expect(reg[r]).toEqual(const3);
 
-            expect(reg.SIGN).toEqual(0);   // not negative
-            expect(reg.ZERO).toEqual(0);   // not zero
-            expect(reg.CARRY).toEqual(0);  // no carry
-            expect(reg.PARITY).toEqual(1); // even
+            expect(reg.SIGN).toEqual(0);
+            expect(reg.ZERO).toEqual(0);
+            expect(reg.CARRY).toEqual(0);
+            expect(reg.PARITY).toEqual(1);
             
             // When A = 0b01010101 and R = 00000000
             reg.A = const2;
             reg[r] = const0;
-            operation[operation["ANA_" + r]](reg);  // preform op
+            operation[operation["ANA_" + r]](reg);
             expect(reg.A).toEqual(const0);  // 0b00000000 & 0b00110011 = 0b00000000
-            expect(reg[r]).toEqual(const0); // shouldn't be affected
+            expect(reg[r]).toEqual(const0);
 
-            expect(reg.SIGN).toEqual(0);   // not negative
-            expect(reg.ZERO).toEqual(1);   // zero
-            expect(reg.CARRY).toEqual(0);  // no carry
-            expect(reg.PARITY).toEqual(1); // even
+            expect(reg.SIGN).toEqual(0);
+            expect(reg.ZERO).toEqual(1);
+            expect(reg.CARRY).toEqual(0);
+            expect(reg.PARITY).toEqual(1);
             
         }
     });
@@ -69,33 +69,33 @@ describe("testInstructionsAnd", function() {
         var reg = MolassesRegisters();
             
         // When A = 0b0000-0000
-        operation[operation.ANA_A](reg);  // preform op
+        operation[operation.ANA_A](reg);
         expect(reg.A).toEqual(0);      // 0b0 & 0b0 = 0b0
 
-        expect(reg.SIGN).toEqual(0);   // not negative
-        expect(reg.ZERO).toEqual(1);   // zero
-        expect(reg.CARRY).toEqual(0);  // no carry
-        expect(reg.PARITY).toEqual(1); // 0 is even
+        expect(reg.SIGN).toEqual(0);
+        expect(reg.ZERO).toEqual(1);
+        expect(reg.CARRY).toEqual(0);
+        expect(reg.PARITY).toEqual(1);
             
         // When A = 0b11111111
         reg.A = const1;
-        operation[operation.ANA_A](reg);  // preform op
+        operation[operation.ANA_A](reg);
         expect(reg.A).toEqual(const1);  // 0b11111111 & 0b11111111 = 0b11111111
 
-        expect(reg.SIGN).toEqual(0);   // not negative
-        expect(reg.ZERO).toEqual(0);   // not zero
-        expect(reg.CARRY).toEqual(0);  // no carry
-        expect(reg.PARITY).toEqual(0); // odd
+        expect(reg.SIGN).toEqual(0);
+        expect(reg.ZERO).toEqual(0);
+        expect(reg.CARRY).toEqual(0);
+        expect(reg.PARITY).toEqual(0);
             
         // When A = 0b01010101
         reg.A = const2;
-        operation[operation.ANA_A](reg);  // preform op
+        operation[operation.ANA_A](reg);
         expect(reg.A).toEqual(const2);  // 0b01010101 & 0b01010101 = 0b01010101
 
-        expect(reg.SIGN).toEqual(0);   // not negative
-        expect(reg.ZERO).toEqual(0);   // not zero
-        expect(reg.CARRY).toEqual(0);  // no carry
-        expect(reg.PARITY).toEqual(0); // odd
+        expect(reg.SIGN).toEqual(0);
+        expect(reg.ZERO).toEqual(0);
+        expect(reg.CARRY).toEqual(0);
+        expect(reg.PARITY).toEqual(0);
             
     });
 
@@ -108,10 +108,10 @@ describe("testInstructionsAnd", function() {
         operation[operation["ANA_M"]](reg, 0, 0);
         expect(reg.A).toEqual(const2);  // 0b11111111 & 0b01010101 = 0b01010101
 
-        expect(reg.SIGN).toEqual(0);   // not negative
-        expect(reg.ZERO).toEqual(0);   // not zero
-        expect(reg.CARRY).toEqual(0);  // no carry
-        expect(reg.PARITY).toEqual(0); // odd
+        expect(reg.SIGN).toEqual(0);
+        expect(reg.ZERO).toEqual(0);
+        expect(reg.CARRY).toEqual(0);
+        expect(reg.PARITY).toEqual(0);
     });
 
 });
