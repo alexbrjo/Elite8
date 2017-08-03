@@ -11,44 +11,46 @@ describe("testIntructionsCMP", function() {
             reg = new MolassesRegisters();
 
             // When A = 0, R = 0
-            operation[operation["CMP_" + r]](reg);  // preform op
-            expect(reg.A).toEqual(0);      // 0 - 0 = 0
-            expect(reg[r]).toEqual(0);     // doesn't change
-            expect(reg.SIGN).toEqual(0);   // not negative
-            expect(reg.ZERO).toEqual(1);   // zero
-            expect(reg.CARRY).toEqual(0);  // no carry
-            expect(reg.PARITY).toEqual(1); // 0 is even
+            operation[operation["CMP_" + r]](reg);
+            expect(reg.A).toEqual(0);
+            expect(reg[r]).toEqual(0);
+
+            expect(reg.SIGN).toEqual(0);
+            expect(reg.ZERO).toEqual(1);
+            expect(reg.CARRY).toEqual(0);
+            expect(reg.PARITY).toEqual(1);
 
             // When A = 40, R = 33
             reg.A  = 40;
             reg[r] = 33;
-            operation[operation["CMP_" + r]](reg);  // preform op
-            expect(reg.A).toEqual(40);      // 40 - 33 = 7
-            expect(reg[r]).toEqual(33);    // doesn't change
-            expect(reg.SIGN).toEqual(0);   // not negative
-            expect(reg.ZERO).toEqual(0);   // not zero
-            expect(reg.CARRY).toEqual(0);  // no carry
-            expect(reg.PARITY).toEqual(0); // 7 is odd
+            operation[operation["CMP_" + r]](reg);
+            expect(reg.A).toEqual(40);
+            expect(reg[r]).toEqual(33);
+
+            expect(reg.SIGN).toEqual(0);
+            expect(reg.ZERO).toEqual(0);
+            expect(reg.CARRY).toEqual(0);
+            expect(reg.PARITY).toEqual(0);
 
             // When A = 20, R = 30
             reg.A  = 20;
             reg[r] = 30;
-            operation[operation["CMP_" + r]](reg);  // preform op
-            expect(reg.A).toEqual(20);     // 20 - 30 = -10 -> 246
-            expect(reg[r]).toEqual(30);     // doesn't change
-            expect(reg.SIGN).toEqual(0);   // not negative
-            expect(reg.ZERO).toEqual(0);   // not zero
-            expect(reg.CARRY).toEqual(1);  // carry
-            expect(reg.PARITY).toEqual(1); // 246 is even
+            operation[operation["CMP_" + r]](reg);
+            expect(reg.A).toEqual(20);
+            expect(reg[r]).toEqual(30);
+            expect(reg.SIGN).toEqual(0);
+            expect(reg.ZERO).toEqual(0);
+            expect(reg.CARRY).toEqual(1);
+            expect(reg.PARITY).toEqual(1);
 
             // double operation without load, small output
-            operation[operation["CMP_" + r]](reg);  // preform op
-            expect(reg.A).toEqual(20);     // 20 - 30 = -10 -> 246
-            expect(reg[r]).toEqual(30);     // doesn't change
-            expect(reg.SIGN).toEqual(0);   // not negative
-            expect(reg.ZERO).toEqual(0);   // not zero
-            expect(reg.CARRY).toEqual(1);  // carry
-            expect(reg.PARITY).toEqual(1); // 246 is even
+            operation[operation["CMP_" + r]](reg);
+            expect(reg.A).toEqual(20);
+            expect(reg[r]).toEqual(30);
+            expect(reg.SIGN).toEqual(0);
+            expect(reg.ZERO).toEqual(0);
+            expect(reg.CARRY).toEqual(1);
+            expect(reg.PARITY).toEqual(1);
             
         }
     });
@@ -58,29 +60,29 @@ describe("testIntructionsCMP", function() {
         reg = new MolassesRegisters(); 
         
         // When A = 0
-        operation[operation.CMP_A](reg);  // preform op
-        expect(reg.SIGN).toEqual(0);   // not negative
-        expect(reg.ZERO).toEqual(1);   // zero
-        expect(reg.CARRY).toEqual(0);  // no carry
-        expect(reg.PARITY).toEqual(1); // 0 is even
+        operation[operation.CMP_A](reg);
+        expect(reg.SIGN).toEqual(0);
+        expect(reg.ZERO).toEqual(1);
+        expect(reg.CARRY).toEqual(0);
+        expect(reg.PARITY).toEqual(1);
         
         // When A = 4
         reg.A = 4;
-        operation[operation.CMP_A](reg);  // preform op
-        expect(reg.A).toEqual(4);      // 4 - 4 = 0
-        expect(reg.SIGN).toEqual(0);   // not negative
-        expect(reg.ZERO).toEqual(1);   // zero
-        expect(reg.CARRY).toEqual(0);  // no carry
-        expect(reg.PARITY).toEqual(1); // 0 is even
+        operation[operation.CMP_A](reg);
+        expect(reg.A).toEqual(4);
+        expect(reg.SIGN).toEqual(0);
+        expect(reg.ZERO).toEqual(1);
+        expect(reg.CARRY).toEqual(0);
+        expect(reg.PARITY).toEqual(1);
         
         // When A = 77
         reg.A = 77;
-        operation[operation.CMP_A](reg);  // preform op
-        expect(reg.A).toEqual(77);      // 77 - 77 = 0
-        expect(reg.SIGN).toEqual(0);   // not negative
-        expect(reg.ZERO).toEqual(1);   // zero
-        expect(reg.CARRY).toEqual(0);  // no carry
-        expect(reg.PARITY).toEqual(1); // 0 is even
+        operation[operation.CMP_A](reg);
+        expect(reg.A).toEqual(77);
+        expect(reg.SIGN).toEqual(0);
+        expect(reg.ZERO).toEqual(1);
+        expect(reg.CARRY).toEqual(0);
+        expect(reg.PARITY).toEqual(1);
         
     });
 
@@ -91,11 +93,11 @@ describe("testIntructionsCMP", function() {
 
         reg.A = 40;
         operation[operation["CMP_M"]](reg, 0, 0);
-        expect(reg.A).toEqual(40);  // shouldn't have changed
+        expect(reg.A).toEqual(40);
 
-        expect(reg.SIGN).toEqual(0);   // not negative
-        expect(reg.ZERO).toEqual(0);   // not zero
-        expect(reg.CARRY).toEqual(0);  // no carry
-        expect(reg.PARITY).toEqual(0); // 7 is odd
+        expect(reg.SIGN).toEqual(0);
+        expect(reg.ZERO).toEqual(0);
+        expect(reg.CARRY).toEqual(0);
+        expect(reg.PARITY).toEqual(0);
     });
 });

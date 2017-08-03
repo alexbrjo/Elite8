@@ -1,6 +1,5 @@
 /**
- * Tests the Load operations. Currently only tests 49 of 71
- * TODO test M and I MOV commands
+ * Tests the Load operations.
  */
 describe("testIntructionsLoad", function() {
     /* Incremented every command ran */
@@ -93,9 +92,9 @@ describe("testIntructionsLoad", function() {
             var op = operation["MOV_" + R[i] + "_I"];
 
             reg[R[i]] = 30;
-            expect(reg[R[i]]).toEqual(30); // before R holds 30
+            expect(reg[R[i]]).toEqual(30);
             operation[op](reg, 22);
-            expect(reg[R[i]]).toEqual(22); //  after R holds 22
+            expect(reg[R[i]]).toEqual(22);
 
         }
 
@@ -106,9 +105,9 @@ describe("testIntructionsLoad", function() {
 
         reg.H = 0;
         reg.L = 3;
-        expect(reg.M).toEqual(7); // before M gets 7 from memory
+        expect(reg.M).toEqual(7);
         operation[operation.MOV_M_I](reg, 22);
-        expect(reg.M).toEqual(22); // before M gets 22 from memory
+        expect(reg.M).toEqual(22);
 
     });
 });
