@@ -18,11 +18,6 @@ describe("testIntructionsAdditionCarry", function () {
             expect(reg.A).toEqual(1);
             expect(reg[r]).toEqual(0);
 
-            expect(reg.SIGN).toEqual(0);
-            expect(reg.ZERO).toEqual(0);
-            expect(reg.CARRY).toEqual(0);
-            expect(reg.PARITY).toEqual(0);
-
             // When A = 53, R = 42, and Carry = 1
             reg.A  = 53;
             reg[r] = 42;
@@ -30,11 +25,6 @@ describe("testIntructionsAdditionCarry", function () {
             operation[operation["ADC_" + r]](reg);
             expect(reg.A).toEqual(96);
             expect(reg[r]).toEqual(42);
-
-            expect(reg.SIGN).toEqual(0);
-            expect(reg.ZERO).toEqual(0);
-            expect(reg.CARRY).toEqual(0);
-            expect(reg.PARITY).toEqual(1);
 
             // When A = 128, R = 200, and Carry = 0
             reg.A  = 128;
@@ -44,21 +34,11 @@ describe("testIntructionsAdditionCarry", function () {
             expect(reg.A).toEqual(72);
             expect(reg[r]).toEqual(200);
 
-            expect(reg.SIGN).toEqual(0);
-            expect(reg.ZERO).toEqual(0);
-            expect(reg.CARRY).toEqual(1);
-            expect(reg.PARITY).toEqual(1);
-
             // Tests double operation no fail
             reg.CARRY = 1;
             operation[operation["ADC_" + r]](reg);
             expect(reg.A).toEqual(17);
             expect(reg[r]).toEqual(200);
-
-            expect(reg.SIGN).toEqual(0);
-            expect(reg.ZERO).toEqual(0);
-            expect(reg.CARRY).toEqual(1);
-            expect(reg.PARITY).toEqual(0);
         }
     });
 
@@ -72,21 +52,11 @@ describe("testIntructionsAdditionCarry", function () {
         operation[operation.ADC_A](reg);
         expect(reg.A).toEqual(0);
 
-        expect(reg.SIGN).toEqual(0);
-        expect(reg.ZERO).toEqual(1);
-        expect(reg.CARRY).toEqual(0);
-        expect(reg.PARITY).toEqual(1);
-
         // When A = 53 and carry = 1
         reg.A = 53;
         reg.CARRY = 1;
         operation[operation.ADC_A](reg);
         expect(reg.A).toEqual(107);
-
-        expect(reg.SIGN).toEqual(0);
-        expect(reg.ZERO).toEqual(0);
-        expect(reg.CARRY).toEqual(0);
-        expect(reg.PARITY).toEqual(0);
 
         // When A = 127 and carry = 0
         reg.A = 127;
@@ -94,21 +64,11 @@ describe("testIntructionsAdditionCarry", function () {
         operation[operation.ADC_A](reg);
         expect(reg.A).toEqual(254);
 
-        expect(reg.SIGN).toEqual(0);
-        expect(reg.ZERO).toEqual(0);
-        expect(reg.CARRY).toEqual(0);
-        expect(reg.PARITY).toEqual(1);
-
         // When A = 128 and carry = 1
         reg.A = 128;
         reg.CARRY = 1;
         operation[operation.ADC_A](reg);
         expect(reg.A).toEqual(1);
-
-        expect(reg.SIGN).toEqual(0);
-        expect(reg.ZERO).toEqual(0);
-        expect(reg.CARRY).toEqual(1);
-        expect(reg.PARITY).toEqual(0);
 
         // When A = 250 and carry = 1
         reg.A = 250;
@@ -116,20 +76,10 @@ describe("testIntructionsAdditionCarry", function () {
         operation[operation.ADC_A](reg);
         expect(reg.A).toEqual(245);
 
-        expect(reg.SIGN).toEqual(0);
-        expect(reg.ZERO).toEqual(0);
-        expect(reg.CARRY).toEqual(1);
-        expect(reg.PARITY).toEqual(0);
-
         // Tests double operation no fail and carry = 0
         reg.CARRY = 1;
         operation[operation.ADC_A](reg);
         expect(reg.A).toEqual(235);
-
-        expect(reg.SIGN).toEqual(0);
-        expect(reg.ZERO).toEqual(0);
-        expect(reg.CARRY).toEqual(1);
-        expect(reg.PARITY).toEqual(0);
     });
 
     it("ADC M", function () {
@@ -140,11 +90,6 @@ describe("testIntructionsAdditionCarry", function () {
         reg.CARRY = 1;
         operation[operation["ADC_M"]](reg, 0, 0);
         expect(reg.A).toEqual(100);
-
-        expect(reg.SIGN).toEqual(0);
-        expect(reg.ZERO).toEqual(0);
-        expect(reg.CARRY).toEqual(0);
-        expect(reg.PARITY).toEqual(1);
     });
 
 });
