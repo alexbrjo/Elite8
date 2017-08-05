@@ -1,5 +1,5 @@
 /**
- * Assembles Intel 8080 assembly mnuemonics to machine code
+ * Assembles Intel 8080 assembly mnemonics to machine code
  */
 var MolassesASM = function() {
     /** The Project Control group */
@@ -7,7 +7,7 @@ var MolassesASM = function() {
     /** The math group, needs immed value */
     var mathGroup = new RegExp("^(AD|AC|SU|SB|OR|XR|AN|CP)I$");
     /**
-     * Seperates ("chews") a 16-bit number into 2 bytes 
+     * Separates ("chews") a 16-bit number into 2 bytes
      * @param {Number} addr a number 0 to 65536 
      * @returns {Object} address split into 2 bytes
      */

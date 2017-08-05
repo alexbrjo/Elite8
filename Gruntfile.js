@@ -25,9 +25,9 @@ module.exports = function (grunt) {
             },
             dist: {
                 src: [
-                    'build/Molasses8080/Operation.js',
-                    'build/Molasses8080/**/*.js',  // enumlator files
-                    'build/MolassesASM/**/*.js'    // assembler files
+                    'build/hardware/Operation.js',
+                    'build/hardware/**/*.js',  // enumlator files
+                    'build/asm/**/*.js'    // assembler files
                 ],
                 dest: 'dist/MolassOS.js'
             }

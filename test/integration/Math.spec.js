@@ -7,7 +7,7 @@ describe("MathAsmCpuIntegration", function() {
     var cpu;
     
     /**
-     * Tests assmebly execution integration for add immed
+     * Tests assembly execution integration for add immed
      */
     it("testIntegrationAdd", function() {
         // test address 0

@@ -1,5 +1,5 @@
 /**
- * Preprocessor Intel 8080 assembly mnuemonics for the assembler
+ * Preprocessor Intel 8080 assembly mnemonics for the assembler
  */
 var preprocess = function () {
 

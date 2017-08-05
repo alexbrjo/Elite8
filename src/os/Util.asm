@@ -1,6 +1,8 @@
 ; 
 ; Util functions provided by the OS
 ;
+; author: Alex Johnson
+;
 
 [8 BITS]
 

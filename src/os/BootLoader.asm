@@ -3,6 +3,8 @@
 ;       Molasses8080 memory.
 ; POST > BIOS > Boot Sector
 ;
+; author: Alex Johnson
+;
 
 [8 BITS]
 
