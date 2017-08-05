@@ -30,6 +30,16 @@ var assemble = function (src, size) {
                     machineCode.write(operation[t.toUpperCase() + "_" + token[1].charAt(0)]);
                     state = "new_line";
                     break;
+                case "mov": case "MOV":
+                    if (token[1].charAt(2) >= "0" && token[1].charAt(2) <= "9") {
+                        machineCode.write(operation[t.toUpperCase() + "_" +  token[1].charAt(0) + "_I"]);
+                        machineCode.write(parseInt(token[1].split(",")[1]));
+                        state = "new_line";
+                    } else {
+                        machineCode.write(operation[t.toUpperCase() + "_" + token[1].charAt(0) + "_" + token[1].charAt(2)]);
+                        state = "new_line";
+                    }
+                    break;
                 case "db":
                 case "DB":
                     var def = t;
