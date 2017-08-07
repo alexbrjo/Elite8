@@ -1,4 +1,4 @@
-# ![](/logo.png)
+# ![](logo.png)
 
 MolassOS is an Intel 8080 microprocessor, assembler and bare-bones operating system that can run in your web browser.
 
