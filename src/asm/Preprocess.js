@@ -1,15 +1,18 @@
 /**
- * Preprocessor Intel 8080 assembly mnemonics for the assembler
+ * Preprocess Intel 8080 assembly mnemonics for the assembler
  */
 var preprocess = function (src) {
 
     /** Preprocessor FSM states */
-    var BEGIN_TOKEN;
-    var BEGIN_NUMBER;
-    var BEGIN_LITERAL;
-    var ID_TOKEN;
-    var CONVERT_TO_BYTES;
-    var COMMENT;
+    var state = {
+        WAIT     = new WaitState(),     // waiting for token or value
+        TOKEN    = new TokenState(),    // label .label
+        NUMBER   = new NumberState(),   // 4, 0x0, 0b0110
+        LITERAL  = new LiteralState(),  // "word", 0,
+        COMMENT  = new CommentState()   // in a comment line
+    };
+
+    var next;
 
     /** Regex to validate label */
     var   LABEL_REGEX = /[\.]{0,1}[$_a-zA-Z]{1}[$_a-zA-Z0-9]{0,24}/;
@@ -37,13 +40,13 @@ var preprocess = function (src) {
     for (var i = 0; i < src.length; i++) {
         var char = src.charAt(i);
         log(char);
-        state.next(char);
+        next = state[next(char)];
     }
 
     return {
         output: out,
         // metadata
         lines:  log.numOfLines(),
-        chars:  out.length,
+        chars:  out.length
     };
 };
