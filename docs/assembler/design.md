@@ -12,6 +12,7 @@ two parts:
 
 ```asm
 ; input coming into the PreProcessor
+db "abc", 0
 global_label
     MOV A,B
     ADI 8
@@ -42,10 +43,11 @@ In
 
 ```asm
 #export global_label 0x0
-0x0000    MOV A,B
-0x0001    ADI 8
-0x0002    DCR B
-0x0003    JNZ 0x00 0x02
+0x0000    db 65, 66, 67, 0
+0x0001    MOV A,B
+0x0002    ADI 8
+0x0003    DCR B
+0x0004    JNZ 0x00 0x02
 ```
 
 Out
