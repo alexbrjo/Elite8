@@ -5,11 +5,11 @@ var preprocess = function (src) {
 
     /** Preprocessor FSM states */
     var state = {
-        WAIT     = new WaitState(),     // waiting for token or value
-        TOKEN    = new TokenState(),    // label .label
-        NUMBER   = new NumberState(),   // 4, 0x0, 0b0110
-        LITERAL  = new LiteralState(),  // "word", 0,
-        COMMENT  = new CommentState()   // in a comment line
+        WAIT     : new WaitState(),     // waiting for token or value
+        TOKEN    : new TokenState(),    // label .label
+        NUMBER   : new NumberState(),   // 4, 0x0, 0b0110
+        LITERAL  : new LiteralState(),  // "word", 0,
+        COMMENT  : new CommentState()   // in a comment line
     };
 
     var next;
