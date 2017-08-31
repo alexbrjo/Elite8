@@ -1,5 +1,20 @@
 /**
  * State of the Preprocessor FSM
+ *
+ *      var state = function () {
+ *         this.nextNumber     = function (char) {};  // 0-9
+ *         this.nextLetter     = function (char) {};  // a-zA-Z
+ *         this.nextWhiteSpace = function (char) {};  // \ \n
+ *
+ *         // Find a way to sort symbols
+ *         this.nextSymbol           =  function (char) {};  // null (which could delegate to the following)
+ *         this.nextSymbolExpression =  function (char) {};  // !^&*-=+\|;:'",./?
+ *         this.nextSymbolEnclosing  =  function (char) {};  // ()[]{}<>""''
+ *         this.nextSymbolMath       =  function (char) {};  // !^%&*()-+=/|<>.,
+ *         this.nextSymbolOther      =  function (char) {};  // `~@#$%_
+ *
+ *         this.getStateName = function () { return ""; };
+ *      }
  */
 
 var WaitState = function () {
