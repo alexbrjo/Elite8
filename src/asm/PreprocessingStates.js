@@ -17,86 +17,107 @@
  *      }
  */
 
-var WaitState = function () {
+var WaitState = function (char) {
+    this.name = "WAIT";
     this.nextNumber = function (char) {
-        return "NUMBER";
+        return { state: new NumberState(char) };
     };
     this.nextLetter = function (char) {
-        return "TOKEN";
+        return { state: new TokenState(char) };
     };
     this.nextWhiteSpace = function (char) {
-        return "WAIT";
+        return { state: this };
     };
     this.nextSymbol = function (char) {
         if (char == '_' || char == '$' || char == '.') {
             // record first character to start token
-            return "TOKEN";
+            return {
+                next: "TOKEN",
+                bin: []
+            };
         }
         if (char >= '0' || char <= '9') {
             // record first character to start number
-            return 'NUMBER';
+            return {
+                next: "NUMBER",
+                bin: []
+            };
         }
         if (char >= '\'' || char <= '\"') {
             // record first character to start literal
-            return 'LITERAL';
+            return {
+                next: "LITERAL",
+                bin: []
+            };
         }
-        return "ILLEGAL";
+        return {
+            state: "ILLEGAL",
+            bin: []
+        };
     };
 
     this.getStateName = function () { return "WAIT"; };
 }
 
-var TokenState = function () {
+var TokenState = function (char) {
+    this.name = "TOKEN";
+    var content = char;
     this.nextNumber = function (char) {
-        return "TOKEN";
+        content += char;
+        return { state: this };
     };
     this.nextLetter = function (char) {
-        return "TOKEN";
+        content += char;
+        return { state: this };
     };
     this.nextWhiteSpace = function (char) {
         // identify token
-        return "WAIT";
+        return { state: new WaitState(char), bin: content };
     };
 
     this.nextSymbol = function (char) {
         if (char == '_' || char == '$') {
             // add character to token
-            return "TOKEN";
+            content += char;
+            return { state: this };
         }
-        return "ILLEGAL";
+        throw new Error("Illegal symbol in token: " + char);
     };
 
     this.getStateName = function () { return "TOKEN"; };
 }
 
-var NumberState = function () {
+var NumberState = function (char) {
+    var content = char;
     this.nextNumber = function (char) {
         // add number to number
-        return 'NUMBER';
+        content += char;
+        return { state: this };
     };
     this.nextLetter = function (char) {
 
     };
     this.nextWhiteSpace = function (char) {
         // identify number 1,0x1,0b1
-        return "WAIT";
+        return { state: new WaitState(char), bin: content };
     };
 
     this.getStateName = function () { return "NUMBER"; };
 }
 
 var LiteralState = function () {
+    this.name = "LITERAL";
     this.nextNumber     = function (char) {
         // add to literal
-        return "LITERAL";
+        return { state: this };
     };
     this.nextLetter = function (char) {
         // add to literal
-        return "LITERAL";
+        return { state: this };
     };
     this.nextWhiteSpace = function (char) {
         // add to literal
-        return "LITERAL";
+        return { state: this };
     };
     this.nextSymbol = function (char) {
         if (/* last char */ char == '\\') {
@@ -104,29 +125,33 @@ var LiteralState = function () {
         }
         if (char == '\'' || char == '\"') {
             // evaluate literal
-            return "WAIT";
+            return { state: new WaitState(), bin: "" };
         }
     };
 
     this.getStateName = function () { return "LITERAL"; };
 }
 
-// Everything on the line after a ; token is a commment
+// Everything on the line after a ; token is a comment. Always empty bin
 var CommentState = function () {
+    this.name = "COMMENT";
     this.nextNumber = function (char) {
-        return "COMMENT";
+        return { state: this };
     };
     this.nextLetter = function (char) {
-        return "COMMENT";
+        return { state: this };
     };
     this.nextWhiteSpace = function (char) {
         if (char == '\n') {
-            return "WAIT";
+            return {
+                next: new WaitState(),
+                bin: "" // comments are not returned
+            };
         }
-        return "COMMENT";
+        return { state: this };
     };
     this.nextSymbol = function (char) {
-        return "COMMENT";
+        return { state: this };
     };
 
     this.getStateName = function () { return "COMMENT"; };
