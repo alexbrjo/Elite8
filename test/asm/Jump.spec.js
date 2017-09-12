@@ -46,11 +46,11 @@ describe("JumpGroupAssembly", function() {
             src += " HLT \n";
         }
          
-        src += ".high_order \n JMP .high_order \n"; 
+        src += ".high_order \n JMP .high_order \n";
           
         var mach_code = sasm.assemble(src).data;
         expect(mach_code.size()).toEqual(512);
-               /* ... 260 halts ... */
+               /* ... 259 halts ... */
         expect(mach_code.read(259)).toEqual(operation.HLT); // last halt
         expect(mach_code.read(260)).toEqual(operation.JMP); // JMP opcode
         expect(mach_code.read(261)).toEqual(4);             // low order memory address 4
