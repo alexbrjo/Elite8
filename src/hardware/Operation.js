@@ -1,5 +1,5 @@
 /**
- * The Molasses8080 Instruction Set
+ * The Molasses Instruction Set
  * 
  * Instruction groups:
  *      - Control

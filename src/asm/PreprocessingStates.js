@@ -19,41 +19,31 @@
 
 var WaitState = function (char) {
     this.name = "WAIT";
+    var content = char;
     this.nextNumber = function (char) {
-        return { state: new NumberState(char) };
+        return { state: new NumberState(char), bin: content};
     };
     this.nextLetter = function (char) {
-        return { state: new TokenState(char) };
+        return { state: new TokenState(char), bin: content};
     };
     this.nextWhiteSpace = function (char) {
-        return { state: this };
+        content += char;
+        return { state: this};
     };
     this.nextSymbol = function (char) {
         if (char == '_' || char == '$' || char == '.') {
             // record first character to start token
-            return {
-                next: "TOKEN",
-                bin: []
-            };
+            return { state: new TokenState(char), bin: content};
         }
         if (char >= '0' || char <= '9') {
             // record first character to start number
-            return {
-                next: "NUMBER",
-                bin: []
-            };
+            return { state: new NumberState(char), bin: content};
         }
         if (char >= '\'' || char <= '\"') {
             // record first character to start literal
-            return {
-                next: "LITERAL",
-                bin: []
-            };
+            return { state: new LiteralState(char), bin: content};
         }
-        return {
-            state: "ILLEGAL",
-            bin: []
-        };
+        throw new Error("Illegal symbol: " + char);
     };
 
     this.getStateName = function () { return "WAIT"; };
@@ -95,7 +85,7 @@ var NumberState = function (char) {
         return { state: this };
     };
     this.nextLetter = function (char) {
-
+        throw new Error("Illegal symbol in number: " + char);
     };
     this.nextWhiteSpace = function (char) {
         // identify number 1,0x1,0b1
@@ -105,27 +95,32 @@ var NumberState = function (char) {
     this.getStateName = function () { return "NUMBER"; };
 }
 
-var LiteralState = function () {
+var LiteralState = function (char) {
     this.name = "LITERAL";
+    var content = char;
     this.nextNumber     = function (char) {
         // add to literal
+        content += char;
         return { state: this };
     };
     this.nextLetter = function (char) {
         // add to literal
+        content += char;
         return { state: this };
     };
     this.nextWhiteSpace = function (char) {
         // add to literal
+        content += char;
         return { state: this };
     };
+    // TODO support nextSymbol here
     this.nextSymbol = function (char) {
         if (/* last char */ char == '\\') {
             // escape next character
         }
         if (char == '\'' || char == '\"') {
             // evaluate literal
-            return { state: new WaitState(), bin: "" };
+            return { state: new WaitState(char), bin: content };
         }
     };
 
@@ -133,7 +128,7 @@ var LiteralState = function () {
 }
 
 // Everything on the line after a ; token is a comment. Always empty bin
-var CommentState = function () {
+var CommentState = function (char) {
     this.name = "COMMENT";
     this.nextNumber = function (char) {
         return { state: this };
@@ -144,7 +139,7 @@ var CommentState = function () {
     this.nextWhiteSpace = function (char) {
         if (char == '\n') {
             return {
-                next: new WaitState(),
+                next: new WaitState(char),
                 bin: "" // comments are not returned
             };
         }

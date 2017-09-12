@@ -37,15 +37,15 @@ describe("LabelAssembly", function() {
             src += " HLT \n";
         }
          
-        src += ".high_order \n JMP .high_order \n"; 
+        src += ".high_order \n JMP .high_order \n";
           
         var mach_code = sasm.assemble(src, 1024).data;
         expect(mach_code.size()).toEqual(1024);
-               /* ... 260 halts ... */
+               /* ... 525 halts ... */
         expect(mach_code.read(525)).toEqual(operation.HLT); // last halt
         expect(mach_code.read(526)).toEqual(operation.JMP); // JMP opcode
-        expect(mach_code.read(527)).toEqual(14);             // low order memory address 4
-        expect(mach_code.read(528)).toEqual(2);             // high order memory address 1
+        expect(mach_code.read(527)).toEqual(14);            // low order memory address 14
+        expect(mach_code.read(528)).toEqual(2);             // high order memory address 2
     });
 });
 

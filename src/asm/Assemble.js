@@ -9,7 +9,9 @@ var assemble = function (src, size) {
     var label = {}; // stores memory locations of labels
     var machineCode = new Memory(size || 512); // assembled machine code
     var state = "init";
-    
+
+    src = preprocess(src).output;
+
     var line = src.split("\n"); // the input split into lines
     for (var i = 0; i < line.length; i++) {
         // line split into tokens
