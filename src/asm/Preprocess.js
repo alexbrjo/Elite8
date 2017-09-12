@@ -4,15 +4,7 @@
 var preprocess = function (src) {
 
     /** Preprocessor FSM states */
-    var state = {
-        WAIT     : new WaitState(),     // waiting for token or value
-        TOKEN    : new TokenState(),    // label .label
-        NUMBER   : new NumberState(),   // 4, 0x0, 0b0110
-        LITERAL  : new LiteralState(),  // "word", 0,
-        COMMENT  : new CommentState()   // in a comment line
-    };
-
-    var next = state.WAIT;
+    var state = new WaitState();
 
     /** Regex to validate label */
     var   LABEL_REGEX = /[\.]{0,1}[$_a-zA-Z]{1}[$_a-zA-Z0-9]{0,24}/;
@@ -22,20 +14,34 @@ var preprocess = function (src) {
 
     var out = "";
 
+    var r = null;
     for (var i = 0; i < src.length; i++) {
         var char = src.charAt(i);
         log(char);
+
         if (char === ' ' || char === '\n' || char === '\t') {
-            next = state[next.nextWhiteSpace(char)];
+            r = state.nextWhiteSpace(char);
         } else if (char.toLowerCase() >= 'a' && char.toLowerCase() <= 'z') {
-            next = state[next.nextLetter(char)];
+            r = state.nextLetter(char);
         } else if (char >= '0' && char <= '9') {
-            next = state[next.nextNumber(char)];
+            r = state.nextNumber(char);
         } else {
-            next = state[next.nextSymbol(char)];
+            r = state.nextSymbol(char);
+        }
+        state = r.state;
+        // if any machine codes were generated, add them to binary
+        if (r.bin !== undefined) {
+            out += r.bin;
         }
     }
 
+    // file should end in newline
+    r = state.nextWhiteSpace('\n');
+    if (r.bin !== undefined) {
+        out += r.bin;
+    }
+
+    // TODO reporting on code quality? warnings. Log compilable
     return {
         output: out,
         // metadata

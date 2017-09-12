@@ -23,9 +23,8 @@ describe("AssemblySyntax", function() {
     it("testImmedAddress", function() {
         // test address 0
         var src = "JMP 0 \n HLT";
-        src = sasm.preprocess(src).output;
         var m = sasm.assemble(src, 8).data;
-        
+
         expect(m.size()).toEqual(8);
         expect(m.read(0)).toEqual(operation.JMP);
         expect(m.read(1)).toEqual(0);
