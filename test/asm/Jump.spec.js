@@ -12,7 +12,7 @@ describe("JumpGroupAssembly", function() {
         // test address 0
         var src = ".line0 \n" +
                   "JMP .line0";
-        var mach_code = sasm.assemble(src, 3).data;
+        var mach_code = sasm.compile(src, 3).data;
         expect(mach_code.size()).toEqual(3);
         expect(mach_code.read(0)).toEqual(operation.JMP); // JMP opcode
         expect(mach_code.read(1)).toEqual(0);             // memory address 0
@@ -26,7 +26,7 @@ describe("JumpGroupAssembly", function() {
                   "HLT \n HLT \n HLT \n HLT \n" +
                   "HLT \n HLT \n HLT \n .line24 \n" +
                   "JMP .line24";
-        var mach_code = sasm.assemble(src).data;
+        var mach_code = sasm.compile(src).data;
         expect(mach_code.size()).toEqual(512);
                /* ... 23 halts ... */
         expect(mach_code.read(22)).toEqual(operation.HLT); // last halt
@@ -48,7 +48,7 @@ describe("JumpGroupAssembly", function() {
          
         src += ".high_order \n JMP .high_order \n";
           
-        var mach_code = sasm.assemble(src).data;
+        var mach_code = sasm.compile(src).data;
         expect(mach_code.size()).toEqual(512);
                /* ... 259 halts ... */
         expect(mach_code.read(259)).toEqual(operation.HLT); // last halt

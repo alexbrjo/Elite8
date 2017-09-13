@@ -17,7 +17,7 @@ describe("MathAsmCpuIntegration", function() {
                   "JNZ .line0 \n " + 
                   "ADI 1 \n " + 
                   "HLT";
-        var mem = sasm.assemble(src, 10).data;
+        var mem = sasm.compile(src, 10).data;
         expect(mem.read(0)).toEqual(operation.ADI);
         expect(mem.read(1)).toEqual(10);
         expect(mem.read(2)).toEqual(operation.SUI);

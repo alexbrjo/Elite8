@@ -18,7 +18,7 @@ describe("LabelAssembly", function() {
                   "HLT \n HLT \n HLT \n HLT \n" +
                   "HLT \n HLT \n HLT \n .line24 \n .line25 \n .line26 \n" +
                   "JMP .line26";
-        var mach_code = sasm.assemble(src).data;
+        var mach_code = sasm.compile(src).data;
         expect(mach_code.size()).toEqual(512);
         expect(mach_code.read(23)).toEqual(operation.JMP); // JMP opcode
         expect(mach_code.read(24)).toEqual(23);            // low order memory address 23
@@ -39,7 +39,7 @@ describe("LabelAssembly", function() {
          
         src += ".high_order \n JMP .high_order \n";
           
-        var mach_code = sasm.assemble(src, 1024).data;
+        var mach_code = sasm.compile(src, 1024).data;
         expect(mach_code.size()).toEqual(1024);
                /* ... 525 halts ... */
         expect(mach_code.read(525)).toEqual(operation.HLT); // last halt
