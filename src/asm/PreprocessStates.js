@@ -1,22 +1,8 @@
 /**
- * State of the Preprocessor FSM
+ * The state of traversing whitespace
  *
- *      var state = function () {
- *         this.nextNumber     = function (char) {};  // 0-9
- *         this.nextLetter     = function (char) {};  // a-zA-Z
- *         this.nextWhiteSpace = function (char) {};  // \ \n
- *
- *         // Find a way to sort symbols
- *         this.nextSymbol           =  function (char) {};  // null (which could delegate to the following)
- *         this.nextSymbolExpression =  function (char) {};  // !^&*-=+\|;:'",./?
- *         this.nextSymbolEnclosing  =  function (char) {};  // ()[]{}<>""''
- *         this.nextSymbolMath       =  function (char) {};  // !^%&*()-+=/|<>.,
- *         this.nextSymbolOther      =  function (char) {};  // `~@#$%_
- *
- *         this.getStateName = function () { return ""; };
- *      }
+ * @param {Char} char the first character of the segment
  */
-
 var WaitState = function (char) {
     this.name = "WAIT";
     var content = char;
@@ -34,14 +20,11 @@ var WaitState = function (char) {
         if (char == '_' || char == '$' || char == '.') {
             // record first character to start token
             return { state: new TokenState(char), bin: content};
-        }
-        if (char >= '0' || char <= '9') {
-            // record first character to start number
-            return { state: new NumberState(char), bin: content};
-        }
-        if (char >= '\'' || char <= '\"') {
+        } else if (char >= '\'' || char <= '\"') {
             // record first character to start literal
             return { state: new LiteralState(char), bin: content};
+        } else if (char == ";") {
+            return { state: new CommentState(char), bin: content};
         }
         throw new Error("Illegal symbol: " + char);
     };
@@ -49,6 +32,11 @@ var WaitState = function (char) {
     this.getStateName = function () { return "WAIT"; };
 }
 
+/**
+ * The state of identifying a token
+ *
+ * @param {Char} char the first character of the token
+ */
 var TokenState = function (char) {
     this.name = "TOKEN";
     var content = char;
@@ -77,7 +65,13 @@ var TokenState = function (char) {
     this.getStateName = function () { return "TOKEN"; };
 }
 
+/**
+ * The state of identifying a number (a literal starting with 0)
+ *
+ * @param {Char} char the first character of the number
+ */
 var NumberState = function (char) {
+    this.name = "NUMBER";
     var content = char;
     this.nextNumber = function (char) {
         // add number to number
@@ -85,20 +79,42 @@ var NumberState = function (char) {
         return { state: this };
     };
     this.nextLetter = function (char) {
+        if (content === "0" && (char === 'x' || char === 'o' || char === 'b')) {
+            content += char;
+            return { state: this };
+        }
         throw new Error("Illegal symbol in number: " + char);
     };
     this.nextWhiteSpace = function (char) {
-        // identify number 1,0x1,0b1
-        return { state: new WaitState(char), bin: content };
+        var num;
+        // convert all numbers to base 16
+        if (content.indexOf("0x") === 0) {
+            num = parseInt(content.substring(2), 16);
+        } else if (content.indexOf("0o") === 0) {
+            num = parseInt(content.substring(2), 8);
+        } else if (content.indexOf("0b") === 0) {
+            num = parseInt(content.substring(2), 2);
+        } else {
+            num = parseInt(content, 10);
+        }
+        return { state: new WaitState(char), bin: "0x" + num.toString(16) };
+    };
+    this.nextSymbol = function (char) {
+        throw new Error("Illegal symbol in token: " + char);
     };
 
     this.getStateName = function () { return "NUMBER"; };
 }
 
+/**
+ * The state of identifying a literal
+ *
+ * @param {Char} char the first character of the literal, likely \' or \"
+ */
 var LiteralState = function (char) {
     this.name = "LITERAL";
     var content = char;
-    this.nextNumber     = function (char) {
+    this.nextNumber = function (char) {
         // add to literal
         content += char;
         return { state: this };
@@ -127,27 +143,31 @@ var LiteralState = function (char) {
     this.getStateName = function () { return "LITERAL"; };
 }
 
-// Everything on the line after a ; token is a comment. Always empty bin
+/**
+ * The state of identifying traversing a comment. Comments are not maintained
+ *
+ * @param {Char} char the first character of the literal, likely \' or \"
+ */
 var CommentState = function (char) {
     this.name = "COMMENT";
+    var start = char;
     this.nextNumber = function (char) {
         return { state: this };
     };
     this.nextLetter = function (char) {
-        return { state: this };
+        return this.next(char);
     };
     this.nextWhiteSpace = function (char) {
-        if (char == '\n') {
-            return {
-                next: new WaitState(char),
-                bin: "" // comments are not returned
-            };
-        }
-        return { state: this };
+        return this.next(char);
     };
     this.nextSymbol = function (char) {
-        return { state: this };
+        return this.next(char);
     };
-
+    this.next = function (char) {
+        if (char === "\n") {
+            return { state: new WaitState(char) };
+        } // else still in comment
+        return { state: this };
+    }
     this.getStateName = function () { return "COMMENT"; };
 }

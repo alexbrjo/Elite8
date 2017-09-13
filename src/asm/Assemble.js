@@ -5,12 +5,48 @@
  * @returns {Object} object with assembled memory and info.
  */
 var assemble = function (src, size) {
+
+    /** The Project Control group */
+    var pcGroup = new RegExp("^(JMP|RET|CALL)$|^[JRC]{1}(NZ|NC|PO|P|Z|P|PE|M)$");
+    /** The math group, needs immed value */
+    var mathGroup = new RegExp("^(AD|AC|SU|SB|OR|XR|AN|CP)I$");
+
+    /**
+     * Regex patterns for different states
+     *
+     * @param {string} t The operation string
+     * @returns {string} the state of the input
+     */
+    var getState = function (t) {
+        if (pcGroup.test(t)) return "wait_address";
+        if (mathGroup.test(t)) return "wait_immed";
+        return "new_line";
+    };
+
+    /**
+     * Separates ("chews") a 16-bit number into 2 bytes
+     * @param {Number} addr a number 0 to 65536
+     * @returns {Object} address split into 2 bytes
+     */
+    var chewAddress = function(addr) {
+        var h = Math.floor(addr / 256); // calculate high order address
+        var l = addr - h * 256; // calculate low order address
+        return {
+            "0": l,
+            "1": h,
+            get low () {
+                return this[0];
+            },
+            get high(){
+                return this[1];
+            }
+        };
+    };
+
     var constant = {}; // stores values of constants
     var label = {}; // stores memory locations of labels
     var machineCode = new Memory(size || 512); // assembled machine code
     var state = "init";
-
-    src = preprocess(src).output;
 
     var line = src.split("\n"); // the input split into lines
     for (var i = 0; i < line.length; i++) {
@@ -22,7 +58,7 @@ var assemble = function (src, size) {
         // checks basic non-variable opcodes
         if (typeof operation[t] !== "undefined") {
             machineCode.write(operation[t]);
-            state = this.getState(t);
+            state = getState(t);
         } else {
             switch (t) {
                 case "add": case "ADD": case "adc": case "ADC":
@@ -76,13 +112,13 @@ var assemble = function (src, size) {
             var address;
             if (token[1] === "undefined") {
                 throw new Error("No immed address label: line " + i);
-            } else if (!isNaN(parseInt(token[1], 10))) {
-                address = this.chewAddress(parseInt(token[1], 10));
+            } else if (!isNaN(parseInt(token[1], 16))) {
+                address = chewAddress(parseInt(token[1], 16));
             } else {
                 if (typeof label[token[1]] === "undefined") {
                     throw new Error("Could not find label: line " + i);
                 }
-                address = this.chewAddress(label[token[1]]); // get address of label
+                address = chewAddress(label[token[1]]); // get address of label
             }
             machineCode.write(address.low); // write low order
             machineCode.write(address.high); // write high order 

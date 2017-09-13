@@ -12,7 +12,7 @@ describe("AssemblySyntax", function() {
         // test address 0
         var src = "JMP \n \n HLT";
         expect(function() {
-            sasm.assemble(src, 8);
+            sasm.compile(src, 8);
         }).toThrow();
         
     });
@@ -21,9 +21,9 @@ describe("AssemblySyntax", function() {
      * Tests Assembly of immediate address
      */
     it("testImmedAddress", function() {
-        // test address 0
-        var src = "JMP 0 \n HLT";
-        var m = sasm.assemble(src, 8).data;
+        // test address 1
+        var src = "JMP 0 \n ; ADD commented instr \n HLT";
+        var m = sasm.compile(src, 8).data;
 
         expect(m.size()).toEqual(8);
         expect(m.read(0)).toEqual(operation.JMP);
@@ -32,7 +32,7 @@ describe("AssemblySyntax", function() {
         
         // test address 255
         src = "CALL 255 \n HLT";
-        m = sasm.assemble(src, 8).data;
+        m = sasm.compile(src, 8).data;
         
         expect(m.size()).toEqual(8);
         expect(m.read(0)).toEqual(operation.CALL);
@@ -41,7 +41,7 @@ describe("AssemblySyntax", function() {
         
         // test address 1023
         src = "JNZ 1023 \n HLT";
-        m = sasm.assemble(src, 8).data;
+        m = sasm.compile(src, 8).data;
         
         expect(m.size()).toEqual(8);
         expect(m.read(0)).toEqual(operation.JNZ);
@@ -50,7 +50,7 @@ describe("AssemblySyntax", function() {
         
         // test address 10
         src = "CP 1024 \n HLT";
-        m = sasm.assemble(src, 8).data;
+        m = sasm.compile(src, 8).data;
         
         expect(m.size()).toEqual(8);
         expect(m.read(0)).toEqual(operation.CP);
@@ -63,7 +63,7 @@ describe("AssemblySyntax", function() {
      */
     it("testSyntaxMathAdd", function() {
         var src = "ADD A \n ADD B \n ADD C \n ADD D \n ADD E \n HLT";
-        var m = sasm.assemble(src, 8).data;
+        var m = sasm.compile(src, 8).data;
         expect(m.read(0)).toEqual(operation.ADD_A);
         expect(m.read(1)).toEqual(operation.ADD_B);
         expect(m.read(2)).toEqual(operation.ADD_C);
@@ -72,7 +72,7 @@ describe("AssemblySyntax", function() {
         expect(m.read(5)).toEqual(operation.HLT); 
         
         src = "ADC A \n ADC B \n ADC C \n ADC D \n ADC E \n HLT";
-        m = sasm.assemble(src, 8).data;
+        m = sasm.compile(src, 8).data;
         expect(m.read(0)).toEqual(operation.ADC_A);
         expect(m.read(1)).toEqual(operation.ADC_B);
         expect(m.read(2)).toEqual(operation.ADC_C);
@@ -86,7 +86,7 @@ describe("AssemblySyntax", function() {
      */
     it("testSyntaxMathSub", function() {
         var src = "SUB A \n SUB B \n SUB C \n SUB D \n SUB E \n HLT";
-        var m = sasm.assemble(src, 8).data;
+        var m = sasm.compile(src, 8).data;
         expect(m.read(0)).toEqual(operation.SUB_A);
         expect(m.read(1)).toEqual(operation.SUB_B);
         expect(m.read(2)).toEqual(operation.SUB_C);
@@ -95,7 +95,7 @@ describe("AssemblySyntax", function() {
         expect(m.read(5)).toEqual(operation.HLT);
         
         src = "SBB A \n SBB B \n SBB C \n SBB D \n SBB E \n HLT";
-        m = sasm.assemble(src, 8).data;
+        m = sasm.compile(src, 8).data;
         expect(m.read(0)).toEqual(operation.SBB_A);
         expect(m.read(1)).toEqual(operation.SBB_B);
         expect(m.read(2)).toEqual(operation.SBB_C);
@@ -109,7 +109,7 @@ describe("AssemblySyntax", function() {
      */
     it("testSyntaxBoolean", function() {
         var src = "ANA A \n ANA B \n ANA C \n ANA D \n ANA E \n HLT";
-        var m = sasm.assemble(src, 8).data;
+        var m = sasm.compile(src, 8).data;
         expect(m.read(0)).toEqual(operation.ANA_A);
         expect(m.read(1)).toEqual(operation.ANA_B);
         expect(m.read(2)).toEqual(operation.ANA_C);
@@ -118,7 +118,7 @@ describe("AssemblySyntax", function() {
         expect(m.read(5)).toEqual(operation.HLT);
         
         src = "XRA A \n XRA B \n XRA C \n XRA D \n XRA E \n HLT";
-        m = sasm.assemble(src, 8).data;
+        m = sasm.compile(src, 8).data;
         expect(m.read(0)).toEqual(operation.XRA_A);
         expect(m.read(1)).toEqual(operation.XRA_B);
         expect(m.read(2)).toEqual(operation.XRA_C);
@@ -127,7 +127,7 @@ describe("AssemblySyntax", function() {
         expect(m.read(5)).toEqual(operation.HLT);
         
         src = "ORA A \n ORA B \n ORA C \n ORA D \n ORA E \n HLT";
-        m = sasm.assemble(src, 8).data;
+        m = sasm.compile(src, 8).data;
         expect(m.read(0)).toEqual(operation.ORA_A);
         expect(m.read(1)).toEqual(operation.ORA_B);
         expect(m.read(2)).toEqual(operation.ORA_C);
@@ -136,7 +136,7 @@ describe("AssemblySyntax", function() {
         expect(m.read(5)).toEqual(operation.HLT);
         
         src = "CMP A \n CMP B \n CMP C \n CMP D \n CMP E \n HLT";
-        m = sasm.assemble(src, 8).data;
+        m = sasm.compile(src, 8).data;
         expect(m.read(0)).toEqual(operation.CMP_A);
         expect(m.read(1)).toEqual(operation.CMP_B);
         expect(m.read(2)).toEqual(operation.CMP_C);
